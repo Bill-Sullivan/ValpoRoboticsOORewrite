@@ -53,12 +53,12 @@ public:
 		Serial.print(F("\r\nPS3 Bluetooth Library Started"));
 		
 		int numPeripherals = 0;
-		
+		try {
 		// add all peripals to peripheralVec
 		#if defined(BASIC_DRIVETRAIN)
-			
+			driveTrain = basicDriveConrtoller();
 		#elsif defined(OMNIWHEEL_DRIVETRAIN)
-		
+			driveTrain = omniDriveConrtoller();
 		#endif
 		#if defined(CENTER_PERIPHERALS)
 			array.at(numPeripherals) = Center();
@@ -72,7 +72,14 @@ public:
 			array.at(numPeripherals) = LED();
 			numPeripherals++;
 		#endif
-		
+		} 
+		catch catch(std::out_of_range const & e)
+		{
+		while (1) {
+			Serial.print(F("Too many peripherals used increase MAX_TOTAL_PERIPERALS in Config.hpp and reupload");
+			delay(1000);
+		}			
+		}
 		
 		// add all peripals to peripheralVec
 		// Peripherals should have thier setup done in their constructors
