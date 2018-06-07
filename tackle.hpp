@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Arduino.h>
 #include <Servo.h>
 #include <stdint.h>
@@ -30,4 +32,4 @@ class TackleSensor {
 	TackleSensor() {
 		pinMode(TACKLE_INPUT, INPUT); // define the tackle sensor pin as an input
 	}
-}
+};

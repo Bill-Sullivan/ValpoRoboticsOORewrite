@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Arduino.h>
 #include <Servo.h>
 #include <stdint.h>
@@ -18,8 +20,13 @@
 #endif
 
 // mode definitions
+#undef DRIVING
 #define DRIVING         1
+
+#undef CALIBRATION
 #define CALIBRATION     2
+
+#undef KID
 #define KID             3
 
 #if !defined(MAX_DRIVE)
@@ -65,8 +72,8 @@
 class basicDriveConrtoller: public DriveTrain {
 	// to do check if volitile is nessessary before driveCtrl
 	private:	
-	static const void arcadeDrive();
-	static const void tankDrive();
+	static void arcadeDrive();
+	static void tankDrive();
 	
 	static uint8_t state;
 	static int 	motorCorrect;	
@@ -74,11 +81,12 @@ class basicDriveConrtoller: public DriveTrain {
 	
 	static uint8_t handicap;
 	
-	static volatile void (*driveCtrl)();	
+	static void (*driveCtrl)();	
 	static void handelInputs();
-	static void eStop();
+	
 	
 	public:	
+  void eStop();
 	void doThing() {
 		handelInputs();
 		driveCtrl();
@@ -101,6 +109,7 @@ class basicDriveConrtoller: public DriveTrain {
 			rightMotor2.attach(RIGHT_MOTOR2, 1000, 2000);
 			rightMotor2.writeMicroseconds(1500);
 		#endif
+    driveCtrl = arcadeDrive;
 	}
 };
 
@@ -115,14 +124,14 @@ void basicDriveConrtoller::eStop() {
 	#endif
 }
 
-volatile void basicDriveConrtoller::handelInputs() {
+void basicDriveConrtoller::handelInputs() {
 	if (PS3.getButtonClick(SELECT)) //Switch between tank drive and arcade mode. 0 is arcade 1 is tank
 	{
 		if (PS3.getButtonPress(L1)) {
-			if (driveCtrl == arcadeDrive) {
+			if (driveCtrl == (void (*)())arcadeDrive) {
 				EEPROM.write(0, 1);
 			}
-			else if (driveCtrl == tankDrive) {
+			else if (driveCtrl == (void (*)())tankDrive) {
 				EEPROM.write(0, 0);
 			}
 		}
@@ -157,7 +166,7 @@ volatile void basicDriveConrtoller::handelInputs() {
 	}
 }
 
-volatile void basicDriveConrtoller::arcadeDrive() {
+void basicDriveConrtoller::arcadeDrive() {
 	int xInput, yInput, throttleL, throttleR;
 	static uint8_t drive, turn;
 	  

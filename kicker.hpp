@@ -1,8 +1,10 @@
+#pragma once
+
 #include <Arduino.h>
 #include <Servo.h>
 #include <stdint.h>
 
-#include "Periperal.hpp"
+#include "Peripheral.hpp"
 
   #define KICKER_MOTOR          5     // Kicker motor is wired to pin 5
   //these are the speeds for kicking and reload the kicker foot
@@ -23,7 +25,7 @@
 #endif
 
 
-class Kicker: public Periperal {
+class Kicker : public Peripheral {
 	private:
 	void kickerCtrl();
 	Servo kicker;                       // Define motor object for the kicker motor

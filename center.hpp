@@ -1,8 +1,10 @@
+#pragma once
+
 #include <Arduino.h>
 #include <Servo.h>
 #include <stdint.h>
 
-#include "Periperal.hpp"
+#include "Peripheral.hpp"
 
 #if !defined(PS3_VARS)
 	//Include libraries
@@ -23,10 +25,9 @@
 
 
 
-class Center: public Periperal {
+class Center : public Peripheral {
 	private:
-	void FortyTwoDropper();
-	volatile void (*centerCtrl)();
+	void centerCtrl();
 	Servo centerRelease;                // define servo object for ball release 
 	public:
 	void doThing() {
@@ -37,11 +38,10 @@ class Center: public Periperal {
 	Center() {
 		centerRelease.attach(CENTER_RELEASE);   // attach ball release servo to its pin
 		centerRelease.write(CENTER_RELEASE_UP); // 
-		centerCtrl = FortyTwoDropper;
 	}
 };
 
-void Center::FortyTwoDropper()
+void Center::centerCtrl()
 {
   if (PS3.getButtonClick(TRIANGLE)) centerRelease.write(CENTER_RELEASE_UP);
   else if (PS3.getButtonClick(CROSS)) centerRelease.write(CENTER_RELEASE_DOWN);

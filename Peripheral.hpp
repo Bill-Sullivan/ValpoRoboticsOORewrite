@@ -1,7 +1,8 @@
+#pragma once
+
 #include <Arduino.h>
 #include <Servo.h>
 #include <stdint.h>
-#include <EEPROM.h>
 
 #if !defined(PS3_VARS)
 	//Include libraries

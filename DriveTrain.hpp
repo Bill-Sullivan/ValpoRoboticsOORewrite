@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Arduino.h>
 #include <Servo.h>
 #include <stdint.h>
@@ -18,5 +20,6 @@
 
 class DriveTrain {
 	public:
+  virtual void eStop();
 	virtual void doThing();
 };

@@ -10,7 +10,7 @@
 //#define QB_TRACKING
 //#define KICKER_PERIPHERALS  //uncomment for special Kicker features
 //#define RECEIVER_PERIPHERALS  
-//#define LED_STRIP       //uncomment for LED functionality
+#define LED_STRIP       //uncomment for LED functionality
 //#define TACKLE          //uncomment for tackle sensor functionality
 //#define ROTATION_LOCK
 

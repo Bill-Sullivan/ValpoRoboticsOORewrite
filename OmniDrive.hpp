@@ -1,3 +1,5 @@
+#pragma once
+
 #include <Arduino.h>
 #include <Servo.h>
 #include <stdint.h>
@@ -17,25 +19,35 @@
 #endif
 
 // mode definitions
+#undef DRIVING
 #define DRIVING         1
-#define CALIBRATION     2
-#define KID             3
 
+#undef CALIBRATION
+#define CALIBRATION     2
+
+#undef KID
+#define KID             3
 
 #define MOTOR_1               7     //   1//-FRONT-\\4
 #define MOTOR_2               8     //     |       |
 #define MOTOR_3               9     //     |       |                                                                          <-- check this for accuracy
 #define MOTOR_4               10    //   2\\-------//3
+
+#undef KID_HANDICAP
 #define KID_HANDICAP          5     // when omni is in kids mode, speed is divided by 5 
+
+
 #define PI_OVER_2             M_PI/2
 #define PI_OVER_4             M_PI/4
 #define TURN_HANDICAP_AMOUNT  1     // divide turn speed by 1
 #define MAX_TURN 14                 // limit the value for turning for calculations to send final speed to motors
 #ifdef QB_PERIPHERALS               // If this is the QB then R2 slows down otherwise R2 is boost.
   #define DEFAULT_HANDICAP      1   // when not using boost, drive full speed
+  #undef ALTERNATE_HANDICAP
   #define ALTERNATE_HANDICAP    3   // when using boost, divide speed by 3
 #else
   #define DEFAULT_HANDICAP      3   // when not using boost, divide speed by 3
+  #undef ALTERNATE_HANDICAP
   #define ALTERNATE_HANDICAP    2   // when using boost, divide speed by 2 
 #endif
   Servo motor1, motor2, motor3, motor4;                                       // Define omni motor objects
@@ -111,9 +123,9 @@ class omniDriveConrtoller: public DriveTrain {
 	
 	static void (*driveCtrl)();	
 	static void handelInputs();
-	static void eStop();
 	
 	public:	
+  void eStop();
 	void doThing() {
 		handelInputs();
 		driveCtrl();		
@@ -134,7 +146,7 @@ class omniDriveConrtoller: public DriveTrain {
 		motor4.attach(MOTOR_4, 1000, 2000);
 		motor4.writeMicroseconds(1500);
 		
-		driveCtrl = drive();
+		driveCtrl = drive;
 	}
 };
 

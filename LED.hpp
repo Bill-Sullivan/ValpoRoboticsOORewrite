@@ -1,9 +1,11 @@
+#pragma once
+
 #include <Arduino.h>
 #include <Servo.h>
 #include <stdint.h>
 
-#include "Periperal.hpp"
-#include <tackle.hpp>
+#include "Peripheral.hpp"
+#include "tackle.hpp"
 
 #if !defined(PS3_VARS)
 	//Include libraries
@@ -32,7 +34,7 @@
   
   
   
-class LED: public Periperal {
+class LED : public Peripheral {
 	private:
 	TackleSensor tackleSensor;
 	
@@ -65,7 +67,7 @@ class LED: public Periperal {
 	void doThing() {
 		handelTackle();
 	}
-	setColor(char color) {
+	void setColor(char color) {
 		if (color == RED) {
 			digitalWrite(RED_LED,   HIGH);
 			digitalWrite(GREEN_LED, LOW);
