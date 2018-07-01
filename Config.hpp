@@ -18,8 +18,10 @@
 //#define _775_MOTOR
 //#define BANEBOTS_MOTOR
 
-//#define BAG_MOTOR
+#define BAG_MOTOR
 
 #if !defined(MAX_TOTAL_PERIPERALS)
 	#define MAX_TOTAL_PERIPERALS 6
 #endif
+
+#define NO_PERIPHERALS_DEFINED

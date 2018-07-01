@@ -80,7 +80,6 @@
 	#define LEFT_MOTOR_REVERSE    -1     
 	#define RIGHT_MOTOR_REVERSE   1 
 #endif
-
  
 #ifdef ROTATION_LOCK
   #define MINIMUM_ANGLE               5
@@ -94,60 +93,55 @@
   int wasIturning = 0;
 #endif
 
-#ifdef DUAL_MOTORS
-  #define LEFT_MOTOR2           7
-  #define RIGHT_MOTOR2          8
-#endif
-
 class omniDriveConrtoller: public DriveTrain {
 	private:	
-	static void drive();	
-	
-	static uint8_t state;
-	static int 	motorCorrect;	
-	static uint8_t inverting;
-	static int8_t motorReverse;
-	static int turnHandicap;
-	
-	
-	static uint8_t handicap;
-	
-	#ifdef ROTATION_LOCK
-	  Adafruit_BNO055 gyro = Adafruit_BNO055(55); //our rotation sensor;
-	  int rotationCorrect = 0;
-	  int desiredRotation = 0;
-	  sensors_event_t rotationReadout;
-	  int sample = 0;
-	  int wasIturning = 0;
-	#endif
-	
-	static void (*driveCtrl)();	
-	static void handelInputs();
+		static void drive();	
+		
+		static uint8_t state;
+		static int 	motorCorrect;	
+		static uint8_t inverting;
+		static int8_t motorReverse;
+		static int turnHandicap;
+		
+		
+		static uint8_t handicap;
+		
+		#ifdef ROTATION_LOCK
+		  Adafruit_BNO055 gyro = Adafruit_BNO055(55); //our rotation sensor;
+		  int rotationCorrect = 0;
+		  int desiredRotation = 0;
+		  sensors_event_t rotationReadout;
+		  int sample = 0;
+		  int wasIturning = 0;
+		#endif
+		
+		static void (*driveCtrl)();	
+		static void handelInputs();
 	
 	public:	
-  void eStop();
-	void doThing() {
-		handelInputs();
-		driveCtrl();		
-	}
-	
-	static Servo motor1, motor2, motor3, motor4;
+		void eStop();
+		void doThing() {
+			handelInputs();
+			driveCtrl();		
+		}
 		
+		static Servo motor1, motor2, motor3, motor4;
+			
 
-	omniDriveConrtoller() {
-		turnHandicap = 1;
-		
-		motor1.attach(MOTOR_1, 1000, 2000);
-		motor1.writeMicroseconds(1500);
-		motor2.attach(MOTOR_2, 1000, 2000);
-		motor2.writeMicroseconds(1500);
-		motor3.attach(MOTOR_3, 1000, 2000);
-		motor3.writeMicroseconds(1500);
-		motor4.attach(MOTOR_4, 1000, 2000);
-		motor4.writeMicroseconds(1500);
-		
-		driveCtrl = drive;
-	}
+		omniDriveConrtoller() {
+			turnHandicap = 1;
+			
+			motor1.attach(MOTOR_1, 1000, 2000);
+			motor1.writeMicroseconds(1500);
+			motor2.attach(MOTOR_2, 1000, 2000);
+			motor2.writeMicroseconds(1500);
+			motor3.attach(MOTOR_3, 1000, 2000);
+			motor3.writeMicroseconds(1500);
+			motor4.attach(MOTOR_4, 1000, 2000);
+			motor4.writeMicroseconds(1500);
+			
+			driveCtrl = drive;
+		}
 };
 
 void omniDriveConrtoller::eStop() {

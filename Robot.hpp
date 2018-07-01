@@ -21,6 +21,8 @@
 
 #include "Config.hpp"
 
+#include "Peripheral.hpp"
+
 #if !defined(MAX_TOTAL_PERIPERALS)
 	#define MAX_TOTAL_PERIPERALS 0
 #endif
@@ -75,21 +77,34 @@ Robot() {
 		#elsif defined(OMNIWHEEL_DRIVETRAIN)
 			driveTrain = omniDriveConrtoller();
 		#endif
+
+
+    #if defined(LED_STRIP)
+        LED* led = new LED();
+		led->setColor(led->notTackeledColor); 
+	#endif     
+    
 		peripheralVec = {
     // Note if you have no peripherals declared the code will not compile.
     // The simplest fix if you do not need any peripherals is to create a simple peripheral that does nothing
 			#if defined(CENTER_PERIPHERALS)
-				new Center(),
+				new Center,
 			#endif
 			#if defined(KICKER_PERIPHERALS)
-				new Kicker(),				
+				new Kicker,				
 			#endif
-			// This will might error out if LED is not defined and anything else is but that should be fine		
-			#if defined(LED_STRIP)
-				new LED()
-			#endif
-      
-		};
+			#if defined(TACKLE)
+        #if !defined(LED_STRIP)
+          #error "tackle sensor doesn't do anything without LED_STRIP defined"
+        #endif
+        new TackleSensor(led),        
+      #endif
+			// if no peripheral aredefined uncomment the line bellow
+		#if defined(NO_PERIPHERALS_DEFINED)
+			new EmptyPeripheral,
+		#endif
+			
+      };
 		
 		// add all peripals to peripheralVec
 		// Peripherals should have thier setup done in their constructors

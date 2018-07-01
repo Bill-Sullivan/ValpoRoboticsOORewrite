@@ -4,13 +4,7 @@
 #include <Servo.h>
 #include <stdint.h>
 
-#include "Peripheral.hpp"
-
-  #define KICKER_MOTOR          5     // Kicker motor is wired to pin 5
-  //these are the speeds for kicking and reload the kicker foot
-  #define KICKER_POWER          175   
-  #define KICKER_RELOAD         85
-  
+#include "Peripheral.hpp"  
 
 #if !defined(PS3_VARS)
 	//Include libraries
@@ -24,6 +18,10 @@
 	#define PS3_VARS
 #endif
 
+#define KICKER_MOTOR          5     // Kicker motor is wired to pin 5
+	//these are the speeds for kicking and reload the kicker foot
+#define KICKER_POWER          175   
+#define KICKER_RELOAD         85
 
 class Kicker : public Peripheral {
 	private:
@@ -33,7 +31,10 @@ class Kicker : public Peripheral {
 	void doThing() {
 		kickerCtrl();
 	}
-	void doNotConnectedThing();
+	
+	void doNotConnectedThing() {
+		return;
+	}
 	
 	Kicker() {
 		kicker.attach(KICKER_MOTOR);

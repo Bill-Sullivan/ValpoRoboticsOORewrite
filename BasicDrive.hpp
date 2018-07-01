@@ -29,19 +29,17 @@
 #undef KID
 #define KID             3
 
-#if !defined(MAX_DRIVE)
-	#define MAX_DRIVE             84    // limited because of issues with calibrating victors to full 0-180 range
-#endif
-#if !defined(ALTERNATE_HANDICAP)
-	#define ALTERNATE_HANDICAP    1    
-#endif
-#if !defined(DEFAULT_HANDICAP)
-  #define DEFAULT_HANDICAP      3     // when not using boost, speed is divided by 3
-#endif  
-#if !defined(KID_HANDICAP)
-  #define KID_HANDICAP          7     // when in kids mode, speed s divided by 7	
-#endif  
-  
+#undef MAX_DRIVE
+#define MAX_DRIVE             84    // limited because of issues with calibrating victors to full 0-180 range
+
+#undef ALTERNATE_HANDICAP
+#define ALTERNATE_HANDICAP    1    
+
+#undef DEFAULT_HANDICAP
+#define DEFAULT_HANDICAP      3     // when not using boost, speed is divided by 3
+
+#undef KID_HANDICAP
+#define KID_HANDICAP          7     // when in kids mode, speed s divided by 7	
 	
   /*  these are to reverse the motor direction if a motor is wired backwards.
    *  In almost every case, it would be better to fix the wiring than to change this in code
@@ -60,12 +58,6 @@
  
 #define LEFT_MOTOR            9     // left motor is wired to pin 9
 #define RIGHT_MOTOR           10    // right motor is wired to pin 10
-
-#ifdef DUAL_MOTORS
-  #define LEFT_MOTOR2           7
-  #define RIGHT_MOTOR2          8
-#endif
-  
 
 
 
@@ -89,8 +81,7 @@ class basicDriveConrtoller: public DriveTrain {
   void eStop();
 	void doThing() {
 		handelInputs();
-		driveCtrl();
-		
+		driveCtrl();		
 	}
 	
 	static Servo leftMotor, rightMotor;        // Define motor objects

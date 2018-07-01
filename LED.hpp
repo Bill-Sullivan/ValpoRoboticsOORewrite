@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 #include "Peripheral.hpp"
-#include "tackle.hpp"
+
 
 #if !defined(PS3_VARS)
 	//Include libraries
@@ -34,39 +34,17 @@
   
   
   
-class LED : public Peripheral {
-	private:
-	TackleSensor tackleSensor;
-	
-	
-	char tackledColor = RED;
-	
-	#if defined(TACKLE)
-		notTackeledColor = RECIEVER_COLOR;
-	#elsif
-		notTackeledColor = LINEMAN_COLOR;
-	#endif
-	
-	void handelTackle() {
-	#if defined(TACKLE)
-		if (tackleSensor.checkTackle()) {
-			setColor(tackledColor);
-		} else {
-			setColor(notTackeledColor);
-		}
-	}
-	#elsif 
-		setColor(notTackeledColor);
-	#endif
-	}
-	
+class LED  {
+	private:	
 	public:
-	void doNotConnectedThing() {
-		setColor(BLUE);
-	}
-	void doThing() {
-		handelTackle();
-	}
+  char tackledColor = RED;
+  
+  #if defined(TACKLE)
+    char notTackeledColor = RECIEVER_COLOR;
+  #else
+    char notTackeledColor = LINEMAN_COLOR;
+  #endif
+  
 	void setColor(char color) {
 		if (color == RED) {
 			digitalWrite(RED_LED,   HIGH);
