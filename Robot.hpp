@@ -31,41 +31,55 @@ protected:
 			
 			}
 	}
-
 public:
+  
+   LED* led;
+ 
+
 	DriveTrain* driveTrain;
-	//std::vector<Peripheral*> peripheralVec;
 	ValpoRobotics::array<Peripheral*, MAX_TOTAL_PERIPERALS> peripheralVec;
 
   bool newconnect = false;
+  
+	void setup() {
+		//Begin Serial Communications
+		Serial.begin(115200);
+		if (Usb.Init() == -1)                 // this is for an error message with USB connections
+		{
+			Serial.print(F("\r\nOSC did not start"));
+			while (1);
+		}
+		Serial.print(F("\r\nPS3 Bluetooth Library Started"));
+      #if defined(LED_STRIP)
+        led = new LED();        
+    #endif
+  
+    // Note if you have no peripherals declared the code will not compile.
+    // The simplest fix if you do not need any peripherals is to create a simple peripheral that does nothing
+    #if defined(CENTER_PERIPHERALS)
+      peripheralVec.push_back(new Center);
+    #endif
+    #if defined(KICKER_PERIPHERALS)
+      peripheralVec.push_back(new Kicker);
+    #endif
+    #if defined(TACKLE)
+      #if !defined(LED_STRIP)
+      #error "tackle sensor doesn't do anything without LED_STRIP defined"
+      #endif
+      peripheralVec.push_back(new TackleSeansor(led));
+    #endif
+    
+    #if defined(QB_PERIPHERALS)
+      peripheralVec.push_back(new QBArm);
+    #endif
+    
+//    #if defined(NO_PERIPHERALS_DEFINED)
+//      peripheralVec.push_back(new EmptyPeripheral);         
+//    #endif
 
-Robot() {		
-		// Note if you have no peripherals declared the code will not compile.
-		// The simplest fix if you do not need any peripherals is to create a simple peripheral that does nothing
-		#if defined(CENTER_PERIPHERALS)
-			peripheralVec.push_back(new Center);
-		#endif
-		#if defined(KICKER_PERIPHERALS)
-			peripheralVec.push_back(new Kicker);
-		#endif
-		#if defined(TACKLE)
-			#if !defined(LED_STRIP)
-			#error "tackle sensor doesn't do anything without LED_STRIP defined"
-			#endif
-			peripheralVec.push_back(new TackleSensor(led));
-		#endif
-		
-		#if defined(QB_PERIPHERALS)
-			peripheralVec.push_back(new QBArm);
-		#endif
-		
-		#if defined(NO_PERIPHERALS_DEFINED)
-			peripheralVec.push_back(new EmptyPeripheral);					
-		#endif
-
-		// add all peripals to peripheralVec
-		// Peripherals should have thier setup done in their constructors
-		// This means we dont need to do anything here to set them up
+    // add all peripals to peripheralVec
+    // Peripherals should have thier setup done in their constructors
+    // This means we dont need to do anything here to set them up
 
       // choose drive train
     #if defined(BASIC_DRIVETRAIN) && !defined(DUAL_MOTORS)
@@ -80,26 +94,14 @@ Robot() {
       #error No Drive Train selected
     #endif
 
-
-    #if defined(LED_STRIP)
-        LED* led = new LED();
-        led->setColor(led->notTackeledColor); 
-    #endif
-}
-
-		
-
-
-	void setup() {
-		//Begin Serial Communications
-		Serial.begin(115200);
-		if (Usb.Init() == -1)                 // this is for an error message with USB connections
-		{
-			Serial.print(F("\r\nOSC did not start"));
-			while (1);
-		}
-		Serial.print(F("\r\nPS3 Bluetooth Library Started"));
+   
    driveTrain->setup();
+   for (Peripheral* peripheral : peripheralVec) {
+       peripheral->setup();
+   }
+   #if defined(LED_STRIP)
+        led->setup();
+    #endif   
 	}
 	
 	void loop () {
@@ -112,6 +114,7 @@ Robot() {
 			driveTrain->doThing();
 			for (Peripheral* peripheral : peripheralVec) {
 				peripheral->doThing();
+        Serial.println("Thing Done");
 			}
 
       if (PS3.getButtonClick(PS)) {
@@ -120,11 +123,14 @@ Robot() {
       } 
 		}
 		else 
-		{
-			Serial.println("disconnected");
+		{			
 			driveTrain->eStop();
+      int counter = 0;
 			for (Peripheral* peripheral : peripheralVec) {
 				 peripheral->doNotConnectedThing();
+        Serial.println("Not connected Thing Done");
+        Serial.println(counter);
+        counter++;
 			}
 		}
 	}

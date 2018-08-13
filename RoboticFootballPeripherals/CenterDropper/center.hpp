@@ -19,11 +19,14 @@ class Center : public Peripheral {
 	void doThing() {
 		centerCtrl();
 	}
-	void doNotConnectedThing();
+	void doNotConnectedThing() {
+		return;
+	}
 	
-	Center() {
+	void setup() {
 		centerRelease.attach(CENTER_RELEASE);   // attach ball release servo to its pin
 		centerRelease.write(CENTER_RELEASE_UP); // 
+		return;
 	}
 };
 

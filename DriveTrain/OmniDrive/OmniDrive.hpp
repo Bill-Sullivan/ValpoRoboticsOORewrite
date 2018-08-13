@@ -74,33 +74,34 @@
 
 class omniDriveConrtoller: public DriveTrain {
 	private:	
-		static void drive();	
+		void drive();	
 		
-		static uint8_t state;
-		static int 	motorCorrect;	
-		static uint8_t inverting;
-		static int8_t motorReverse;
-		static int turnHandicap;
-		
-		
-		static uint8_t handicap;
-
-		
-		static void (*driveCtrl)();	
-		static void handelInputs();
+		int 	motorCorrect;	
+		int8_t inverting;
+		float  motorReverse;
+		int turnHandicap;
+			
+		int8_t handicap;
+				
+		void handelInputs();
 	
 	public:	
 		void eStop();
 		void doThing() {
-			handelInputs();
-			driveCtrl();		
+			//handelInputs();
+			drive();		
 		}
 		
-		static Servo motor1, motor2, motor3, motor4;
+		Servo motor1, motor2, motor3, motor4;
 			
 
-		omniDriveConrtoller() {
+		void setup() {
+			motorCorrect = 0;
+			inverting = 0;
+			motorReverse = 0;
 			turnHandicap = 1;
+			
+			handicap = DEFAULT_HANDICAP;
 			
 			motor1.attach(MOTOR_1, 1000, 2000);
 			motor1.writeMicroseconds(1500);
@@ -109,9 +110,7 @@ class omniDriveConrtoller: public DriveTrain {
 			motor3.attach(MOTOR_3, 1000, 2000);
 			motor3.writeMicroseconds(1500);
 			motor4.attach(MOTOR_4, 1000, 2000);
-			motor4.writeMicroseconds(1500);
-			
-			driveCtrl = drive;
+			motor4.writeMicroseconds(1500);			
 		}
 };
 

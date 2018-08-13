@@ -30,32 +30,33 @@ class TackleSeansor : public Peripheral {
 	private:
 		LED* led;
 	
-		bool checkTackled() {
-			tackled = !digitalRead(TACKLE_INPUT);
-			return tackled;
+		bool checkTackled() {			
+			return !digitalRead(TACKLE_INPUT);			
 		}					
 	
 		void handelTackle() {
-		if (checkTackled()) {
-			led->setColor(led->tackledColor);
-		} else {
-			led->setColor(led->notTackeledColor);
-		}
+			if (checkTackled()) {
+				led->setColor(led->tackledColor);
+			} else {
+				led->setColor(led->notTackeledColor);
+			}
 		}
 
     
 	public:
 		void doNotConnectedThing() {
-			led->setColor(BLUE);
+			led->setColor(BLUE);			
 		}
 		void doThing() {
 			handelTackle();
-		}
-		bool tackled;
-
+		}		
+	
+	void setup() {
+		pinMode(TACKLE_INPUT, INPUT); // define the tackle sensor pin as an input
+		return;
+	}
 	
 	TackleSeansor(LED* _pLED) {
-		led = _pLED;
-		pinMode(TACKLE_INPUT, INPUT); // define the tackle sensor pin as an input
+		led = _pLED;		
 	}
 };

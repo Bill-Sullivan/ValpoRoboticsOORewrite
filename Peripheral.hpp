@@ -9,4 +9,5 @@ class Peripheral {
 	public:
 	virtual void doThing();
 	virtual void doNotConnectedThing();
+	virtual void setup();
 };

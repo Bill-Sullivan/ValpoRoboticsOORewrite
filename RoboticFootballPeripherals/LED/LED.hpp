@@ -20,15 +20,12 @@
   
   
 class LED  {
-	private:	
-	public:
-  char tackledColor = RED;
+private:	
+public:	
+	char tackledColor = RED;
+	
+    char notTackeledColor;
   
-  #if defined(TACKLE)
-    char notTackeledColor = RECIEVER_COLOR;
-  #else
-    char notTackeledColor = LINEMAN_COLOR;
-  #endif
   
 	void setColor(char color) {
 		if (color == RED) {
@@ -49,12 +46,19 @@ class LED  {
 	}
 	
 	
-	LED() {
+	void setup() {
+		#if defined(TACKLE)
+			notTackeledColor = RECIEVER_COLOR;
+		#else
+			notTackeledColor = LINEMAN_COLOR;
+		#endif
+		
 		  //define pins for LEDs as outputs
 		pinMode(BLUE_LED,  OUTPUT);
 		pinMode(GREEN_LED, OUTPUT);
 		pinMode(RED_LED,   OUTPUT);
 		flashLed();                   // call the function to test functionality of all three LED colors individually
+		setColor(notTackeledColor);
 	}
 	void flashLed() {
 		//flash the leds

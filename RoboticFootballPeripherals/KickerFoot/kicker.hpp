@@ -25,8 +25,8 @@ class Kicker : public Peripheral {
 		return;
 	}
 	
-	Kicker() {
-		kicker.attach(KICKER_MOTOR);
+	void setup() {
+		kicker.attach(KICKER_MOTOR, 1000, 2000);
 		kicker.writeMicroseconds(1500);
 	}
 };
