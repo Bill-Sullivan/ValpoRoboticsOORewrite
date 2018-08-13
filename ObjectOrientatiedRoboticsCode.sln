@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2035
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ObjectOrientatiedRoboticsCode", "ObjectOrientatiedRoboticsCode.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TestProject", "H:\Users\Bill\Documents\Arduino\TestProject\TestProject.vcxproj", "{4FAE8B38-CA17-4F68-8E38-6E4BED7C61D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.ActiveCfg = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Debug|x86.Build.0 = Debug|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
+		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
+		{4FAE8B38-CA17-4F68-8E38-6E4BED7C61D3}.Debug|x86.ActiveCfg = Debug|Win32
+		{4FAE8B38-CA17-4F68-8E38-6E4BED7C61D3}.Debug|x86.Build.0 = Debug|Win32
+		{4FAE8B38-CA17-4F68-8E38-6E4BED7C61D3}.Release|x86.ActiveCfg = Release|Win32
+		{4FAE8B38-CA17-4F68-8E38-6E4BED7C61D3}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDA67FEA-3675-45D6-BD5B-F63DAD2EEEB8}
+	EndGlobalSection
+EndGlobal
