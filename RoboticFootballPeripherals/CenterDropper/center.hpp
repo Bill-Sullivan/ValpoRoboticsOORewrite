@@ -1,5 +1,25 @@
 #pragma once
 
+/**
+ * \class Center
+ *
+ * \ingroup Peripheral
+ * <!-- (Note, this needs exactly one \defgroup somewhere) -->
+ *
+ * \brief This class controls the centers dropper arm
+ * this class controlls the dropper arm that drops the football on a snap
+ *
+ * \author  <!-- ((last to touch it) --> Bill Sullivan
+ *
+ * \version $Revision: 1.0 
+ *
+ * \date  2018/08/15 14:16:20
+  <!-- YYYY/MM/DD -->
+ * 
+ *
+ * Created on: 2018/04/14 14:16:20
+ */
+
 #include "../../StandardHeader.hpp"
 
 #include <Servo.h>
@@ -12,26 +32,25 @@
 
 
 class Center : public Peripheral {
-	private:
+private:
 	void centerCtrl();
 	Servo centerRelease;                // define servo object for ball release 
-	public:
-	void doThing() {
-		centerCtrl();
-	}
-	void doNotConnectedThing() {
-		return;
-	}
-	
-	void setup() {
-		centerRelease.attach(CENTER_RELEASE);   // attach ball release servo to its pin
-		centerRelease.write(CENTER_RELEASE_UP); // 
-		return;
-	}
+public:
+	/**
+	* \brief ensure the robot enters a safe state when connection to the controller is lost
+	*/
+	void doNotConnectedThing();
+	/**	
+	* \brief the implementation of doThing should implement what happens when the controller is connected
+	*/
+	void doThing();
+	/**	
+	*
+	* \brief sets initial values of variables
+	*/
+	void setup();
 };
 
-void Center::centerCtrl()
-{
-  if (PS3.getButtonClick(TRIANGLE)) centerRelease.write(CENTER_RELEASE_UP);
-  else if (PS3.getButtonClick(CROSS)) centerRelease.write(CENTER_RELEASE_DOWN);
-}
+
+
+#include "center.cpp"

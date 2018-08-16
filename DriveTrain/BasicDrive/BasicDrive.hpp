@@ -1,5 +1,26 @@
 #pragma once
 
+/**
+ * \class BasicDriveController
+ *
+ * \ingroup DriveTrain
+ * <!-- (Note, this needs exactly one \defgroup somewhere) -->
+ *
+ * \brief This is the basic drivetrain that most robots use
+ * Used for most two motor robots.
+ *
+ * \author  <!-- ((last to touch it) --> Bill Sullivan
+ *
+ * \version $Revision: 1.0 
+ *
+ * \date  2018/08/15 14:16:20
+  <!-- YYYY/MM/DD -->
+ * 
+ *
+ * Created on: 2018/04/14 14:16:20
+ */
+
+
 #include "../../StandardHeader.hpp"
 #include "../DriveTrain.hpp"
 
@@ -54,28 +75,65 @@
 
 
 
-class basicDriveController: public DriveTrain {
+class BasicDriveController: public DriveTrain {
 	// to do check if volitile is nessessary before driveCtrl
-protected:	
+protected:
+	/**
+	* \brief Flag that selects weather the robot is using Tank or Arcade control
+	*/
+	int driveCtrl;
+	/**
+	* \brief Flag that selects weather the robot is using kid or normal handcap
+	*/
 	uint8_t state;
+	/**
+	* \brief variable that corrects for diffrences between each motor (Mostly irrlevent since bainbots moters were replaced)
+	*/
 	int 	motorCorrect;	
+	/**
+	* \brief variable that selects if robot is driving backwords
+	*/
 	uint8_t inverting;
-	
+	/**
+	* \brief motor power is divided by this variable
+	*/
 	uint8_t handicap;
-	
+	/**
+	* \brief function that controls how the robot controls under arcade controls
+	*/
 	const void arcadeDrive();
+	/**
+	* \brief function that controls how the robot controls under tank controls
+	*/
 	const void tankDrive();
 	
-	
-	int driveCtrl;
+	/**
+	* \brief function that handels inputs not directly related to stearing
+	*/
 	void handelInputs();
 	
 	
 public:	
+	/**
+	* \brief stop the robot so in the event control is lost
+	* controls what happens when the controller disconnects
+	* Make sure this code results in the robot stopping or we will break anouther door 
+	*/
 	void eStop();
+	/**	
+	*
+	* \brief the implementation of doThing should implement what happens when the controller is connected
+	*/
 	void doThing();
+	/**	
+	*
+	* \brief sets initial values of variables and motors
+	*/
 	void setup();
 	
+	/**
+	* \brief Victors are modeled as servos
+	*/
 	Servo leftMotor, rightMotor;        // Define motor objects
 	#ifdef DUAL_MOTORS
 		Servo leftMotor2, rightMotor2;

@@ -1,4 +1,4 @@
-Robotic-Football-All-In-One
+Robotic-Football-All-In-Many
 =====
 
 This is the multi-file code for the robotic football team. The design philosophy behind this project is to divide the code amoung a number of classes file to make it easy to maintain and share code between robots. The abilities of the robot to be programmed are then chosen from a list of define statements in config.hpp, like so:

@@ -1,0 +1,121 @@
+\hypertarget{class_robot}{}\section{Robot Class Reference}
+\label{class_robot}\index{Robot@{Robot}}
+
+
+Class that acts as a wrapper for other classes.  
+
+
+
+
+{\ttfamily \#include $<$Robot.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_robot_a1fc37e3c329d59795f6adf44199d4df9}\label{class_robot_a1fc37e3c329d59795f6adf44199d4df9}} 
+void \mbox{\hyperlink{class_robot_a1fc37e3c329d59795f6adf44199d4df9}{setup}} ()
+\begin{DoxyCompactList}\small\item\em Function that sets up the rest of the firmware setup function initilizes all variables sets up setial port to connect back to computer use to program the microcontroller. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_robot_ad92e1e27045a02533f55ecab2b16d368}{loop}} ()
+\begin{DoxyCompactList}\small\item\em Function that runs every to its end then repeats until device shutdown chekcs if controller is connectd if it is setup controller on first loop after connection then run drive train and peripheral\textquotesingle{}s connected code if it is not run drive train and peripheral\textquotesingle{}s not connected code. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_robot_aca73cd3e3582f49cc0b33ee900cbc245}{new\+Connection}} ()
+\begin{DoxyCompactList}\small\item\em Function that runs when P\+S3 Controller connects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_l_e_d}{L\+ED}} $\ast$ \mbox{\hyperlink{class_robot_a28c6c49c9a12c8767e118e0e8a4165cf}{led}}
+\begin{DoxyCompactList}\small\item\em Pointer to an \mbox{\hyperlink{class_l_e_d}{L\+ED}} no code rus from it mearly because it is here. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_drive_train}{Drive\+Train}} $\ast$ \mbox{\hyperlink{class_robot_a4b499841182a38720a26a493fa98363a}{drive\+Train}}
+\begin{DoxyCompactList}\small\item\em Pointer to a \mbox{\hyperlink{class_drive_train}{Drive\+Train}} its methods run because the pointer is populated. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_valpo_robotics_1_1array}{Valpo\+Robotics\+::array}}$<$ \mbox{\hyperlink{class_peripheral}{Peripheral}} $\ast$, M\+A\+X\+\_\+\+T\+O\+T\+A\+L\+\_\+\+P\+E\+R\+I\+P\+E\+R\+A\+LS $>$ \mbox{\hyperlink{class_robot_a8db438771a3e7dc9d2cf5dd2e1d25f74}{peripheral\+Vec}}
+\begin{DoxyCompactList}\small\item\em Pointers to a Peripherals their methods run because the pointers are populated. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_robot_a19c7a18705cf4bc4359f5ba12c3541d8}\label{class_robot_a19c7a18705cf4bc4359f5ba12c3541d8}} 
+bool \mbox{\hyperlink{class_robot_a19c7a18705cf4bc4359f5ba12c3541d8}{newconnect}}
+\begin{DoxyCompactList}\small\item\em variable that tracks if the controller is connected \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Class that acts as a wrapper for other classes. 
+
+This class enables each peipheral and drivetrain to be run without having to know what the other peripherals are doing
+
+\begin{DoxyNote}{Note}
+Attempts at zen rarely work.
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Bill Sullivan
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+\$\+Revision\+: 1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2018/08/15 14\+:16\+:20
+\end{DoxyDate}
+Created on\+: 2018/04/14 14\+:16\+:20
+
+\begin{DoxyParagraph}{Id}
+doxygen-\/howto2.\+html,v 1.\+5 bv Exp 
+\end{DoxyParagraph}
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{class_robot_ad92e1e27045a02533f55ecab2b16d368}\label{class_robot_ad92e1e27045a02533f55ecab2b16d368}} 
+\index{Robot@{Robot}!loop@{loop}}
+\index{loop@{loop}!Robot@{Robot}}
+\subsubsection{\texorpdfstring{loop()}{loop()}}
+{\footnotesize\ttfamily void Robot\+::loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Function that runs every to its end then repeats until device shutdown chekcs if controller is connectd if it is setup controller on first loop after connection then run drive train and peripheral\textquotesingle{}s connected code if it is not run drive train and peripheral\textquotesingle{}s not connected code. 
+
+sets up setial port to connect back to computer use to program the microcontroller \mbox{\Hypertarget{class_robot_aca73cd3e3582f49cc0b33ee900cbc245}\label{class_robot_aca73cd3e3582f49cc0b33ee900cbc245}} 
+\index{Robot@{Robot}!new\+Connection@{new\+Connection}}
+\index{new\+Connection@{new\+Connection}!Robot@{Robot}}
+\subsubsection{\texorpdfstring{new\+Connection()}{newConnection()}}
+{\footnotesize\ttfamily void Robot\+::new\+Connection (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [protected]}}
+
+
+
+Function that runs when P\+S3 Controller connects. 
+
+Function that runs when P\+S3 Controller connects Function tells rest of the firmware and the user that the controller has connected 
+
+\subsection{Member Data Documentation}
+\mbox{\Hypertarget{class_robot_a4b499841182a38720a26a493fa98363a}\label{class_robot_a4b499841182a38720a26a493fa98363a}} 
+\index{Robot@{Robot}!drive\+Train@{drive\+Train}}
+\index{drive\+Train@{drive\+Train}!Robot@{Robot}}
+\subsubsection{\texorpdfstring{drive\+Train}{driveTrain}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_drive_train}{Drive\+Train}}$\ast$ Robot\+::drive\+Train\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to a \mbox{\hyperlink{class_drive_train}{Drive\+Train}} its methods run because the pointer is populated. 
+
+e\+Stop is run when the controller is disconnected do\+Thing runs continously when the controller is connected setup runs once when the microcontroller is turned on \mbox{\Hypertarget{class_robot_a28c6c49c9a12c8767e118e0e8a4165cf}\label{class_robot_a28c6c49c9a12c8767e118e0e8a4165cf}} 
+\index{Robot@{Robot}!led@{led}}
+\index{led@{led}!Robot@{Robot}}
+\subsubsection{\texorpdfstring{led}{led}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_l_e_d}{L\+ED}}$\ast$ Robot\+::led\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointer to an \mbox{\hyperlink{class_l_e_d}{L\+ED}} no code rus from it mearly because it is here. 
+
+Pointer to an \mbox{\hyperlink{class_l_e_d}{L\+ED}} no code rus from it mearly because it is here Stores an pointer to an \mbox{\hyperlink{class_l_e_d}{L\+ED}} class so that all peipherals that acces the \mbox{\hyperlink{class_l_e_d}{L\+ED}} (ie the Tackle Sensor) access the same \mbox{\hyperlink{class_l_e_d}{L\+ED}} \mbox{\Hypertarget{class_robot_a8db438771a3e7dc9d2cf5dd2e1d25f74}\label{class_robot_a8db438771a3e7dc9d2cf5dd2e1d25f74}} 
+\index{Robot@{Robot}!peripheral\+Vec@{peripheral\+Vec}}
+\index{peripheral\+Vec@{peripheral\+Vec}!Robot@{Robot}}
+\subsubsection{\texorpdfstring{peripheral\+Vec}{peripheralVec}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_valpo_robotics_1_1array}{Valpo\+Robotics\+::array}}$<$\mbox{\hyperlink{class_peripheral}{Peripheral}}$\ast$, M\+A\+X\+\_\+\+T\+O\+T\+A\+L\+\_\+\+P\+E\+R\+I\+P\+E\+R\+A\+LS$>$ Robot\+::peripheral\+Vec\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Pointers to a Peripherals their methods run because the pointers are populated. 
+
+e\+Stop is run when the controller is disconnected do\+Thing runs continously when the controller is connected setup runs once when the microcontroller is turned on 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Robot.\+hpp\end{DoxyCompactItemize}

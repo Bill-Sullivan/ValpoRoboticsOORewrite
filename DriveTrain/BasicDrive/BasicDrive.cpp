@@ -2,7 +2,7 @@
 #include "BasicDrive.hpp"
 
 
-void basicDriveController::eStop() {
+void BasicDriveController::eStop() {
 	leftMotor.writeMicroseconds(1500);
 	rightMotor.writeMicroseconds(1500);
 	
@@ -12,7 +12,22 @@ void basicDriveController::eStop() {
 	#endif
 }
 
-void basicDriveController::handelInputs() {
+void BasicDriveController::handelInputs() {
+	if (state == DRIVING) {
+		if (PS3.getButtonPress(R2)) {
+			handicap = ALTERNATE_HANDICAP; // TURBO!!!!!!!!!!!!!!
+		}
+		else {
+			#ifdef LR_TACKLE_PERIPHERALS
+				handicap = 1;
+			#else
+				handicap = DEFAULT_HANDICAP;
+			#endif
+		}	
+	} else if (state == KID) {
+        handicap = KID_HANDICAP;
+    }
+	
 	if (PS3.getButtonClick(SELECT)) //Switch between tank drive and arcade mode. 0 is arcade 1 is tank
 	{
 		if (PS3.getButtonPress(L1)) {
@@ -63,7 +78,7 @@ void basicDriveController::handelInputs() {
 	}
 }
 
-const void basicDriveController::arcadeDrive() {
+const void BasicDriveController::arcadeDrive() {
 	int xInput, yInput, throttleL, throttleR;
 	static int16_t drive, turn;
 	  
@@ -129,7 +144,7 @@ const void basicDriveController::arcadeDrive() {
     #endif
 }
 
-const void basicDriveController::tankDrive() {
+const void BasicDriveController::tankDrive() {
 	int rightInput, leftInput, throttleL, throttleR;
 	static int8_t leftDrive, rightDrive = 0;
     if (inverting == 0) {
@@ -196,7 +211,7 @@ const void basicDriveController::tankDrive() {
     #endif
 }
 
-void basicDriveController::setup() {
+void BasicDriveController::setup() {
 	leftMotor.attach(LEFT_MOTOR, 1000, 2000);
 	leftMotor.writeMicroseconds(1500);            //stopped
 	rightMotor.attach(RIGHT_MOTOR, 1000, 2000);
@@ -221,7 +236,7 @@ void basicDriveController::setup() {
 		handicap = DEFAULT_HANDICAP;
 }
 
-void basicDriveController::doThing() {
+void BasicDriveController::doThing() {
 		handelInputs();
 		if (driveCtrl == ARCADE_DRIVE) {
 			arcadeDrive();

@@ -1,0 +1,62 @@
+\hypertarget{class_valpo_robotics_1_1array}{}\section{Valpo\+Robotics\+:\+:array$<$ T, S\+I\+ZE $>$ Class Template Reference}
+\label{class_valpo_robotics_1_1array}\index{Valpo\+Robotics\+::array$<$ T, S\+I\+Z\+E $>$@{Valpo\+Robotics\+::array$<$ T, S\+I\+Z\+E $>$}}
+
+
+container that allows each member to be accessed in a range based for loop  
+
+
+
+
+{\ttfamily \#include $<$array.\+hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_valpo_robotics_1_1array_ad1673d960bb1108221b2e5cb71dc1134}\label{class_valpo_robotics_1_1array_ad1673d960bb1108221b2e5cb71dc1134}} 
+T $\ast$ \mbox{\hyperlink{class_valpo_robotics_1_1array_ad1673d960bb1108221b2e5cb71dc1134}{begin}} ()
+\begin{DoxyCompactList}\small\item\em function that returns p\+Begin implemented so range based for loop will work \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_valpo_robotics_1_1array_a8b00881ddaed31c468e80020b275fe40}\label{class_valpo_robotics_1_1array_a8b00881ddaed31c468e80020b275fe40}} 
+T $\ast$ \mbox{\hyperlink{class_valpo_robotics_1_1array_a8b00881ddaed31c468e80020b275fe40}{end}} ()
+\begin{DoxyCompactList}\small\item\em function that returns p\+End implemented so range based for loop will work \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_valpo_robotics_1_1array_ab0d7f3c67b7928bd11b0fab2e5970d55}\label{class_valpo_robotics_1_1array_ab0d7f3c67b7928bd11b0fab2e5970d55}} 
+void \mbox{\hyperlink{class_valpo_robotics_1_1array_ab0d7f3c67b7928bd11b0fab2e5970d55}{push\+\_\+back}} (T next\+Element)
+\begin{DoxyCompactList}\small\item\em places an element in the next avaliable position if avaliable \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_valpo_robotics_1_1array_a7769453fad25835d0cf35f577bc62faa}\label{class_valpo_robotics_1_1array_a7769453fad25835d0cf35f577bc62faa}} 
+T \mbox{\hyperlink{class_valpo_robotics_1_1array_a7769453fad25835d0cf35f577bc62faa}{arr}} \mbox{[}S\+I\+ZE\mbox{]}
+\begin{DoxyCompactList}\small\item\em underlying array \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_valpo_robotics_1_1array_a31464f62e42309a1ef2476910cade587}\label{class_valpo_robotics_1_1array_a31464f62e42309a1ef2476910cade587}} 
+T $\ast$ \mbox{\hyperlink{class_valpo_robotics_1_1array_a31464f62e42309a1ef2476910cade587}{p\+Begin}} = \&(\mbox{\hyperlink{class_valpo_robotics_1_1array_a7769453fad25835d0cf35f577bc62faa}{arr}}\mbox{[}0\mbox{]})
+\begin{DoxyCompactList}\small\item\em pointer to the start of the array \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_valpo_robotics_1_1array_a63deade950411259aa7a55a80b672cdf}\label{class_valpo_robotics_1_1array_a63deade950411259aa7a55a80b672cdf}} 
+T $\ast$ \mbox{\hyperlink{class_valpo_robotics_1_1array_a63deade950411259aa7a55a80b672cdf}{p\+End}} = \mbox{\hyperlink{class_valpo_robotics_1_1array_a31464f62e42309a1ef2476910cade587}{p\+Begin}}
+\begin{DoxyCompactList}\small\item\em pointer to the unused avaliable position in the array \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\subsubsection*{template$<$typename T, int S\+I\+ZE$>$\newline
+class Valpo\+Robotics\+::array$<$ T, S\+I\+Z\+E $>$}
+
+container that allows each member to be accessed in a range based for loop 
+
+This container exists because std\+::array is unavaliable under arduino for no apparent reason. Do not use this in a non arduino context, use boost\+::array or std\+::array
+
+\begin{DoxyNote}{Note}
+Do not use this in a non arduino context.
+\end{DoxyNote}
+\begin{DoxyAuthor}{Author}
+Bill Sullivan
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+\$\+Revision\+: 1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2018/08/14 14\+:16\+:20
+\end{DoxyDate}
+Created on\+: 2018/04/14 14\+:16\+:20 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+array.\+hpp\end{DoxyCompactItemize}

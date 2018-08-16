@@ -83,7 +83,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp">
+    <ClCompile Include="DriveTrain\OmniDrive\OmniDrive.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

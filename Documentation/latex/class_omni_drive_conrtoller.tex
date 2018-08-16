@@ -1,0 +1,85 @@
+\hypertarget{class_omni_drive_conrtoller}{}\section{Omni\+Drive\+Conrtoller Class Reference}
+\label{class_omni_drive_conrtoller}\index{Omni\+Drive\+Conrtoller@{Omni\+Drive\+Conrtoller}}
+
+
+This is the drive train for omniwheel robots Used for most four motor robots.  
+
+
+
+
+{\ttfamily \#include $<$Omni\+Drive.\+hpp$>$}
+
+Inheritance diagram for Omni\+Drive\+Conrtoller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_omni_drive_conrtoller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_omni_drive_conrtoller_afa3633aa507f94725e2708e64812fc0d}\label{class_omni_drive_conrtoller_afa3633aa507f94725e2708e64812fc0d}} 
+void \mbox{\hyperlink{class_omni_drive_conrtoller_afa3633aa507f94725e2708e64812fc0d}{e\+Stop}} ()
+\begin{DoxyCompactList}\small\item\em stop the robot so in the event control is lost controls what happens when the controller disconnects Make sure this code results in the robot stopping or we will break anouther door \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_omni_drive_conrtoller_a49df2da45a491575eaeed3ed08e6c06b}\label{class_omni_drive_conrtoller_a49df2da45a491575eaeed3ed08e6c06b}} 
+void \mbox{\hyperlink{class_omni_drive_conrtoller_a49df2da45a491575eaeed3ed08e6c06b}{do\+Thing}} ()
+\begin{DoxyCompactList}\small\item\em the implementation of do\+Thing should implement what happens when the controller is connected \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_omni_drive_conrtoller_a5cc239719ab846de89fbb9709f7a65c2}\label{class_omni_drive_conrtoller_a5cc239719ab846de89fbb9709f7a65c2}} 
+void \mbox{\hyperlink{class_omni_drive_conrtoller_a5cc239719ab846de89fbb9709f7a65c2}{setup}} ()
+\begin{DoxyCompactList}\small\item\em sets initial values of variables and motors \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_omni_drive_conrtoller_a57c810f822a2fe5f49edad9ade0fb3eb}\label{class_omni_drive_conrtoller_a57c810f822a2fe5f49edad9ade0fb3eb}} 
+void \mbox{\hyperlink{class_omni_drive_conrtoller_a57c810f822a2fe5f49edad9ade0fb3eb}{drive}} ()
+\begin{DoxyCompactList}\small\item\em function that controls the robot \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_omni_drive_conrtoller_a0a78c1214005e227761e651657e66200}\label{class_omni_drive_conrtoller_a0a78c1214005e227761e651657e66200}} 
+int \mbox{\hyperlink{class_omni_drive_conrtoller_a0a78c1214005e227761e651657e66200}{motor\+Correct}}
+\begin{DoxyCompactList}\small\item\em variable that corrects for diffrences between each motor (Mostly irrlevent since bainbots moters were replaced) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_omni_drive_conrtoller_af911b890cd2e146b211c0e7c4b53fc86}\label{class_omni_drive_conrtoller_af911b890cd2e146b211c0e7c4b53fc86}} 
+int8\+\_\+t \mbox{\hyperlink{class_omni_drive_conrtoller_af911b890cd2e146b211c0e7c4b53fc86}{inverting}}
+\begin{DoxyCompactList}\small\item\em variable that selects if robot is driving backwords \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_omni_drive_conrtoller_a03baba5698664886fece7c2bc1acd81b}\label{class_omni_drive_conrtoller_a03baba5698664886fece7c2bc1acd81b}} 
+float {\bfseries motor\+Reverse}
+\item 
+\mbox{\Hypertarget{class_omni_drive_conrtoller_ac06677eaf663dafb06fec88cc7ca36a3}\label{class_omni_drive_conrtoller_ac06677eaf663dafb06fec88cc7ca36a3}} 
+int8 int \mbox{\hyperlink{class_omni_drive_conrtoller_ac06677eaf663dafb06fec88cc7ca36a3}{turn\+Handicap}}
+\begin{DoxyCompactList}\small\item\em motor power is divided by this variable for rotational motion \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_omni_drive_conrtoller_af9a59405abbb827a1ab9934561c0004d}\label{class_omni_drive_conrtoller_af9a59405abbb827a1ab9934561c0004d}} 
+int8\+\_\+t \mbox{\hyperlink{class_omni_drive_conrtoller_af9a59405abbb827a1ab9934561c0004d}{handicap}}
+\begin{DoxyCompactList}\small\item\em motor power is divided by this variable for linear motion \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_omni_drive_conrtoller_a8386f67e9931ac191335c14c4b56bbda}\label{class_omni_drive_conrtoller_a8386f67e9931ac191335c14c4b56bbda}} 
+Servo \mbox{\hyperlink{class_omni_drive_conrtoller_a8386f67e9931ac191335c14c4b56bbda}{motor1}}
+\begin{DoxyCompactList}\small\item\em Victors are modeled as servos. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_omni_drive_conrtoller_aa4a56af43aad703ade2854b5a544c570}\label{class_omni_drive_conrtoller_aa4a56af43aad703ade2854b5a544c570}} 
+Servo {\bfseries motor2}
+\item 
+\mbox{\Hypertarget{class_omni_drive_conrtoller_a28f94aa752f0fd8cd7de271d68c8cfe1}\label{class_omni_drive_conrtoller_a28f94aa752f0fd8cd7de271d68c8cfe1}} 
+Servo {\bfseries motor3}
+\item 
+\mbox{\Hypertarget{class_omni_drive_conrtoller_a80bdd6e6a723aa9e101f738b6c35462f}\label{class_omni_drive_conrtoller_a80bdd6e6a723aa9e101f738b6c35462f}} 
+Servo {\bfseries motor4}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the drive train for omniwheel robots Used for most four motor robots. 
+
+\begin{DoxyAuthor}{Author}
+Bill Sullivan
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+\$\+Revision\+: 1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2018/08/15 14\+:16\+:20
+\end{DoxyDate}
+Created on\+: 2018/04/14 14\+:16\+:20 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Drive\+Train/\+Omni\+Drive/Omni\+Drive.\+hpp\item 
+Drive\+Train/\+Omni\+Drive/Omni\+Drive.\+cpp\end{DoxyCompactItemize}

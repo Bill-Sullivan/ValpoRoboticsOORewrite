@@ -104,7 +104,7 @@
     <ClInclude Include="__vm\.ObjectOrientatiedRoboticsCode.vsarduino.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source.cpp" />
+    <ClCompile Include="DriveTrain\OmniDrive\OmniDrive.cpp" />
   </ItemGroup>
   <PropertyGroup>
     <DebuggerFlavor>VisualMicroDebugger</DebuggerFlavor>

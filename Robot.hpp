@@ -1,5 +1,31 @@
 #pragma once
 
+/**
+ * \class Robot
+ *
+ * \ingroup Robot
+ * <!-- (Note, this needs exactly one \defgroup somewhere) -->
+ *
+ * \brief Class that acts as a wrapper for other classes
+ *
+ * This class enables each peipheral and drivetrain to be run without having to know what the other peripherals are doing
+ *
+ * \note Attempts at zen rarely work.
+ *
+ * \author  <!-- ((last to touch it) --> Bill Sullivan
+ *
+ * \version $Revision: 1.0 
+ *
+ * \date  2018/08/15 14:16:20
+  <!-- YYYY/MM/DD -->
+ * 
+ *
+ * Created on: 2018/04/14 14:16:20
+ *
+ * $Id: doxygen-howto2.html,v 1.5  bv Exp $
+ *
+ */
+
 #include "StandardHeader.hpp"
 
 /*
@@ -21,6 +47,12 @@
 
 class Robot {
 protected:
+  /**
+  * @brief Function that runs when PS3 Controller connects
+  *
+  * Function that runs when PS3 Controller connects
+  * Function tells rest of the firmware and the user that the controller has connected
+  */
 	void newConnection() {
 		if (newconnect == false)                // this is the vibration that you feel when you first connect
 			{
@@ -31,18 +63,45 @@ protected:
 			
 			}
 	}
-public:
-  
-   LED* led;
- 
+  /**
+  * @brief Pointer to an LED no code rus from it mearly because it is here
+  *
+  * Pointer to an LED no code rus from it mearly because it is here
+  * Stores an pointer to an LED class so that all peipherals that acces the LED (ie the Tackle Sensor)
+  * access the same LED
+  */
+  LED* led; 
 
+  /**
+  * @brief Pointer to a DriveTrain its methods run because the pointer is populated
+  *
+  * eStop is run when the controller is disconnected
+  * doThing runs continously when the controller is connected
+  * setup runs once when the microcontroller is turned on
+  */
 	DriveTrain* driveTrain;
+ /**
+  * @brief Pointers to a Peripherals their methods run because the pointers are populated
+  *
+  * eStop is run when the controller is disconnected
+  * doThing runs continously when the controller is connected
+  * setup runs once when the microcontroller is turned on
+  */
 	ValpoRobotics::array<Peripheral*, MAX_TOTAL_PERIPERALS> peripheralVec;
 
-  bool newconnect = false;
-  
+  /**
+  * @brief variable that tracks if the controller is connected
+  */
+  bool newconnect;
+ public:
+  /**
+  * @brief Function that sets up the rest of the firmware
+  *  setup function initilizes all variables
+  *  sets up setial port to connect back to computer use to program the microcontroller
+  */
 	void setup() {
 		//Begin Serial Communications
+   newconnect = false;
 		Serial.begin(115200);
 		if (Usb.Init() == -1)                 // this is for an error message with USB connections
 		{
@@ -72,10 +131,6 @@ public:
     #if defined(QB_PERIPHERALS)
       peripheralVec.push_back(new QBArm);
     #endif
-    
-//    #if defined(NO_PERIPHERALS_DEFINED)
-//      peripheralVec.push_back(new EmptyPeripheral);         
-//    #endif
 
     // add all peripals to peripheralVec
     // Peripherals should have thier setup done in their constructors
@@ -87,7 +142,7 @@ public:
     #elif defined(DUAL_MOTORS)
       driveTrain = new DualMotorBasicDrive;
     #elif defined(OMNIWHEEL_DRIVETRAIN)
-      driveTrain = new omniDriveConrtoller;
+      driveTrain = new OmniDriveConrtoller;
     #elif defined(TEST_DRIVETRAIN)
       driveTrain = new testDriveConrtoller;
     #else
@@ -103,7 +158,17 @@ public:
         led->setup();
     #endif   
 	}
-	
+	/**
+  * @brief Function that runs every to its end then repeats until device shutdown
+  *  chekcs if controller is connectd 
+  *  if it is
+  *   setup controller on first loop after connection
+  *   then run drive train and peripheral's connected code
+  *  if it is not
+  *   run drive train and peripheral's not connected code
+  *  
+  *  sets up setial port to connect back to computer use to program the microcontroller
+  */
 	void loop () {
     Usb.Task();
 		if (PS3.PS3Connected)                 // This only lets the program run if the PS3
@@ -114,7 +179,6 @@ public:
 			driveTrain->doThing();
 			for (Peripheral* peripheral : peripheralVec) {
 				peripheral->doThing();
-        Serial.println("Thing Done");
 			}
 
       if (PS3.getButtonClick(PS)) {
@@ -124,13 +188,9 @@ public:
 		}
 		else 
 		{			
-			driveTrain->eStop();
-      int counter = 0;
+			driveTrain->eStop();      
 			for (Peripheral* peripheral : peripheralVec) {
-				 peripheral->doNotConnectedThing();
-        Serial.println("Not connected Thing Done");
-        Serial.println(counter);
-        counter++;
+				 peripheral->doNotConnectedThing();        
 			}
 		}
 	}

@@ -1,0 +1,75 @@
+This is the multi-\/file code for the robotic football team. The design philosophy behind this project is to divide the code amoung a number of classes file to make it easy to maintain and share code between robots. The abilities of the robot to be programmed are then chosen from a list of define statements in \mbox{\hyperlink{_config_8hpp_source}{config.\+hpp}}, like so\+:
+
+In \mbox{\hyperlink{_config_8hpp_source}{config.\+hpp}}\+: 
+\begin{DoxyCode}
+\{c++\}
+//#define BASIC\_DRIVETRAIN
+#define OMNIWHEEL\_DRIVETRAIN
+//#define CENTER\_PERIPHERALS
+#define QB\_PERIPHERALS
+//#define KICKER\_PERIPHERALS
+//#define RECEIVER\_PERIPHERALS
+#define LED\_STRIP
+#define TACKLE
+\end{DoxyCode}
+ This example would create a robot that uses an omniwheel drivetrain (specifically our quarterback), with the led strip and tackle sensor enabled. At the end of the file are a list of error cases that the compile goes through to make sure no incompatable options are shown.
+
+\subsection*{\#\#\#\# Useful Libraries }
+
+
+\begin{DoxyEnumerate}
+\item (P\+S3 Integration) \href{https://github.com/felis/USB_Host_Shield_2.0}{\tt U\+SB Host\+Shield 2.\+0}
+\item (Omniwheel Rotation Locking) \href{https://github.com/adafruit/Adafruit_BNO055}{\tt Adafruit B\+N\+O055}
+\item (S\+TL for arduino) \href{https://github.com/maniacbug/StandardCplusplus}{\tt Standard\+Cplusplus}
+\end{DoxyEnumerate}
+
+\subsection*{\#\#\#\# Controls }
+
+
+\begin{DoxyItemize}
+\item {\bfseries Basic Drivetrain}
+\begin{DoxyItemize}
+\item {\itshape Up/\+Down Left Joystick} -\/ Forward and Backward movement
+\item {\itshape Left/\+Right Right Joystick} -\/ Turning
+\item {\itshape R2} -\/ activates \char`\"{}boost\char`\"{}
+\item {\itshape Start} -\/ Puts robot in \char`\"{}kids mode\char`\"{}. The speed is reduced, boost is disabled, and the leds will change
+\item {\itshape Select \+\_\+-\/ Calibration mode -\/ disables drivetrain while changes are made
+\begin{DoxyItemize}
+\item \+\_\+\+Up/\+Down D-\/\+Pad -\/ compensates for drag left or right
+\item {\itshape Select} -\/ exit Calibration Mode to regular drive mode
+\end{DoxyItemize}}
+\end{DoxyItemize}
+\item {\itshape {\bfseries \mbox{\hyperlink{class_center}{Center}}}
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_center}{Center}} currently uses basic drivetrain
+\item {\itshape T\+R\+I\+A\+N\+G\+LE} -\/ raise the center release servo
+\item {\itshape C\+R\+O\+SS} -\/ lower the center release servo
+\end{DoxyItemize}}
+\item {\itshape {\bfseries Omniwheel Drivetrain}
+\begin{DoxyItemize}
+\item {\itshape Up/\+Down/\+Left/\+Right Left Joystick} -\/ Lateral movement in any direction
+\item {\itshape Up/\+Down/\+Left/\+Right D-\/\+Pad}-\/ Lateral Movement along compass directions at full power
+\item {\itshape Left/\+Right Right Joystick} -\/ Turning -\/ as of version 1.\+0.\+3 this will disable rotation correction
+\item {\itshape R3} (Right Joystick Press) -\/ Re-\/engage rotation correction
+\item {\itshape R2} -\/ slow down speed
+\item {\itshape L1} -\/ reverse directions (make back of robot front and vise versa)
+\item Throwing
+\begin{DoxyItemize}
+\item {\itshape S\+Q\+U\+A\+RE} -\/ Handoff throw
+\item {\itshape C\+R\+O\+SS} -\/ Reciever handoff throw/weak toss
+\item {\itshape C\+I\+R\+C\+LE} -\/ mid range throw
+\item {\itshape T\+R\+I\+A\+N\+G\+LE} -\/ max power throw
+\item {\itshape R1} -\/ return thrower to down position
+\item {\itshape L2} -\/ hold to enable throw offset
+\begin{DoxyItemize}
+\item {\itshape Up/\+Down D-\/\+Pad} -\/ adjust power of all throws but triangle
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}}
+\item {\itshape {\bfseries \mbox{\hyperlink{class_kicker}{Kicker}}}
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_kicker}{Kicker}} -\/ currently uses basic drivetrain
+\item {\itshape C\+R\+O\+SS} -\/ kick
+\item {\itshape T\+R\+I\+A\+N\+G\+LE} -\/ reload 
+\end{DoxyItemize}}
+\end{DoxyItemize}

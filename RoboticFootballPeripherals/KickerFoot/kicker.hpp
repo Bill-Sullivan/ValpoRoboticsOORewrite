@@ -1,5 +1,24 @@
 #pragma once
 
+/**
+ * \class Kicker
+ *
+ * \ingroup Peripheral
+ * <!-- (Note, this needs exactly one \defgroup somewhere) -->
+ *
+ * \brief This class controls the kicker peripheral
+ *
+ * \author  <!-- ((last to touch it) --> Bill Sullivan
+ *
+ * \version $Revision: 1.0 
+ *
+ * \date  2018/08/15 14:16:20
+  <!-- YYYY/MM/DD -->
+ * 
+ *
+ * Created on: 2018/04/14 14:16:20
+ */
+
 #include "../../StandardHeader.hpp"
 
 #include <Servo.h>
@@ -13,27 +32,28 @@
 #define KICKER_RELOAD         85
 
 class Kicker : public Peripheral {
-	private:
+private:
+	/**	
+	* \brief reponds to controller input and controls the kicker foot
+	*/
 	void kickerCtrl();
+	/**	
+	* \brief kicker motor is modeled as a servo
+	*/
 	Servo kicker;                       // Define motor object for the kicker motor
-	public:
-	void doThing() {
-		kickerCtrl();
-	}
-	
-	void doNotConnectedThing() {
-		return;
-	}
-	
-	void setup() {
-		kicker.attach(KICKER_MOTOR, 1000, 2000);
-		kicker.writeMicroseconds(1500);
-	}
+public:
+	/**
+	* \brief ensure the robot enters a safe state when connection to the controller is lost
+	*/
+	void doNotConnectedThing();
+	/**	
+	* \brief the implementation of doThing should implement what happens when the controller is connected
+	*/
+	void doThing();
+	/**	
+	* \brief sets initial values of variables
+	*/
+	void setup();
 };
 
-void Kicker::kickerCtrl()
-{
-  if (PS3.getButtonPress(CROSS)) kicker.write(KICKER_POWER);
-  else if (PS3.getButtonPress(TRIANGLE)) kicker.write(KICKER_RELOAD);
-  else kicker.writeMicroseconds(1500);
-}
+#include "kicker.cpp"

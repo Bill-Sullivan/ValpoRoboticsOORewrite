@@ -8,7 +8,7 @@
 
 
 
-#define BASIC_DRIVETRAIN    //uncomment for 2 drive wheels
+//#define BASIC_DRIVETRAIN    //uncomment for 2 drive wheels
 //#define DUAL_MOTORS
 //#define LR_TACKLE_PERIPHERALS         //uncomment for special handicap for the tackles
 //#define OMNIWHEEL_DRIVETRAIN  //uncomment for omniwheel robots
@@ -36,7 +36,7 @@
   #undef  QB_PERIPHERALS
   #define QB_PERIPHERALS
   #undef  LED_STRIP 
-  #define LED_STRIP 
+  #define LED_STRIP  
   #undef  TACKLE
   #define TACKLE
 #endif
@@ -58,6 +58,15 @@
   #define LED_STRIP 
   #undef  TACKLE
   #define TACKLE
+#endif
+
+#if defined(CENTER)
+  #undef  BASIC_DRIVETRAIN
+  #define BASIC_DRIVETRAIN
+  #undef  LED_STRIP 
+  #define LED_STRIP 
+  #undef  CENTER_PERIPHERALS
+  #define CENTER_PERIPHERALS
 #endif
 
 #if defined(RUNNINGBACK)
