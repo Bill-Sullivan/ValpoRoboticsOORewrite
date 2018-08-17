@@ -5,29 +5,42 @@ This is the multi-file code for the robotic football team. The design philosophy
 
 In config.hpp:
 ````c++
+#define QUARTERBACK
+//#define LINEMAN
+//#define RECIEVER
+//#define RUNNINGBACK
+//#define CENTER
+//#define NONQB_OMNI
+//#define KICKER
+
 //#define BASIC_DRIVETRAIN
-#define OMNIWHEEL_DRIVETRAIN
+//#define OMNIWHEEL_DRIVETRAIN
 //#define CENTER_PERIPHERALS
-#define QB_PERIPHERALS
+//#define QB_PERIPHERALS
 //#define KICKER_PERIPHERALS
 //#define RECEIVER_PERIPHERALS
-#define LED_STRIP
-#define TACKLE
+//#define LED_STRIP
+//#define TACKLE
+
+//#define CIM_MOTOR
+//#define _775_MOTOR
+//#define BANEBOTS_MOTOR
+
+#define BAG_MOTOR
 ````
-This example would create a robot that uses an omniwheel drivetrain (specifically our quarterback), with the led strip and tackle sensor enabled. At the end of the file are a list of error cases that the compile goes through to make sure no incompatable options are shown.
+This example would create a robot that uses a bag motor omniwheel drivetrain (specifically our quarterback), with the led strip, quarterback arm, tackle sensor enabled. At the end of the file are a list of error cases that the compile goes through to make sure no incompatable options are shown.
 
 #### Useful Libraries
 ---
 1. (PS3 Integration) [USB HostShield 2.0](https://github.com/felis/USB_Host_Shield_2.0)
 2. (Omniwheel Rotation Locking) [Adafruit BNO055](https://github.com/adafruit/Adafruit_BNO055)
-3. (STL for arduino) [StandardCplusplus](https://github.com/maniacbug/StandardCplusplus)
 
 #### Controls
 ---
   - **Basic Drivetrain**
     - _Up/Down Left Joystick_ - Forward and Backward movement
     - _Left/Right Right Joystick_ - Turning
-    - _R2_ - activates "boost"
+    - _R2_ - activates "boost" 
     - _Start_ - Puts robot in "kids mode". The speed is reduced, boost is disabled, and the leds will change
     - _Select _- Calibration mode - disables drivetrain while changes are made
       - _Up/Down D-Pad_ - compensates for drag left or right
