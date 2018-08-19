@@ -55,13 +55,14 @@ public:
 	void setup();
 	/**	
 	* \brief sets the color of the LED 
+	* \param[in] color The color the LED should be
 	* RED   = 'r'
 	* BLUE  = 'b'
 	* GREEN = 'g'
 	*/
 	void setColor(char color);
 	/**	
-	* \brief flash the leds in a perticular pattern
+	* \brief flash the leds in a perticular pattern	
 	* pattern usually runs once when the microcontroller turns on
 	* Used to determine if leds are working
 	*/
