@@ -33,14 +33,14 @@ class Peripheral {
 	/**
 	* \brief ensure the robot enters a safe state when connection to the controller is lost
 	*/
-	void doNotConnectedThing();
+	virtual void doNotConnectedThing() override;
 	/**	
 	* \brief the implementation of doThing should implement what happens when the controller is connected
 	*/
-	void doThing();
+	virtual void doThing() override;
 	/**	
 	*
 	* \brief sets initial values of variables
 	*/
-	void setup();
+	virtual void setup() override;
 };
