@@ -1,18 +1,19 @@
 //#define QUARTERBACK
-//#define LINEMAN
+#define LINEMAN
 //#define RECIEVER
 //#define RUNNINGBACK
 //#define CENTER
 //#define NONQB_OMNI
 //#define KICKER
 
-
+//#define HOMECOMMING_GAME
+//#define STUDENTS
+//#define ALUMNI
 
 //#define BASIC_DRIVETRAIN    //uncomment for 2 drive wheels
 //#define DUAL_MOTORS
 //#define LR_TACKLE_PERIPHERALS         //uncomment for special handicap for the tackles
 //#define OMNIWHEEL_DRIVETRAIN  //uncomment for omniwheel robots
-
 
 //#define CENTER_PERIPHERALS  //uncomment for special features of center 
 //#define QB_PERIPHERALS      //uncomment for special QB features

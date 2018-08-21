@@ -76,32 +76,53 @@ void BasicDriveController::handelInputs() {
 			Serial.println("invert Driving");
 		}
 	}
-}
-
-const void BasicDriveController::arcadeDrive() {
-	int xInput, yInput, throttleL, throttleR;
-	static int16_t drive, turn;
-	  
-    yInput = map(PS3.getAnalogHat(LeftHatY), 0, 255, -90, 90);  // Recieves PS3
+	
+	leftInputY = map(PS3.getAnalogHat(LeftHatY), 0, 255, -90, 90);  // Recieves PS3
     // forward/backward input
-    xInput = map(PS3.getAnalogHat(RightHatX), 0, 255, 90, -90); // Recieves PS3
+    rightInputX = map(PS3.getAnalogHat(RightHatX), 0, 255, 90, -90); // Recieves PS3
     // horizontal input and
     // sets it to an inverted
     // scale of 90 to -90
+	
+	rightInputY = map(PS3.getAnalogHat(RightHatY), 0, 255, -90, 90); // Recieves PS3 forward/backward input
+	
+	if (abs(leftInputY) < 8) leftInputY = 0;                            // deals with the stickiness
+    if (abs(rightInputX) < 8) rightInputX = 0;                            // of PS3 joysticks
+	if (abs(rightInputY) < 8) rightInputY = 0;
+}
+
+void BasicDriveController::invertInputs() {
+	int swapVar;
+	if (driveCtrl == TANK_DRIVE) {
+		if (inverting == 1) {
+			swapVar = leftInputY;
+			leftInputY = rightInputY;
+			rightInputY = swapVar;
+		}
+	} 
+	/*
+	//commented out because driving backward won't work well on our current robots
+	else if (driveCtrl == ARCADE_DRIVE) {
+		if (inverting == 1) {
+			leftInputY = map(leftInputY,   -90, 90, 90, -90);  // Recieves PS3
+			rightInputX = map(rightInputX, -90, 90, 90, -90);  // Recieves PS3
+		}
+	}
+	*/
+	
+}
+
+const void BasicDriveController::arcadeDrive() {
+	int throttleL, throttleR;
+	static int16_t drive, turn;
  
-    if (abs(yInput) < 8) yInput = 0;                            // deals with the stickiness
-    if (abs(xInput) < 8) xInput = 0;                            // of PS3 joysticks
+    
  
-    if ((yInput == 0) && (xInput == 0))
+    if ((leftInputY == 0) && (rightInputX == 0))
     { // if no input this should ensure that
       // the motors actually stop, and skip the rest
       // of the drive function
-      leftMotor.writeMicroseconds(1500);
-      rightMotor.writeMicroseconds(1500);
-	  #ifdef DUAL_MOTORS
-          leftMotor2.writeMicroseconds(1500);
-          rightMotor2.writeMicroseconds(1500);
-      #endif
+      eStop();
       return;
     }
  
@@ -112,11 +133,11 @@ const void BasicDriveController::arcadeDrive() {
     // The acceleration is then slowed
     // because of the loop cycle time
  
-    if (drive < yInput)		 drive++;				// Accelerates
-    else if (drive > yInput) drive--;               // Decelerates
+    if (drive < leftInputY)		 drive++;				// Accelerates
+    else if (drive > leftInputY) drive--;               // Decelerates
  
-    if (turn < xInput)		{ turn++; } 
-    else if (turn > xInput) { turn--; }
+    if (turn < rightInputX)		{ turn++; } 
+    else if (turn > rightInputX) { turn--; }
  
     throttleL = LEFT_MOTOR_REVERSE * ((drive + turn) / handicap) + motorCorrect;
     // This is the final variable that
@@ -128,14 +149,6 @@ const void BasicDriveController::arcadeDrive() {
     if (throttleR > MAX_DRIVE) throttleR = MAX_DRIVE;
     else if (throttleR < -MAX_DRIVE)throttleR = -MAX_DRIVE;
  
-	static int counter = 0;
-	if (counter++ > 1000){
-		counter = 0;
-		Serial.println(counter);
-		Serial.println(xInput);
-	}
-	Serial.println(throttleL + 90);
- 
     leftMotor.write(throttleL + 90);                // Sending values to the speed controllers
     rightMotor.write(throttleR + 90);
     #ifdef DUAL_MOTORS
@@ -145,34 +158,21 @@ const void BasicDriveController::arcadeDrive() {
 }
 
 const void BasicDriveController::tankDrive() {
-	int rightInput, leftInput, throttleL, throttleR;
+	int throttleL, throttleR;
 	static int8_t leftDrive, rightDrive = 0;
-    if (inverting == 0) {
-      leftInput = map(PS3.getAnalogHat(LeftHatY), 0, 255, -90, 90);   // Recieves PS3 forward/backward input
-      rightInput = map(PS3.getAnalogHat(RightHatY), 0, 255, -90, 90); // Recieves PS3 forward/backward input
-    }
-    else if (inverting == 1) {
-      leftInput = map(PS3.getAnalogHat(RightHatY), 0, 255, 90, -90);  // Recieves PS3 forward/backward input
-      rightInput = map(PS3.getAnalogHat(LeftHatY), 0, 255, 90, -90);  // Recieves PS3 forward/backward input
-    }
  
     // forward/backward input
     // sets it to an inverted
     // scale of 90 to -90
                                               
-    if (abs(leftInput) < 8) leftInput = 0;    // deals with the stickiness
-    if (abs(rightInput) < 8) rightInput = 0;  // of PS3 joysticks
+    if (abs(leftInputY) < 8) leftInputY = 0;    // deals with the stickiness
+    if (abs(rightInputY) < 8) rightInputY = 0;  // of PS3 joysticks
  
-    if ((leftInput == 0) && (rightInput == 0))
+    if ((leftInputY == 0) && (rightInputY == 0))
     { // if no input this should ensure that
       // the motors actually stop, and skip the rest
       // of the drive function      
-      leftMotor.writeMicroseconds(1500);
-      rightMotor.writeMicroseconds(1500);
-	  #ifdef DUAL_MOTORS
-          leftMotor2.writeMicroseconds(1500);
-          rightMotor2.writeMicroseconds(1500);
-      #endif
+      eStop();
       return;
     }
  
@@ -183,12 +183,12 @@ const void BasicDriveController::tankDrive() {
     // The acceleration is then slowed
     // because of the loop cycle time
 
-    if (leftDrive < leftInput)      { leftDrive++; }               // Accelerates
-    else if (leftDrive > leftInput) { leftDrive--; }               // Decelerates
+    if (leftDrive < leftInputY)      { leftDrive++; }               // Accelerates
+    else if (leftDrive > leftInputY) { leftDrive--; }               // Decelerates
 	
  
-    if (rightDrive < rightInput)      rightDrive++;
-    else if (rightDrive > rightInput) rightDrive--;                //Since this is tank drive it is not actually turning
+    if (rightDrive < rightInputY)      rightDrive++;
+    else if (rightDrive > rightInputY) rightDrive--;                //Since this is tank drive it is not actually turning
  
     throttleL = LEFT_MOTOR_REVERSE  * ((leftDrive) / handicap) + motorCorrect;
     // This is the final variable that
@@ -222,22 +222,23 @@ void BasicDriveController::setup() {
 		rightMotor2.attach(RIGHT_MOTOR2, 1000, 2000);
 		rightMotor2.writeMicroseconds(1500);
 	#endif
-		if (EEPROM.read(0) == ARCADE_DRIVE || EEPROM.read(0) == TANK_DRIVE) {
-			driveCtrl = EEPROM.read(0);
-		}
-		else {
-			driveCtrl = ARCADE_DRIVE;
-			EEPROM.write(0, ARCADE_DRIVE);
-		}
-		
-		state = DRIVING;
-		inverting = 0;
-		motorCorrect = 0;
-		handicap = DEFAULT_HANDICAP;
+	if (EEPROM.read(0) == ARCADE_DRIVE || EEPROM.read(0) == TANK_DRIVE) {
+		driveCtrl = EEPROM.read(0);
+	}
+	else {
+		driveCtrl = ARCADE_DRIVE;
+		EEPROM.write(0, ARCADE_DRIVE);
+	}
+	
+	state = DRIVING;
+	inverting = 0;
+	motorCorrect = 0;
+	handicap = DEFAULT_HANDICAP;
 }
 
 void BasicDriveController::doThing() {
 		handelInputs();
+		invertInputs();
 		if (driveCtrl == ARCADE_DRIVE) {
 			arcadeDrive();
 		}

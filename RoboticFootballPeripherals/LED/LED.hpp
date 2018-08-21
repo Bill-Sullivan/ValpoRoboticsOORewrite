@@ -40,6 +40,7 @@
   
 class LED  {
 protected:	
+public:
 	/**	
 	* \brief color the robot should be when tackled
 	*/
@@ -47,8 +48,7 @@ protected:
 	/**	
 	* \brief color the robot should be when not tackled
 	*/
-    char notTackeledColor;  
-public:
+    char notTackeledColor;
 	/**	
 	* \brief sets initial values of variables
 	*/

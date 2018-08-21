@@ -35,15 +35,15 @@ public:
 	* \brief the implementation of eStop should implement what happens when the controller disconnects
 	* Make sure this code results in the robot stopping or we will break anouther door 
 	*/
-	virtual void eStop() override;
+	virtual void eStop();
 	/**	
 	*
 	* \brief the implementation of doThing should implement what happens when the controller is connected
 	*/
-	virtual void doThing() override;
+	virtual void doThing();
 	/**	
 	*
 	* \brief the implementation of setup should implement setup code
 	*/
-	virtual void setup() override;
+	virtual void setup();
 };

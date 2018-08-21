@@ -21,10 +21,18 @@ void LED::setColor(char color) {
 
 void LED::setup() {
 	tackledColor = RED;
-	#if defined(TACKLE)
-		notTackeledColor = RECIEVER_COLOR;
+	#if defined(HOMECOMMING_GAME)
+		#if defined(STUDENTS)
+			notTackeledColor = GREEN;
+		#elif defined(ALUMNI)
+			notTackeledColor = BLUE;
+		#endif
 	#else
-		notTackeledColor = LINEMAN_COLOR;
+		#if defined(TACKLE)
+			notTackeledColor = RECIEVER_COLOR;
+		#else
+			notTackeledColor = LINEMAN_COLOR;
+		#endif
 	#endif
 	
 	  //define pins for LEDs as outputs

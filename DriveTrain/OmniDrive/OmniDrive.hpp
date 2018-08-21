@@ -112,8 +112,7 @@ protected:
 	/**
 	* \brief motor power is divided by this variable for rotational motion
 	*/
-	int8
-	int turnHandicap;
+	int8_t turnHandicap;
 	/**
 	* \brief motor power is divided by this variable for linear motion
 	*/

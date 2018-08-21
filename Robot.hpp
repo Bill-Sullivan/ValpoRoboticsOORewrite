@@ -138,7 +138,7 @@ protected:
 
       // choose drive train
     #if defined(BASIC_DRIVETRAIN) && !defined(DUAL_MOTORS)
-      driveTrain = new basicDriveController;
+      driveTrain = new BasicDriveController;
     #elif defined(DUAL_MOTORS)
       driveTrain = new DualMotorBasicDrive;
     #elif defined(OMNIWHEEL_DRIVETRAIN)

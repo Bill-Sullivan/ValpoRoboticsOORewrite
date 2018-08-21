@@ -112,6 +112,24 @@ protected:
 	*/
 	void handelInputs();
 	
+	/**
+	* \brief invert inputs if inverting is true
+	*/
+	void invertInputs();
+	
+	/**
+	* \brief right stick's up/down input
+	*/
+	int rightInputY;
+	/**
+	* \brief left stick's up/down input
+	*/
+	int leftInputY;
+	/**
+	* \brief right stick's left/right input
+	*/
+	int	rightInputX;
+	
 	
 public:	
 	/**
