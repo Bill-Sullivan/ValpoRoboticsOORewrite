@@ -23,10 +23,16 @@
 
 #include <Servo.h>
 
-
-#define RED_LED         11          //Red LED control is wired to pin 11
-#define GREEN_LED       12          //Green LED control is wired to pin 12
-#define BLUE_LED        13          //Blue LED control is wired to pin 13
+#if defined(PERF_BOARD_SHIELD)
+	#define RED_LED         11          //Red LED control is wired to pin 11
+	#define GREEN_LED       12          //Green LED control is wired to pin 12
+	#define BLUE_LED        13          //Blue LED control is wired to pin 13
+#elif defined(PCB_SHIELD)
+	#error "Ask Jackob what pin drives what LED, correct the gessword that is the next three definitions than delete this error"
+	#define RED_LED         A1          //Red LED control is wired to pin 11
+	#define GREEN_LED       A2          //Green LED control is wired to pin 12
+	#define BLUE_LED        A3          //Blue LED control is wired to pin 13
+#endif
 
 #define GREEN 'g'
 #define RED 'r'
