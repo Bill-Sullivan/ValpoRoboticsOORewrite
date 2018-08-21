@@ -34,12 +34,6 @@
 //#define TACKLE          //uncomment for tackle sensor functionality
 //#define ROTATION_LOCK
 
-//#define CIM_MOTOR
-//#define _775_MOTOR
-//#define BANEBOTS_MOTOR
-
-#define BAG_MOTOR
-
 #if defined(QUARTERBACK)
   #undef  OMNIWHEEL_DRIVETRAIN
   #define OMNIWHEEL_DRIVETRAIN
