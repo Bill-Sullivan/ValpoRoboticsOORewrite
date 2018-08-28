@@ -31,13 +31,11 @@ void BasicDriveController::handelInputs() {
 	if (PS3.getButtonClick(SELECT)) //Switch between tank drive and arcade mode. 0 is arcade 1 is tank
 	{
 		if (PS3.getButtonPress(L1)) {
-			//if (driveCtrl == (void (*)())arcadeDrive) {
 			if (driveCtrl == ARCADE_DRIVE) {
 				driveCtrl = TANK_DRIVE;
 				EEPROM.write(0, TANK_DRIVE);
 				Serial.println("TANK_DRIVE");
 			}
-			//else if (driveCtrl == (void (*)())tankDrive) {
 			else if (driveCtrl == TANK_DRIVE) {
 				driveCtrl = ARCADE_DRIVE;
 				EEPROM.write(0, ARCADE_DRIVE);
@@ -114,7 +112,7 @@ void BasicDriveController::invertInputs() {
 
 const void BasicDriveController::arcadeDrive() {
 	int throttleL, throttleR;
-	static int16_t drive, turn;
+	static int16_t drive, turn = 0;
  
     
  

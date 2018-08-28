@@ -146,7 +146,7 @@ protected:
     #elif defined(TEST_DRIVETRAIN)
       driveTrain = new testDriveConrtoller;
     #else
-      #error No Drive Train selected
+#error No Drive Train selected
     #endif
 
    

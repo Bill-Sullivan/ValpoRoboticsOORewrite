@@ -1,5 +1,5 @@
 //#define QUARTERBACK
-//#define LINEMAN
+#define LINEMAN
 //#define RECIEVER
 //#define RUNNINGBACK
 //#define CENTER
@@ -16,7 +16,7 @@
 //#define STUDENTS
 //#define ALUMNI
 
-//#define PERF_BOARD_SHIELD
+#define PERF_BOARD_SHIELD
 //#define PCB_SHIELD
 
 //#define BASIC_DRIVETRAIN    //uncomment for 2 drive wheels

@@ -16,6 +16,17 @@ void OmniDriveConrtoller::drive() {
   xInput = map(PS3.getAnalogHat(LeftHatX), 0, 255, 90, -90);      // Recieves PS3 horizontal input and
   // sets it to an inverted scale of 90 to -90
   turnInput = map(PS3.getAnalogHat(RightHatX), 0, 255, -MAX_TURN, MAX_TURN);  // received turn input from right joystick
+  if (PS3.getButtonPress(L1))
+      {
+        motorReverse = M_PI;              // this is reversed
+        turnHandicap = TURN_HANDICAP_AMOUNT;
+      }
+      else
+      {
+        motorReverse = 0;
+        turnHandicap = 1;
+      }
+  
   if (!PS3.getButtonPress(L2))
   {
     if (PS3.getButtonPress(UP))
@@ -184,6 +195,7 @@ void OmniDriveConrtoller::setup() {
 	motor4.writeMicroseconds(1500);			
 }
 
-void OmniDriveConrtoller::doThing() {		
+void OmniDriveConrtoller::doThing() {
+		
 		drive();		
 	}
