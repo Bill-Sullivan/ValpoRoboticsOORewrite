@@ -17,6 +17,7 @@ void setup () {
 	
 }
 
+#define PROFILING
 void loop () {
 #if defined(PROFILING)
   #define NUM_LOOPS 1000

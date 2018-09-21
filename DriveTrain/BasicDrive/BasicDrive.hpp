@@ -73,6 +73,9 @@
 #define LEFT_MOTOR            9     // left motor is wired to pin 9
 #define RIGHT_MOTOR           10    // right motor is wired to pin 10
 
+#define LEFT_MOTOR2           7
+#define RIGHT_MOTOR2          8
+
 
 
 class BasicDriveController: public DriveTrain {
@@ -130,7 +133,6 @@ protected:
 	*/
 	int	rightInputX;
 	
-	
 public:	
 	/**
 	* \brief stop the robot so in the event control is lost
@@ -154,7 +156,8 @@ public:
 	*/
 	Servo leftMotor, rightMotor;        // Define motor objects
 	#ifdef DUAL_MOTORS
-		Servo leftMotor2, rightMotor2;
+		Servo leftMotor2;
+		Servo rightMotor2;
 	#endif
 };
 

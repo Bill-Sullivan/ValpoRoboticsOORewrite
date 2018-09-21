@@ -1,3 +1,5 @@
+#define ERNIE
+
 //#define QUARTERBACK
 #define LINEMAN
 //#define RECIEVER
@@ -51,6 +53,14 @@
   #define BASIC_DRIVETRAIN
   #undef  LED_STRIP 
   #define LED_STRIP 
+#endif
+
+
+#if defined(ERNIE)
+  #undef  BASIC_DRIVETRAIN
+  #define BASIC_DRIVETRAIN
+  #undef  DUAL_MOTORS 
+  #define DUAL_MOTORS 
 #endif
 
 #if defined(RECIEVER)

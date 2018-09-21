@@ -1,6 +1,9 @@
 #pragma once
 #include "BasicDrive.hpp"
 
+#define LEFT_MOTOR            9     // left motor is wired to pin 9
+#define RIGHT_MOTOR           10    // right motor is wired to pin 10
+
 
 void BasicDriveController::eStop() {
 	leftMotor.writeMicroseconds(1500);

@@ -140,7 +140,7 @@ protected:
     #if defined(BASIC_DRIVETRAIN) && !defined(DUAL_MOTORS)
       driveTrain = new BasicDriveController;
     #elif defined(DUAL_MOTORS)
-      driveTrain = new DualMotorBasicDrive;
+      driveTrain = new BasicDriveController;
     #elif defined(OMNIWHEEL_DRIVETRAIN)
       driveTrain = new OmniDriveConrtoller;
     #elif defined(TEST_DRIVETRAIN)

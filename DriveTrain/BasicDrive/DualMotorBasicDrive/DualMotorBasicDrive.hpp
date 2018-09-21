@@ -1,5 +1,4 @@
 /*
-
 #pragma once
 
 #include <Servo.h>
@@ -51,7 +50,7 @@
 #define LEFT_MOTOR2           7
 #define RIGHT_MOTOR2          8
 
-class DualMotorBasicDrive : public basicDriveConrtoller {
+class DualMotorBasicDrive : public BasicDriveController {
 private:
 	static void arcadeDrive();
 	static void tankDrive();
@@ -88,5 +87,4 @@ void DualMotorBasicDrive::eStop() {
 	leftMotor2.writeMicroseconds(1500);
 	rightMotor2.writeMicroseconds(1500);
 }
-
 */
