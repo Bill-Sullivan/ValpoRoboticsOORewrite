@@ -1,7 +1,7 @@
-#define ERNIE
+//#define ERNIE
 
 //#define QUARTERBACK
-#define LINEMAN
+//#define LINEMAN
 //#define RECIEVER
 //#define RUNNINGBACK
 //#define CENTER
