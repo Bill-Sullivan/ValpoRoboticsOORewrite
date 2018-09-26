@@ -66,8 +66,6 @@
 #if defined(RECIEVER)
   #undef  BASIC_DRIVETRAIN
   #define BASIC_DRIVETRAIN
-  #undef  QB_PERIPHERALS
-  #define QB_PERIPHERALS
   #undef  LED_STRIP 
   #define LED_STRIP 
   #undef  TACKLE
@@ -86,21 +84,10 @@
 #if defined(RUNNINGBACK)
   #undef  BASIC_DRIVETRAIN
   #define BASIC_DRIVETRAIN
-  #undef  QB_PERIPHERALS
-  #define QB_PERIPHERALS
   #undef  LED_STRIP 
   #define LED_STRIP 
   #undef  TACKLE
   #define TACKLE
-#endif
-
-#if defined(LINEMAN)
-  #undef  BASIC_DRIVETRAIN
-  #define BASIC_DRIVETRAIN
-  #undef  LED_STRIP 
-  #define LED_STRIP 
-  #undef  CENTER_PERIPHERALS 
-  #define CENTER_PERIPHERALS
 #endif
 
 #if defined(NONQB_OMNI)
