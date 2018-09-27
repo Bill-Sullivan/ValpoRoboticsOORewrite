@@ -1,8 +1,8 @@
 //#define ERNIE
 
-//#define QUARTERBACK
+#define QUARTERBACK
 //#define LINEMAN
-#define RECIEVER
+//#define RECIEVER
 //#define RUNNINGBACK
 //#define CENTER
 //#define NONQB_OMNI
@@ -114,9 +114,9 @@
 #if !defined(MAX_TOTAL_PERIPERALS)
 	#define MAX_TOTAL_PERIPERALS 10
 #endif
-
+/*
 #if !defined(CENTER_PERIPHERALS) && !defined(QB_PERIPHERALS) && !defined(IR_MAST)  && !defined(QB_TRACKING) && !defined(KICKER_PERIPHERALS) && !defined(RECEIVER_PERIPHERALS) && !defined(LED_STRIP) && !defined(TACKLE) && !defined(ROTATION_LOCK)
 	#define NO_PERIPHERALS_DEFINED
 #endif
-
+*/
 #include "ErrorHandeling.hpp"

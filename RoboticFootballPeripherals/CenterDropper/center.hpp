@@ -49,6 +49,8 @@ public:
 	* \brief sets initial values of variables
 	*/
 	void setup();
+	
+	Center();
 };
 
 

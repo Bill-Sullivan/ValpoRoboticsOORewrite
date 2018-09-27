@@ -21,3 +21,7 @@ void Center::doNotConnectedThing() {
 void Center::doThing() {
 	centerCtrl();
 }
+
+Center::Center() {
+	
+}

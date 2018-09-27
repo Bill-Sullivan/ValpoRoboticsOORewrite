@@ -54,6 +54,7 @@ public:
 	* \brief sets initial values of variables
 	*/
 	void setup();
+	Kicker();
 };
 
 #include "kicker.cpp"

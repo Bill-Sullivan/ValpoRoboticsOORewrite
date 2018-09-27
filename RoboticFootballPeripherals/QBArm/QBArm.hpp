@@ -56,6 +56,8 @@ public:
 	* \brief sets initial values of variables
 	*/
 	void setup();
+	
+	QBArm() {}
 };
 
 #include "QBArm.cpp"

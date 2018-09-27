@@ -120,6 +120,7 @@ protected:
     #endif
     #if defined(KICKER_PERIPHERALS)
       peripheralVec.push_back(new Kicker);
+      
     #endif
     #if defined(TACKLE)
       #if !defined(LED_STRIP)
@@ -154,9 +155,10 @@ protected:
 
    
    driveTrain->setup();
-   for (Peripheral* peripheral : peripheralVec) {
+      for (Peripheral* peripheral : peripheralVec) {
        peripheral->setup();
    }
+      
    #if defined(LED_STRIP)
         led->setup();
     #endif   
@@ -180,9 +182,11 @@ protected:
 			newConnection();
 			
 			driveTrain->doThing();
+      /*
 			for (Peripheral* peripheral : peripheralVec) {
 				peripheral->doThing();
 			}
+      */
 
       if (PS3.getButtonClick(PS)) {
         PS3.disconnect();
@@ -191,10 +195,12 @@ protected:
 		}
 		else 
 		{			
-			driveTrain->eStop();      
+			driveTrain->eStop();
+      /* 
 			for (Peripheral* peripheral : peripheralVec) {
 				 peripheral->doNotConnectedThing();        
 			}
+     */
 		}
 	}
 };
