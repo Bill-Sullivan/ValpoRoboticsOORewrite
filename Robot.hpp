@@ -127,6 +127,9 @@ protected:
       #endif
       peripheralVec.push_back(new TackleSeansor(led));
     #endif
+    #if defined(NO_PERIPHERALS_DEFINED)
+      peripheralVec.push_back(new EmptyPeripheral);
+    #endif
     
     #if defined(QB_PERIPHERALS)
       peripheralVec.push_back(new QBArm);

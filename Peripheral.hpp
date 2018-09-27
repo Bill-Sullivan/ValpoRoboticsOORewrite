@@ -29,6 +29,8 @@
 
 
 class Peripheral {
+  protected:
+  Peripheral () {}  
 	public:
 	/**
 	* \brief ensure the robot enters a safe state when connection to the controller is lost

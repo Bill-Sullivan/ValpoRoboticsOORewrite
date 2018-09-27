@@ -2,7 +2,7 @@
 
 //#define QUARTERBACK
 //#define LINEMAN
-//#define RECIEVER
+#define RECIEVER
 //#define RUNNINGBACK
 //#define CENTER
 //#define NONQB_OMNI
@@ -70,6 +70,8 @@
   #define LED_STRIP 
   #undef  TACKLE
   #define TACKLE
+  #undef  NO_PERIPHERALS_DEFINED
+  #define NO_PERIPHERALS_DEFINED
 #endif
 
 #if defined(CENTER)

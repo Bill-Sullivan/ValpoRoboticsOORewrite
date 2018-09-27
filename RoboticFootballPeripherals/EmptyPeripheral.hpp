@@ -27,6 +27,9 @@ public:
 	void doNotConnectedThing() {
 		return;
 	}
+	void setup() {
+		return;
+	}
 
 	EmptyPeripheral() {
 		return;
