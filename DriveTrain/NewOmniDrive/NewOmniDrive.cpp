@@ -21,8 +21,9 @@ void NewOmniDrive::handelInputs() {
 }
 
 void NewOmniDrive::drive() {
-	int rightLeft, forwardBackword, turn;
-	
+	int motor1Drive, motor2Drive, motor3Drive, motor4Drive;
+	static int rightLeft, forwardBackword, turn;
+	static int motor1Input, motor2Input, motor3Input, motor4Input;
 	
 	if (forwardBackword < leftInputY)		forwardBackword++;		// Accelerates
     else if (forwardBackword > leftInputY) forwardBackword--;     // Decelerates
@@ -33,11 +34,11 @@ void NewOmniDrive::drive() {
 	if (turn < rightInputX)		turn++;				// Accelerates
     else if (turn> rightInputX)	turn--;             // Decelerates	
 	
-	motor1Drive	= ((-forwardBackword +           - turn) / handicap) + motorCorrect + 90;
-	motor2Drive = ((                 + rightLeft - turn) / handicap) + motorCorrect + 90;
-	motor3Drive = (( forwardBackword +           - turn) / handicap) + motorCorrect + 90;
-	motor4Drive = ((                 - rightLeft - turn) / handicap) + motorCorrect + 90;
-
+	motor1Drive	= ((-1*forwardBackword +           - turn) / handicap) + motorCorrect + 90;
+	motor2Drive = ((                   + rightLeft - turn) / handicap) + motorCorrect + 90;
+	motor3Drive = ((   forwardBackword +           - turn) / handicap) + motorCorrect + 90;
+	motor4Drive = ((                   - rightLeft - turn) / handicap) + motorCorrect + 90;
+	
 	if (motor1Drive < 5)motor1Drive = 5;
 	else if (motor1Drive > 175)motor1Drive = 175;
 	if (motor2Drive < 5)motor2Drive = 5;
@@ -81,6 +82,6 @@ void NewOmniDrive::setup() {
 }
 
 void NewOmniDrive::doThing() {
-		
+		handelInputs();
 		drive();		
 	}

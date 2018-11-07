@@ -55,7 +55,7 @@
   #undef ALTERNATE_HANDICAP
   #define ALTERNATE_HANDICAP    2   // when using boost, divide speed by 2 
 #endif
-  Servo motor1, motor2, motor3, motor4;                                       // Define omni motor objects
+  
 
 #if !defined(MAX_DRIVE)
 	#define MAX_DRIVE             84    // limited because of issues with calibrating victors to full 0-180 range
@@ -91,8 +91,24 @@ protected:
 	/**
 	* \brief function that controls the robot
 	*/
-	void drive();	
+	void drive();
+	/**
+	* \brief function that takes input from the PS3 Controller and stores it for further use
+	*/
+	void handelInputs();
 	
+	/**
+	* \brief right stick's left/right input
+	*/
+	int	rightInputX;
+	/**
+	* \brief left stick's up/down input
+	*/
+	int leftInputY;
+	/**
+	* \brief left stick's left/right input
+	*/
+	int leftInputX;
 	/**
 	* \brief variable that corrects for diffrences between each motor (Mostly irrlevent since bainbots moters were replaced)
 	*/
@@ -132,21 +148,10 @@ public:
 	* \brief sets initial values of variables and motors
 	*/
 	void setup();
-	/**
-	* \brief right stick's left/right input
-	*/
-	int	rightInputX;
-	/**
-	* \brief left stick's up/down input
-	*/
-	int leftInputY;
-	/**
-	* \brief left stick's left/right input
-	*/
-	int leftInputX;
+
 	
 	
 };
 
-#include "OmniDrive.cpp"
+#include "NewOmniDrive.cpp"
 

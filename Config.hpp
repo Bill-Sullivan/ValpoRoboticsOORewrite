@@ -1,6 +1,6 @@
 //#define ERNIE
 
-#define QUARTERBACK
+//#define QUARTERBACK
 //#define LINEMAN
 //#define RECIEVER
 //#define RUNNINGBACK
@@ -25,6 +25,7 @@
 //#define DUAL_MOTORS
 //#define LR_TACKLE_PERIPHERALS         //uncomment for special handicap for the tackles
 //#define OMNIWHEEL_DRIVETRAIN  //uncomment for omniwheel robots
+#define NEW_OMNIWHEEL_DRIVETRAIN
 
 //#define CENTER_PERIPHERALS  //uncomment for special features of center 
 //#define QB_PERIPHERALS      //uncomment for special QB features

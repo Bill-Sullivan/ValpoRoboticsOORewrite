@@ -61,7 +61,6 @@
   #undef ALTERNATE_HANDICAP
   #define ALTERNATE_HANDICAP    2   // when using boost, divide speed by 2 
 #endif
-  Servo motor1, motor2, motor3, motor4;                                       // Define omni motor objects
 
 #if !defined(MAX_DRIVE)
 	#define MAX_DRIVE             84    // limited because of issues with calibrating victors to full 0-180 range

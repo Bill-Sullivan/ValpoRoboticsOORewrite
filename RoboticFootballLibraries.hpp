@@ -8,6 +8,7 @@
 #include "DriveTrain/TestDrive/TestDrive.hpp"
 
 #include "DriveTrain/OmniDrive/OmniDrive.hpp"
+#include "DriveTrain/NewOmniDrive/NewOmniDrive.hpp"
 
 #include "Peripheral.hpp"
 #include "RoboticFootballPeripherals/KickerFoot/kicker.hpp"

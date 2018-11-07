@@ -147,6 +147,8 @@ protected:
       driveTrain = new BasicDriveController;
     #elif defined(OMNIWHEEL_DRIVETRAIN)
       driveTrain = new OmniDriveConrtoller;
+    #elif defined(NEW_OMNIWHEEL_DRIVETRAIN)
+      driveTrain = new NewOmniDrive;
     #elif defined(TEST_DRIVETRAIN)
       driveTrain = new testDriveConrtoller;
     #else
@@ -182,11 +184,9 @@ protected:
 			newConnection();
 			
 			driveTrain->doThing();
-      /*
 			for (Peripheral* peripheral : peripheralVec) {
 				peripheral->doThing();
 			}
-      */
 
       if (PS3.getButtonClick(PS)) {
         PS3.disconnect();
@@ -196,11 +196,9 @@ protected:
 		else 
 		{			
 			driveTrain->eStop();
-      /* 
 			for (Peripheral* peripheral : peripheralVec) {
 				 peripheral->doNotConnectedThing();        
 			}
-     */
 		}
 	}
 };
