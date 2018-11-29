@@ -182,7 +182,7 @@ void OmniDriveConrtoller::setup() {
 	inverting = 0;
 	motorReverse = 0;
 	turnHandicap = 1;
-	
+
 	handicap = DEFAULT_HANDICAP;
 	
 	motor1.attach(MOTOR_1, 1000, 2000);

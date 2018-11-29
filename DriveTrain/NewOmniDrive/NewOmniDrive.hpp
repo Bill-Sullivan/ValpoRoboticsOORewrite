@@ -45,16 +45,11 @@
 #define KID_HANDICAP          5     // when omni is in kids mode, speed is divided by 5 
 
 #define TURN_HANDICAP_AMOUNT  1     // divide turn speed by 1
-#define MAX_TURN 14                 // limit the value for turning for calculations to send final speed to motors
-#ifdef QB_PERIPHERALS               // If this is the QB then R2 slows down otherwise R2 is boost.
-  #define DEFAULT_HANDICAP      1   // when not using boost, drive full speed
-  #undef ALTERNATE_HANDICAP
-  #define ALTERNATE_HANDICAP    3   // when using boost, divide speed by 3
-#else
-  #define DEFAULT_HANDICAP      3   // when not using boost, divide speed by 3
-  #undef ALTERNATE_HANDICAP
-  #define ALTERNATE_HANDICAP    2   // when using boost, divide speed by 2 
-#endif
+#define MAX_TURN 90                 // limit the value for turning for calculations to send final speed to motors
+
+#define DEFAULT_HANDICAP      1   // when not using boost, drive full speed
+#undef ALTERNATE_HANDICAP
+#define ALTERNATE_HANDICAP    3   // when using boost, divide speed by 3
   
 
 #if !defined(MAX_DRIVE)
@@ -123,6 +118,10 @@ protected:
 	* \brief motor power is divided by this variable for rotational motion
 	*/
 	int8_t turnHandicap;
+	/**
+	* \brief Flag that selects weather the robot is using kid or normal handcap
+	*/
+	uint8_t state;
 	/**
 	* \brief motor power is divided by this variable for linear motion
 	*/

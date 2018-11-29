@@ -51,7 +51,7 @@
 #define PI_OVER_2             M_PI/2
 #define PI_OVER_4             M_PI/4
 #define TURN_HANDICAP_AMOUNT  1     // divide turn speed by 1
-#define MAX_TURN 14                 // limit the value for turning for calculations to send final speed to motors
+#define MAX_TURN 90                 // limit the value for turning for calculations to send final speed to motors
 #ifdef QB_PERIPHERALS               // If this is the QB then R2 slows down otherwise R2 is boost.
   #define DEFAULT_HANDICAP      1   // when not using boost, drive full speed
   #undef ALTERNATE_HANDICAP
