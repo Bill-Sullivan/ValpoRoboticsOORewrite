@@ -45,7 +45,7 @@ void NewOmniDrive::drive() {
 	else if (motor2Drive > 175)motor2Drive = 175;
 	if (motor3Drive < 5)motor3Drive = 5;
 	else if (motor3Drive > 175)motor3Drive = 175;
-	if (motor4Drive < 5)motor1Drive = 5;
+	if (motor4Drive < 5)motor4Drive = 5;
 	else if (motor4Drive > 175)motor4Drive = 175;
 	
 	if (motor1Drive > motor1Input)motor1Input++;
