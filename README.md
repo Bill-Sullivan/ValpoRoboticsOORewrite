@@ -1,7 +1,7 @@
 Robotic-Football-All-In-Many
 =====
 
-This is the multi-file code for the robotic football team. The design philosophy behind this project is to divide the code amoung a number of classes file to make it easy to maintain and share code between robots. The abilities of the robot to be programmed are then chosen from a list of define statements in config.hpp, like so:
+This is the multi-file code for the robotic football team. The design philosophy behind this project is to divide the code amoung a number of classes to make it easy to maintain and share code between robots. The abilities of the robot to be programmed are then chosen from a list of define statements in config.hpp, like so:
 
 In config.hpp:
 ````c++
@@ -28,7 +28,48 @@ In config.hpp:
 
 #define BAG_MOTOR
 ````
-This example would create a robot that uses a bag motor omniwheel drivetrain (specifically our quarterback), with the led strip, quarterback arm, tackle sensor enabled. At the end of the file are a list of error cases that the compile goes through to make sure no incompatable options are shown.
+This example would create a robot that uses a bag motor omniwheel drivetrain (specifically our quarterback), with the led strip, quarterback arm, tackle sensor enabled. 
+In ErrorHandeling.hpp there are a list of error cases that the compiler goes through to make sure no incompatable options are chosen.
+
+Aternatively you can manually pick what options you want to enable. This can be useful when developing a new robot or diagnosing problems with individual parts on an existing robot. 
+
+In config.hpp:
+````c++
+//#define QUARTERBACK
+//#define LINEMAN
+//#define RECIEVER
+//#define RUNNINGBACK
+//#define CENTER
+//#define NONQB_OMNI
+//#define KICKER
+
+#define PERF_BOARD_SHIELD
+//#define PCB_SHIELD
+
+//#define BASIC_DRIVETRAIN    //uncomment for 2 drive wheels
+//#define DUAL_MOTORS
+//#define LR_TACKLE_PERIPHERALS         //uncomment for special handicap for the tackles
+//#define OMNIWHEEL_DRIVETRAIN  //uncomment for omniwheel robots
+#define NEW_OMNIWHEEL_DRIVETRAIN
+
+//#define CENTER_PERIPHERALS  //uncomment for special features of center 
+#define QB_PERIPHERALS      //uncomment for special QB features
+//#define IR_MAST
+//#define QB_TRACKING
+//#define KICKER_PERIPHERALS  //uncomment for special Kicker features
+//#define RECEIVER_PERIPHERALS  
+#define LED_STRIP       //uncomment for LED functionality
+#define TACKLE          //uncomment for tackle sensor functionality
+//#define ROTATION_LOCK
+
+//#define CIM_MOTOR
+//#define _775_MOTOR
+//#define BANEBOTS_MOTOR
+
+#define BAG_MOTOR
+````
+
+This example does the same thing as the above example.
 
 #### Useful Libraries
 ---
