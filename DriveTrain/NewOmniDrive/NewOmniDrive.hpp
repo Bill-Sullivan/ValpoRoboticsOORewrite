@@ -21,65 +21,16 @@
  */
 
 #include "../../StandardHeader.hpp"
+#include "../SharedDefinitions.hpp"
 
 #include <Servo.h>
 
 #include "../DriveTrain.hpp"
 
-// mode definitions
-#undef DRIVING
-#define DRIVING         1
-
-#undef CALIBRATION
-#define CALIBRATION     2
-
-#undef KID
-#define KID             3
-
 #define MOTOR_1               7     //   1//-FRONT-\\4
 #define MOTOR_2               8     //     |       |
 #define MOTOR_3               9     //     |       |                                                                          <-- check this for accuracy
 #define MOTOR_4               10    //   2\\-------//3
-
-#undef KID_HANDICAP
-#define KID_HANDICAP          5     // when omni is in kids mode, speed is divided by 5 
-
-#define TURN_HANDICAP_AMOUNT  1     // divide turn speed by 1
-#define MAX_TURN 90                 // limit the value for turning for calculations to send final speed to motors
-
-#define DEFAULT_HANDICAP      1   // when not using boost, drive full speed
-#undef ALTERNATE_HANDICAP
-#define ALTERNATE_HANDICAP    3   // when using boost, divide speed by 3
-  
-
-#if !defined(MAX_DRIVE)
-	#define MAX_DRIVE             84    // limited because of issues with calibrating victors to full 0-180 range
-#endif
-#if !defined(ALTERNATE_HANDICAP)
-	#define ALTERNATE_HANDICAP    1    
-#endif
-#if !defined(DEFAULT_HANDICAP)
-  #define DEFAULT_HANDICAP      3     // when not using boost, speed is divided by 3
-#endif  
-#if !defined(KID_HANDICAP)
-  #define KID_HANDICAP          7     // when in kids mode, speed s divided by 7	
-#endif  
-  
-	
-  /*  these are to reverse the motor direction if a motor is wired backwards.
-   *  In almost every case, it would be better to fix the wiring than to change this in code
-   */
-
-#define BAG_MOTOR
-   
-#if defined(BAG_MOTOR)
-	#define LEFT_MOTOR_REVERSE    1     
-	#define RIGHT_MOTOR_REVERSE   -1     
-	#endif
-#if defined (_775_MOTOR) || defined(CIM_MOTOR) || defined(BANEBOTS_MOTOR)
-	#define LEFT_MOTOR_REVERSE    -1     
-	#define RIGHT_MOTOR_REVERSE   1 
-#endif
 
 class NewOmniDrive: public DriveTrain {
 protected:
@@ -112,8 +63,6 @@ protected:
 	* \brief variable that selects if robot is driving backwords
 	*/
 	int8_t inverting;
-	
-	float  motorReverse;
 	/**
 	* \brief motor power is divided by this variable for rotational motion
 	*/
@@ -126,6 +75,10 @@ protected:
 	* \brief motor power is divided by this variable for linear motion
 	*/
 	int8_t handicap;
+	/**
+	* \brief motor power is negated to drive the robot backwords
+	*/
+	int8_t motorReverse;
 	/**
 	* \brief Victors are modeled as servos
 	*/
@@ -147,9 +100,6 @@ public:
 	* \brief sets initial values of variables and motors
 	*/
 	void setup();
-
-	
-	
 };
 
 #include "NewOmniDrive.cpp"

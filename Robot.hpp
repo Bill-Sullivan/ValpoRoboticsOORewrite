@@ -43,7 +43,12 @@
 	#define MAX_TOTAL_PERIPERALS 10
 #endif
 
-#include "RoboticFootballLibraries.hpp"
+#if !defined(MRDC_ROBOT)
+  #include "RoboticFootballLibraries.hpp"
+#elif defined(ERNIE)
+  #include "ErnieLibraries.hpp"
+#endif
+
 
 class Robot {
 protected:

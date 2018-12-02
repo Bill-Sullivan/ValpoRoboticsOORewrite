@@ -13,8 +13,6 @@
  * the reader.  It is in a sense defined by the person who reads it
  * and otherwise does not exist in any real form. 
  *
- * \note Attempts at zen rarely work.
- *
  * \author  <!-- ((last to touch it) --> Bill Sullivan
  *
  * \version $Revision: 1.0 

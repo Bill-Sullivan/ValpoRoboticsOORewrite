@@ -14,6 +14,16 @@ void NewOmniDrive::handelInputs() {
 		
     rightInputX = map(PS3.getAnalogHat(RightHatX), 0, 255, -MAX_TURN, MAX_TURN); // Recieves PS3 rotation input 
 	
+	if (PS3.getButtonPress(L1))
+      {
+        motorReverse = -1;              // this is reversed
+      }
+      else
+      {
+        motorReverse = 1;
+        turnHandicap = 1;
+      }
+	
 	if (state == DRIVING) {
 	if (PS3.getButtonPress(R2)) {
 		handicap = ALTERNATE_HANDICAP; // TURBO!!!!!!!!!!!!!!
@@ -63,10 +73,10 @@ void NewOmniDrive::drive() {
 	if (turn < rightInputX)					turn++;				// Accelerates
     else if (turn> rightInputX)				turn--;             // Decelerates	
 	
-	motor1Drive	= ((                   + rightLeft - turn) / handicap) + motorCorrect + 90;
-	motor2Drive = ((-1*forwardBackword +           - turn) / handicap) + motorCorrect + 90;
-	motor3Drive = ((                   - rightLeft - turn) / handicap) + motorCorrect + 90;
-	motor4Drive = ((   forwardBackword +           - turn) / handicap) + motorCorrect + 90;
+	motor1Drive	= (((                   + rightLeft - turn) / handicap) + motorCorrect + 90) * motorReverse;
+	motor2Drive = (((-1*forwardBackword +           - turn) / handicap) + motorCorrect + 90) * motorReverse;
+	motor3Drive = (((                   - rightLeft - turn) / handicap) + motorCorrect + 90) * motorReverse;
+	motor4Drive = (((   forwardBackword +           - turn) / handicap) + motorCorrect + 90) * motorReverse;
 	
 	Serial.print("motor1Drive:");
 	Serial.println(motor1Drive);

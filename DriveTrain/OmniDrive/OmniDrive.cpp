@@ -19,7 +19,6 @@ void OmniDriveConrtoller::drive() {
   if (PS3.getButtonPress(L1))
       {
         motorReverse = M_PI;              // this is reversed
-        turnHandicap = TURN_HANDICAP_AMOUNT;
       }
       else
       {
@@ -135,16 +134,16 @@ void OmniDriveConrtoller::drive() {
 #endif
 
   motor4Drive = ((magn * (sin(angle + PI_OVER_4 + motorReverse)) / handicap)
-                + (float)(turnHandicap * turnInput) + 90 + motorCorrect);
+                + (float)(turnInput) + 90 + motorCorrect);
 
   motor1Drive = ((magn * (sin(angle + PI_OVER_4 + PI_OVER_2 + motorReverse)) / handicap)                          
-                + (float)(turnHandicap * turnInput) + 90 + motorCorrect);
+                + (float)(turnInput) + 90 + motorCorrect);
 
   motor2Drive = ((magn * (sin(angle + PI_OVER_4 + PI_OVER_2 + PI_OVER_2 + motorReverse)) / handicap)              
-                + (float)(turnHandicap * turnInput) + 90 + motorCorrect);
+                + (float)(turnInput) + 90 + motorCorrect);
 
   motor3Drive = ((magn * (sin(angle + PI_OVER_4 + PI_OVER_2 + PI_OVER_2 + PI_OVER_2 + motorReverse)) / handicap)  
-                + (float)(turnHandicap * turnInput) + 90 + motorCorrect);
+                + (float)(turnInput) + 90 + motorCorrect);
 
 #ifdef QB_TRACKING
   motor1Drive -= aimingFactor;

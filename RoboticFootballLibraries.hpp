@@ -3,7 +3,6 @@
 
 #include "DriveTrain/DriveTrain.hpp"
 #include "DriveTrain/BasicDrive/BasicDrive.hpp"
-#include "DriveTrain/BasicDrive/DualMotorBasicDrive/DualMotorBasicDrive.hpp"
 
 #include "DriveTrain/TestDrive/TestDrive.hpp"
 
