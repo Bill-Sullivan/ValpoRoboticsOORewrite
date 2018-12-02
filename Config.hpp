@@ -18,8 +18,7 @@
   #include "Parker.hpp"
 #endif
 
-
-#define QUARTERBACK
+//#define QUARTERBACK
 //#define LINEMAN
 //#define RECIEVER
 //#define RUNNINGBACK
