@@ -1,6 +1,0 @@
-var searchData=
-[
-  ['setcolor',['setColor',['../class_l_e_d.html#ad122ee4ef58452558498c249fc293870',1,'LED']]],
-  ['setup',['setup',['../class_basic_drive_controller.html#a511911167940331dcf369aaf925e9fde',1,'BasicDriveController::setup()'],['../class_drive_train.html#aa931301c0de26dddf04236dd539ab1df',1,'DriveTrain::setup()'],['../class_omni_drive_conrtoller.html#a5cc239719ab846de89fbb9709f7a65c2',1,'OmniDriveConrtoller::setup()'],['../class_peripheral.html#a3571b35c82ab213985cb1693be08904b',1,'Peripheral::setup()'],['../class_robot.html#a1fc37e3c329d59795f6adf44199d4df9',1,'Robot::setup()'],['../class_center.html#a0b3dfd6c02ca9e0331db19fbaa026626',1,'Center::setup()'],['../class_peripheral_name.html#aa6b1719095b6e25d80a2567f400316db',1,'PeripheralName::setup()'],['../class_kicker.html#a3b5caef78a0b6f07a37978763d42b131',1,'Kicker::setup()'],['../class_l_e_d.html#abb089672733ef180aa8cddc8d3a37d9e',1,'LED::setup()'],['../class_q_b_arm.html#abfef9dc751d9e484f480571aeb875a37',1,'QBArm::setup()'],['../class_tackle_seansor.html#a36060a6a6e62d3e4077fa29c49724ddc',1,'TackleSeansor::setup()']]],
-  ['state',['state',['../class_basic_drive_controller.html#af07886b0094095fdbc490df4d06b0e33',1,'BasicDriveController']]]
-];
