@@ -75,7 +75,9 @@ protected:
   * Stores an pointer to an LED class so that all peipherals that acces the LED (ie the Tackle Sensor)
   * access the same LED
   */
+  #if defined(LED_STRIP)
   LED* led; 
+  #endif
 
   /**
   * @brief Pointer to a DriveTrain its methods run because the pointer is populated

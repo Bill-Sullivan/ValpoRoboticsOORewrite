@@ -26,7 +26,8 @@
 #include "../SharedDefinitions.hpp"
 #include "../DriveTrain.hpp"
 
-#include <Servo.h>
+//#include <Servo.h>
+#include "../WheelPair.hpp"
 #include <EEPROM.h>
 
 #undef ARCADE_DRIVE 

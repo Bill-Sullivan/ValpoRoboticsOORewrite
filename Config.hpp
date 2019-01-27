@@ -1,4 +1,4 @@
-//#define ERNIE
+#define ERNIE
 //#define MARVIN
 //#define PARKER
 

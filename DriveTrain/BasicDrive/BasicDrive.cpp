@@ -8,11 +8,6 @@
 void BasicDriveController::eStop() {
 	leftMotor.writeMicroseconds(1500);
 	rightMotor.writeMicroseconds(1500);
-	
-	#ifdef DUAL_MOTORS
-	leftMotor2.writeMicroseconds(1500);
-	rightMotor2.writeMicroseconds(1500);
-	#endif
 }
 
 void BasicDriveController::handelInputs() {
@@ -152,10 +147,6 @@ const void BasicDriveController::arcadeDrive() {
  
     leftMotor.write(throttleL + 90);                // Sending values to the speed controllers
     rightMotor.write(throttleR + 90);
-    #ifdef DUAL_MOTORS
-      leftMotor2.write(throttleL + 90);                // Sending values to the speed controllers
-      rightMotor2.write(throttleR + 90);
-    #endif
 }
 
 const void BasicDriveController::tankDrive() {
@@ -205,11 +196,6 @@ const void BasicDriveController::tankDrive() {
 	
     leftMotor.write(throttleL + 90);                // Sending values to the speed controllers
     rightMotor.write(throttleR + 90);
-
-    #ifdef DUAL_MOTORS
-      leftMotor2.write(throttleL + 90);                // Sending values to the speed controllers
-      rightMotor2.write(throttleR + 90);
-    #endif
 }
 
 void BasicDriveController::setup() {
@@ -217,12 +203,7 @@ void BasicDriveController::setup() {
 	leftMotor.writeMicroseconds(1500);            //stopped
 	rightMotor.attach(RIGHT_MOTOR, 1000, 2000);
 	rightMotor.writeMicroseconds(1500);
-	#ifdef DUAL_MOTORS
-		leftMotor2.attach(LEFT_MOTOR2, 1000, 2000);
-		leftMotor2.writeMicroseconds(1500);
-		rightMotor2.attach(RIGHT_MOTOR2, 1000, 2000);
-		rightMotor2.writeMicroseconds(1500);
-	#endif
+	
 	if (EEPROM.read(0) == ARCADE_DRIVE || EEPROM.read(0) == TANK_DRIVE) {
 		driveCtrl = EEPROM.read(0);
 	}
