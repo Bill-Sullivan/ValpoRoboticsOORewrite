@@ -1,10 +1,6 @@
 #pragma once
 #include "BasicDrive.hpp"
 
-#define LEFT_MOTOR            9     // left motor is wired to pin 9
-#define RIGHT_MOTOR           10    // right motor is wired to pin 10
-
-
 void BasicDriveController::eStop() {
 	leftMotor.writeMicroseconds(1500);
 	rightMotor.writeMicroseconds(1500);
@@ -180,7 +176,7 @@ const void BasicDriveController::tankDrive() {
 	
  
     if (rightDrive < rightInputY)      rightDrive++;
-    else if (rightDrive > rightInputY) rightDrive--;                //Since this is tank drive it is not actually turning
+    else if (rightDrive > rightInputY) rightDrive--;
  
     throttleL = LEFT_MOTOR_REVERSE  * ((leftDrive) / handicap) + motorCorrect;
     // This is the final variable that
@@ -192,16 +188,27 @@ const void BasicDriveController::tankDrive() {
     else if (throttleL < -MAX_DRIVE)throttleL = -MAX_DRIVE;
     if (throttleR > MAX_DRIVE) 		throttleR = MAX_DRIVE;
     else if (throttleR < -MAX_DRIVE)throttleR = -MAX_DRIVE;
-	
+
 	
     leftMotor.write(throttleL + 90);                // Sending values to the speed controllers
-    rightMotor.write(throttleR + 90);
+	rightMotor.write(throttleR + 90);
+	
+	
+	
 }
 
 void BasicDriveController::setup() {
-	leftMotor.attach(LEFT_MOTOR, 1000, 2000);
-	leftMotor.writeMicroseconds(1500);            //stopped
+	#if !defined(DUAL_MOTORS)
+	Serial.println(LEFT_MOTOR);
+	Serial.println(RIGHT_MOTOR);
+	leftMotor.attach(LEFT_MOTOR, 1000, 2000);	
 	rightMotor.attach(RIGHT_MOTOR, 1000, 2000);
+	#else 
+	leftMotor.attach( LEFT_MOTOR,  LEFT_MOTOR2, 1000, 2000);	
+	rightMotor.attach(RIGHT_MOTOR, RIGHT_MOTOR2, 1000, 2000);	
+	#endif
+	
+	leftMotor.writeMicroseconds(1500);            //stopped
 	rightMotor.writeMicroseconds(1500);
 	
 	if (EEPROM.read(0) == ARCADE_DRIVE || EEPROM.read(0) == TANK_DRIVE) {

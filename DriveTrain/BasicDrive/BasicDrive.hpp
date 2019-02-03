@@ -49,13 +49,19 @@
   #define RIGHT_MOTOR_REVERSE   1 
 #endif
 
- 
-#define LEFT_MOTOR            9     // left motor is wired to pin 9
-#define RIGHT_MOTOR           10    // right motor is wired to pin 10
-
-#define LEFT_MOTOR2           7
-#define RIGHT_MOTOR2          8
-
+#if defined(MRDC_ROBOT) 
+	#define LEFT_MOTOR            10     // left motor is wired to pin 9
+	#define RIGHT_MOTOR           8    // right motor is wired to pin 10
+	
+	#define LEFT_MOTOR2           11
+	#define RIGHT_MOTOR2          9	
+#else 
+	#define LEFT_MOTOR            9     // left motor is wired to pin 9
+	#define RIGHT_MOTOR           10    // right motor is wired to pin 10
+	
+	#define LEFT_MOTOR2           7
+	#define RIGHT_MOTOR2          8
+#endif	
 
 
 class BasicDriveController: public DriveTrain {
@@ -134,11 +140,8 @@ public:
 	/**
 	* \brief Victors are modeled as servos
 	*/
-	Servo leftMotor, rightMotor;        // Define motor objects
-	#ifdef DUAL_MOTORS
-		Servo leftMotor2;
-		Servo rightMotor2;
-	#endif
+	Motor leftMotor;        // Define motor objects
+	Motor rightMotor;
 };
 
 #include "BasicDrive.cpp"
