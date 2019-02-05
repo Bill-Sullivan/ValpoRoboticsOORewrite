@@ -46,7 +46,7 @@ int DropDetector::getDistance() {
 
 void DropDetector::doThing() {	
   if (micros()-timeTriggered > TRIGGER_TIMEOUT) {
-	  triggered==false;
+	  triggered=false;
   }
   trigger();
   int distance = getDistance(); 
