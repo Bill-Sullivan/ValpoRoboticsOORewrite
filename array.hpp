@@ -37,7 +37,7 @@ namespace ValpoRobotics {
 		*/
 		T* pBegin = &(arr[0]);
 		/**
-		* \brief pointer to the unused avaliable position in the array
+		* \brief pointer to the nex unused avaliable position in the array
 		*/
 		T* pEnd = pBegin;		
 		/**

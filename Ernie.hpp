@@ -5,3 +5,5 @@
 #define DUAL_MOTORS
 
 #define CIM_MOTOR
+
+#define DROP_DETECTOR_1

@@ -28,11 +28,6 @@
 
 #include "StandardHeader.hpp"
 
-/*
-#include <StandardCplusplus.h> // this is nessissary because Arduino Doesn't inlude the full standard library by default
-// can be found here: https://github.com/maniacbug/StandardCplusplus
-#include <vector>
-*/
 #include "array.hpp"
 
 #include "Config.hpp"
@@ -69,9 +64,9 @@ protected:
 			}
 	}
   /**
-  * @brief Pointer to an LED no code rus from it mearly because it is here
+  * @brief Pointer to an LED 
   *
-  * Pointer to an LED no code rus from it mearly because it is here
+  * Pointer to an LED 
   * Stores an pointer to an LED class so that all peipherals that acces the LED (ie the Tackle Sensor)
   * access the same LED
   */
@@ -80,7 +75,7 @@ protected:
   #endif
 
   /**
-  * @brief Pointer to a DriveTrain its methods run because the pointer is populated
+  * @brief Pointer to a DriveTrain
   *
   * eStop is run when the controller is disconnected
   * doThing runs continously when the controller is connected
@@ -88,9 +83,9 @@ protected:
   */
 	DriveTrain* driveTrain;
  /**
-  * @brief Pointers to a Peripherals their methods run because the pointers are populated
+  * @brief Array of pointers to Peripherals
   *
-  * eStop is run when the controller is disconnected
+  * doNotConnectedThing is run when the controller is disconnected
   * doThing runs continously when the controller is connected
   * setup runs once when the microcontroller is turned on
   */
@@ -108,7 +103,7 @@ protected:
   */
 	void setup() {
 		//Begin Serial Communications
-   newconnect = false;
+		newconnect = false;
 		Serial.begin(115200);
 		if (Usb.Init() == -1)                 // this is for an error message with USB connections
 		{
@@ -126,8 +121,7 @@ protected:
       peripheralVec.push_back(new Center);
     #endif
     #if defined(KICKER_PERIPHERALS)
-      peripheralVec.push_back(new Kicker);
-      
+      peripheralVec.push_back(new Kicker);      
     #endif
     #if defined(TACKLE)
       #if !defined(LED_STRIP)
@@ -143,9 +137,11 @@ protected:
       peripheralVec.push_back(new QBArm);
     #endif
 
-    // add all peripals to peripheralVec
-    // Peripherals should have thier setup done in their constructors
-    // This means we dont need to do anything here to set them up
+    #if defined(DROP_DETECTOR_1) 
+      peripheralVec.push_back(new DropDetector);
+    #endif
+
+    // end add all peripals to peripheralVec
 
       // choose drive train
     #if defined(BASIC_DRIVETRAIN) && !defined(DUAL_MOTORS)
@@ -159,14 +155,14 @@ protected:
     #elif defined(TEST_DRIVETRAIN)
       driveTrain = new testDriveConrtoller;
     #else
-#error No Drive Train selected
+    #error No Drive Train selected
     #endif
 
    
-   driveTrain->setup();
-      for (Peripheral* peripheral : peripheralVec) {
-       peripheral->setup();
-   }
+    driveTrain->setup();
+    for (Peripheral* peripheral : peripheralVec) {
+      peripheral->setup();
+    }
       
    #if defined(LED_STRIP)
         led->setup();

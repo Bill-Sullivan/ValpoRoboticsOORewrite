@@ -22,7 +22,7 @@ void BasicDriveController::handelInputs() {
         handicap = KID_HANDICAP;
     }
 	
-	if (PS3.getButtonClick(SELECT)) //Switch between tank drive and arcade mode. 0 is arcade 1 is tank
+	if (PS3.getButtonClick(SELECT))
 	{
 		if (PS3.getButtonPress(L1)) {
 			if (driveCtrl == ARCADE_DRIVE) {
@@ -148,7 +148,7 @@ const void BasicDriveController::arcadeDrive() {
 const void BasicDriveController::tankDrive() {
 	int throttleL, throttleR;
 	static int8_t leftDrive, rightDrive = 0;
- 
+		
     // forward/backward input
     // sets it to an inverted
     // scale of 90 to -90
@@ -193,14 +193,15 @@ const void BasicDriveController::tankDrive() {
     leftMotor.write(throttleL + 90);                // Sending values to the speed controllers
 	rightMotor.write(throttleR + 90);
 	
-	
+	if (throttleL != 0) {
+	  Serial.print("left");
+	  Serial.println(throttleL);
+	}
 	
 }
 
 void BasicDriveController::setup() {
 	#if !defined(DUAL_MOTORS)
-	Serial.println(LEFT_MOTOR);
-	Serial.println(RIGHT_MOTOR);
 	leftMotor.attach(LEFT_MOTOR, 1000, 2000);	
 	rightMotor.attach(RIGHT_MOTOR, 1000, 2000);
 	#else 

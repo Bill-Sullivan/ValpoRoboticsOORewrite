@@ -65,7 +65,6 @@
 
 
 class BasicDriveController: public DriveTrain {
-	// to do check if volitile is nessessary before driveCtrl
 protected:
 	/**
 	* \brief Flag that selects weather the robot is using Tank or Arcade control
@@ -73,6 +72,8 @@ protected:
 	int driveCtrl;
 	/**
 	* \brief Flag that selects weather the robot is using kid or normal handcap
+	* Enter/Exit Kids mode by pressing start
+	* Kids mode makes the robot move slowly enough that it is safe to let a two year old drive it with minimal supervision.
 	*/
 	uint8_t state;
 	/**
@@ -97,7 +98,7 @@ protected:
 	const void tankDrive();
 	
 	/**
-	* \brief function that handels inputs not directly related to stearing
+	* \brief function that handels inputs 
 	*/
 	void handelInputs();
 	
@@ -128,7 +129,10 @@ public:
 	void eStop();
 	/**	
 	*
-	* \brief the implementation of doThing should implement what happens when the controller is connected
+	* \brief doThing controls the calls functions that handel inputs and control motors 
+	* calls functions that handel inputs and places those inputs into variables to be used later
+	* Then selects which control mode to use based on user input
+	* then calls a drivetrain funcion
 	*/
 	void doThing();
 	/**	
@@ -138,7 +142,7 @@ public:
 	void setup();
 	
 	/**
-	* \brief Victors are modeled as servos
+	* \brief Victors are modeled as Motors
 	*/
 	Motor leftMotor;        // Define motor objects
 	Motor rightMotor;

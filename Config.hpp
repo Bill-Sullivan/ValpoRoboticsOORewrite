@@ -1,4 +1,4 @@
-//#define ERNIE
+#define ERNIE
 //#define MARVIN
 //#define PARKER
 
@@ -22,12 +22,12 @@
 //#define LINEMAN
 //#define RECIEVER
 //#define RUNNINGBACK
-#define CENTER
+//#define CENTER
 //#define NONQB_OMNI
 //#define KICKER
 
 //#define CIM_MOTOR
-#define _775_MOTOR
+//#define _775_MOTOR
 //#define BANEBOTS_MOTOR
 
 //#define BAG_MOTOR
