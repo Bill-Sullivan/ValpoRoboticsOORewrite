@@ -1,0 +1,100 @@
+\hypertarget{class_basic_drive_controller}{}\section{Basic\+Drive\+Controller Class Reference}
+\label{class_basic_drive_controller}\index{Basic\+Drive\+Controller@{Basic\+Drive\+Controller}}
+
+
+This is the basic drivetrain that most robots use Used for most two motor robots.  
+
+
+
+
+{\ttfamily \#include $<$Basic\+Drive.\+hpp$>$}
+
+Inheritance diagram for Basic\+Drive\+Controller\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_basic_drive_controller}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_basic_drive_controller_a460f99786b7e701d72a91466f5cc8041}\label{class_basic_drive_controller_a460f99786b7e701d72a91466f5cc8041}} 
+void \mbox{\hyperlink{class_basic_drive_controller_a460f99786b7e701d72a91466f5cc8041}{e\+Stop}} ()
+\begin{DoxyCompactList}\small\item\em stop the robot so in the event control is lost controls what happens when the controller disconnects Make sure this code results in the robot stopping or we will break anouther door \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_basic_drive_controller_a11b639d12205bb597f07206df6721950}\label{class_basic_drive_controller_a11b639d12205bb597f07206df6721950}} 
+void \mbox{\hyperlink{class_basic_drive_controller_a11b639d12205bb597f07206df6721950}{do\+Thing}} ()
+\begin{DoxyCompactList}\small\item\em do\+Thing controls the calls functions that handel inputs and control motors calls functions that handel inputs and places those inputs into variables to be used later Then selects which control mode to use based on user input then calls a drivetrain funcion \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_basic_drive_controller_a511911167940331dcf369aaf925e9fde}\label{class_basic_drive_controller_a511911167940331dcf369aaf925e9fde}} 
+void \mbox{\hyperlink{class_basic_drive_controller_a511911167940331dcf369aaf925e9fde}{setup}} ()
+\begin{DoxyCompactList}\small\item\em sets initial values of variables and motors \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_basic_drive_controller_a445c2c05f8d0096c27a8778f55735cec}\label{class_basic_drive_controller_a445c2c05f8d0096c27a8778f55735cec}} 
+\mbox{\hyperlink{class_motor}{Motor}} \mbox{\hyperlink{class_basic_drive_controller_a445c2c05f8d0096c27a8778f55735cec}{left\+Motor}}
+\begin{DoxyCompactList}\small\item\em Victors are modeled as Motors. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_basic_drive_controller_aa7a52433c7991724f24d317fae6805a9}\label{class_basic_drive_controller_aa7a52433c7991724f24d317fae6805a9}} 
+\mbox{\hyperlink{class_motor}{Motor}} {\bfseries right\+Motor}
+\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_basic_drive_controller_ae934462a6e905bd1660cdf6c307d779e}\label{class_basic_drive_controller_ae934462a6e905bd1660cdf6c307d779e}} 
+const void \mbox{\hyperlink{class_basic_drive_controller_ae934462a6e905bd1660cdf6c307d779e}{arcade\+Drive}} ()
+\begin{DoxyCompactList}\small\item\em function that controls how the robot controls under arcade controls \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_basic_drive_controller_ac454ab3b1872cc84138f29c4574680ef}\label{class_basic_drive_controller_ac454ab3b1872cc84138f29c4574680ef}} 
+const void \mbox{\hyperlink{class_basic_drive_controller_ac454ab3b1872cc84138f29c4574680ef}{tank\+Drive}} ()
+\begin{DoxyCompactList}\small\item\em function that controls how the robot controls under tank controls \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_basic_drive_controller_a6c5c51282655efdf990d6d01f7a36449}\label{class_basic_drive_controller_a6c5c51282655efdf990d6d01f7a36449}} 
+void \mbox{\hyperlink{class_basic_drive_controller_a6c5c51282655efdf990d6d01f7a36449}{handel\+Inputs}} ()
+\begin{DoxyCompactList}\small\item\em function that handels inputs \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_basic_drive_controller_a02d070214ca3ae4153b36d46b4b71318}\label{class_basic_drive_controller_a02d070214ca3ae4153b36d46b4b71318}} 
+void \mbox{\hyperlink{class_basic_drive_controller_a02d070214ca3ae4153b36d46b4b71318}{invert\+Inputs}} ()
+\begin{DoxyCompactList}\small\item\em invert inputs if inverting is true \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_basic_drive_controller_a5ad8d9c49caf2e2e373e4ba61502e3a3}\label{class_basic_drive_controller_a5ad8d9c49caf2e2e373e4ba61502e3a3}} 
+int \mbox{\hyperlink{class_basic_drive_controller_a5ad8d9c49caf2e2e373e4ba61502e3a3}{drive\+Ctrl}}
+\begin{DoxyCompactList}\small\item\em Flag that selects weather the robot is using Tank or Arcade control. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_basic_drive_controller_af07886b0094095fdbc490df4d06b0e33}\label{class_basic_drive_controller_af07886b0094095fdbc490df4d06b0e33}} 
+uint8\+\_\+t \mbox{\hyperlink{class_basic_drive_controller_af07886b0094095fdbc490df4d06b0e33}{state}}
+\begin{DoxyCompactList}\small\item\em Flag that selects weather the robot is using kid or normal handcap Enter/\+Exit Kids mode by pressing start Kids mode makes the robot move slowly enough that it is safe to let a two year old drive it with minimal supervision. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_basic_drive_controller_a5ea443561f5c7f79d86264a8fa9f107f}\label{class_basic_drive_controller_a5ea443561f5c7f79d86264a8fa9f107f}} 
+int \mbox{\hyperlink{class_basic_drive_controller_a5ea443561f5c7f79d86264a8fa9f107f}{motor\+Correct}}
+\begin{DoxyCompactList}\small\item\em variable that corrects for diffrences between each motor (Mostly irrlevent since bainbots moters were replaced) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_basic_drive_controller_ae7b248880cef70b4e97037d9c0dcc00c}\label{class_basic_drive_controller_ae7b248880cef70b4e97037d9c0dcc00c}} 
+uint8\+\_\+t \mbox{\hyperlink{class_basic_drive_controller_ae7b248880cef70b4e97037d9c0dcc00c}{inverting}}
+\begin{DoxyCompactList}\small\item\em variable that selects if robot is driving backwords \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_basic_drive_controller_af011f366ab009c2567c516575926b281}\label{class_basic_drive_controller_af011f366ab009c2567c516575926b281}} 
+uint8\+\_\+t \mbox{\hyperlink{class_basic_drive_controller_af011f366ab009c2567c516575926b281}{handicap}}
+\begin{DoxyCompactList}\small\item\em motor power is divided by this variable \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_basic_drive_controller_a38c5c5e01542b9496643d54a6b1d489b}\label{class_basic_drive_controller_a38c5c5e01542b9496643d54a6b1d489b}} 
+int \mbox{\hyperlink{class_basic_drive_controller_a38c5c5e01542b9496643d54a6b1d489b}{right\+InputY}}
+\begin{DoxyCompactList}\small\item\em right stick\textquotesingle{}s up/down input \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_basic_drive_controller_a4506e85e8e9ae30629838b0bde6f14c6}\label{class_basic_drive_controller_a4506e85e8e9ae30629838b0bde6f14c6}} 
+int \mbox{\hyperlink{class_basic_drive_controller_a4506e85e8e9ae30629838b0bde6f14c6}{left\+InputY}}
+\begin{DoxyCompactList}\small\item\em left stick\textquotesingle{}s up/down input \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_basic_drive_controller_a82a214d753ed348d9cea96fa5e23fb8b}\label{class_basic_drive_controller_a82a214d753ed348d9cea96fa5e23fb8b}} 
+int \mbox{\hyperlink{class_basic_drive_controller_a82a214d753ed348d9cea96fa5e23fb8b}{right\+InputX}}
+\begin{DoxyCompactList}\small\item\em right stick\textquotesingle{}s left/right input \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This is the basic drivetrain that most robots use Used for most two motor robots. 
+
+\begin{DoxyAuthor}{Author}
+Bill Sullivan
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+\$\+Revision\+: 1.\+0
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2018/08/15 14\+:16\+:20
+\end{DoxyDate}
+Created on\+: 2018/04/14 14\+:16\+:20 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Drive\+Train/\+Basic\+Drive/Basic\+Drive.\+hpp\item 
+Drive\+Train/\+Basic\+Drive/Basic\+Drive.\+cpp\end{DoxyCompactItemize}

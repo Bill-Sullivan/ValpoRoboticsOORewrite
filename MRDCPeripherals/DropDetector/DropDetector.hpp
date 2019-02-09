@@ -1,7 +1,7 @@
 #pragma once
 
 /**
- * \class PeripheralName
+ * \class DropDetector
  *
  * \ingroup Peripherals
  * <!-- (Note, this needs exactly one \defgroup somewhere) -->

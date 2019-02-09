@@ -25,12 +25,10 @@ void \mbox{\hyperlink{class_robot_aca73cd3e3582f49cc0b33ee900cbc245}{new\+Connec
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
-L\+ED $\ast$ \mbox{\hyperlink{class_robot_a28c6c49c9a12c8767e118e0e8a4165cf}{led}}
-\begin{DoxyCompactList}\small\item\em Pointer to an L\+ED no code rus from it mearly because it is here. \end{DoxyCompactList}\item 
-Drive\+Train $\ast$ \mbox{\hyperlink{class_robot_a4b499841182a38720a26a493fa98363a}{drive\+Train}}
-\begin{DoxyCompactList}\small\item\em Pointer to a Drive\+Train its methods run because the pointer is populated. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_drive_train}{Drive\+Train}} $\ast$ \mbox{\hyperlink{class_robot_a4b499841182a38720a26a493fa98363a}{drive\+Train}}
+\begin{DoxyCompactList}\small\item\em Pointer to an \mbox{\hyperlink{class_l_e_d}{L\+ED}}. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_valpo_robotics_1_1array}{Valpo\+Robotics\+::array}}$<$ \mbox{\hyperlink{class_peripheral}{Peripheral}} $\ast$, M\+A\+X\+\_\+\+T\+O\+T\+A\+L\+\_\+\+P\+E\+R\+I\+P\+E\+R\+A\+LS $>$ \mbox{\hyperlink{class_robot_a8db438771a3e7dc9d2cf5dd2e1d25f74}{peripheral\+Vec}}
-\begin{DoxyCompactList}\small\item\em Pointers to a Peripherals their methods run because the pointers are populated. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Array of pointers to Peripherals. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_robot_a19c7a18705cf4bc4359f5ba12c3541d8}\label{class_robot_a19c7a18705cf4bc4359f5ba12c3541d8}} 
 bool \mbox{\hyperlink{class_robot_a19c7a18705cf4bc4359f5ba12c3541d8}{newconnect}}
 \begin{DoxyCompactList}\small\item\em variable that tracks if the controller is connected \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -88,23 +86,15 @@ Function that runs when P\+S3 Controller connects Function tells rest of the fir
 \index{Robot@{Robot}!drive\+Train@{drive\+Train}}
 \index{drive\+Train@{drive\+Train}!Robot@{Robot}}
 \subsubsection{\texorpdfstring{drive\+Train}{driveTrain}}
-{\footnotesize\ttfamily Drive\+Train$\ast$ Robot\+::drive\+Train\hspace{0.3cm}{\ttfamily [protected]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_drive_train}{Drive\+Train}}$\ast$ Robot\+::drive\+Train\hspace{0.3cm}{\ttfamily [protected]}}
 
 
 
-Pointer to a Drive\+Train its methods run because the pointer is populated. 
+Pointer to an \mbox{\hyperlink{class_l_e_d}{L\+ED}}. 
 
-e\+Stop is run when the controller is disconnected do\+Thing runs continously when the controller is connected setup runs once when the microcontroller is turned on \mbox{\Hypertarget{class_robot_a28c6c49c9a12c8767e118e0e8a4165cf}\label{class_robot_a28c6c49c9a12c8767e118e0e8a4165cf}} 
-\index{Robot@{Robot}!led@{led}}
-\index{led@{led}!Robot@{Robot}}
-\subsubsection{\texorpdfstring{led}{led}}
-{\footnotesize\ttfamily L\+ED$\ast$ Robot\+::led\hspace{0.3cm}{\ttfamily [protected]}}
+Pointer to an \mbox{\hyperlink{class_l_e_d}{L\+ED}} Stores an pointer to an \mbox{\hyperlink{class_l_e_d}{L\+ED}} class so that all peipherals that acces the \mbox{\hyperlink{class_l_e_d}{L\+ED}} (ie the Tackle Sensor) access the same \mbox{\hyperlink{class_l_e_d}{L\+ED}} Pointer to a \mbox{\hyperlink{class_drive_train}{Drive\+Train}}
 
-
-
-Pointer to an L\+ED no code rus from it mearly because it is here. 
-
-Pointer to an L\+ED no code rus from it mearly because it is here Stores an pointer to an L\+ED class so that all peipherals that acces the L\+ED (ie the Tackle Sensor) access the same L\+ED \mbox{\Hypertarget{class_robot_a8db438771a3e7dc9d2cf5dd2e1d25f74}\label{class_robot_a8db438771a3e7dc9d2cf5dd2e1d25f74}} 
+e\+Stop is run when the controller is disconnected do\+Thing runs continously when the controller is connected setup runs once when the microcontroller is turned on \mbox{\Hypertarget{class_robot_a8db438771a3e7dc9d2cf5dd2e1d25f74}\label{class_robot_a8db438771a3e7dc9d2cf5dd2e1d25f74}} 
 \index{Robot@{Robot}!peripheral\+Vec@{peripheral\+Vec}}
 \index{peripheral\+Vec@{peripheral\+Vec}!Robot@{Robot}}
 \subsubsection{\texorpdfstring{peripheral\+Vec}{peripheralVec}}
@@ -112,9 +102,9 @@ Pointer to an L\+ED no code rus from it mearly because it is here Stores an poin
 
 
 
-Pointers to a Peripherals their methods run because the pointers are populated. 
+Array of pointers to Peripherals. 
 
-e\+Stop is run when the controller is disconnected do\+Thing runs continously when the controller is connected setup runs once when the microcontroller is turned on 
+do\+Not\+Connected\+Thing is run when the controller is disconnected do\+Thing runs continously when the controller is connected setup runs once when the microcontroller is turned on 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 

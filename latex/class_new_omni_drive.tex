@@ -1,0 +1,77 @@
+\hypertarget{class_new_omni_drive}{}\section{New\+Omni\+Drive Class Reference}
+\label{class_new_omni_drive}\index{New\+Omni\+Drive@{New\+Omni\+Drive}}
+Inheritance diagram for New\+Omni\+Drive\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_new_omni_drive}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_new_omni_drive_a797de6052c568bd7f664735990d3c9e3}\label{class_new_omni_drive_a797de6052c568bd7f664735990d3c9e3}} 
+void \mbox{\hyperlink{class_new_omni_drive_a797de6052c568bd7f664735990d3c9e3}{e\+Stop}} ()
+\begin{DoxyCompactList}\small\item\em stop the robot so in the event control is lost controls what happens when the controller disconnects Make sure this code results in the robot stopping or we will break anouther door \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_new_omni_drive_a22f05bdd45839ef398b3933d34b70f1e}\label{class_new_omni_drive_a22f05bdd45839ef398b3933d34b70f1e}} 
+void \mbox{\hyperlink{class_new_omni_drive_a22f05bdd45839ef398b3933d34b70f1e}{do\+Thing}} ()
+\begin{DoxyCompactList}\small\item\em the implementation of do\+Thing should implement what happens when the controller is connected \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_new_omni_drive_a6a3e663747507f94db0ad91428a64732}\label{class_new_omni_drive_a6a3e663747507f94db0ad91428a64732}} 
+void \mbox{\hyperlink{class_new_omni_drive_a6a3e663747507f94db0ad91428a64732}{setup}} ()
+\begin{DoxyCompactList}\small\item\em sets initial values of variables and motors \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_new_omni_drive_a181b752b0907c43da6b6bccb5b6b1106}\label{class_new_omni_drive_a181b752b0907c43da6b6bccb5b6b1106}} 
+void \mbox{\hyperlink{class_new_omni_drive_a181b752b0907c43da6b6bccb5b6b1106}{drive}} ()
+\begin{DoxyCompactList}\small\item\em function that controls the robot \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_new_omni_drive_ab3fd088274c17cb1fc7b2739e31a80a0}\label{class_new_omni_drive_ab3fd088274c17cb1fc7b2739e31a80a0}} 
+void \mbox{\hyperlink{class_new_omni_drive_ab3fd088274c17cb1fc7b2739e31a80a0}{handel\+Inputs}} ()
+\begin{DoxyCompactList}\small\item\em function that takes input from the P\+S3 Controller and stores it for further use \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_new_omni_drive_aa2f01ecabdb5766da6a691f26a6fe5be}\label{class_new_omni_drive_aa2f01ecabdb5766da6a691f26a6fe5be}} 
+int \mbox{\hyperlink{class_new_omni_drive_aa2f01ecabdb5766da6a691f26a6fe5be}{right\+InputX}}
+\begin{DoxyCompactList}\small\item\em right stick\textquotesingle{}s left/right input \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_new_omni_drive_ab1710989ddfe9884e17ed2423c2d9073}\label{class_new_omni_drive_ab1710989ddfe9884e17ed2423c2d9073}} 
+int \mbox{\hyperlink{class_new_omni_drive_ab1710989ddfe9884e17ed2423c2d9073}{left\+InputY}}
+\begin{DoxyCompactList}\small\item\em left stick\textquotesingle{}s up/down input \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_new_omni_drive_a83c8d2a3e3ab81400c25da275401d2cd}\label{class_new_omni_drive_a83c8d2a3e3ab81400c25da275401d2cd}} 
+int \mbox{\hyperlink{class_new_omni_drive_a83c8d2a3e3ab81400c25da275401d2cd}{left\+InputX}}
+\begin{DoxyCompactList}\small\item\em left stick\textquotesingle{}s left/right input \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_new_omni_drive_a5b93d59164f3c82569c1b867e0c1eaf8}\label{class_new_omni_drive_a5b93d59164f3c82569c1b867e0c1eaf8}} 
+int \mbox{\hyperlink{class_new_omni_drive_a5b93d59164f3c82569c1b867e0c1eaf8}{motor\+Correct}}
+\begin{DoxyCompactList}\small\item\em variable that corrects for diffrences between each motor (Mostly irrlevent since bainbots moters were replaced) \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_new_omni_drive_a5d1e00b5f6eae8774c31373db65a8b0a}\label{class_new_omni_drive_a5d1e00b5f6eae8774c31373db65a8b0a}} 
+int8\+\_\+t \mbox{\hyperlink{class_new_omni_drive_a5d1e00b5f6eae8774c31373db65a8b0a}{inverting}}
+\begin{DoxyCompactList}\small\item\em variable that selects if robot is driving backwords \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_new_omni_drive_a405c32662c2d74af0c0281426565ff26}\label{class_new_omni_drive_a405c32662c2d74af0c0281426565ff26}} 
+int8\+\_\+t \mbox{\hyperlink{class_new_omni_drive_a405c32662c2d74af0c0281426565ff26}{turn\+Handicap}}
+\begin{DoxyCompactList}\small\item\em motor power is divided by this variable for rotational motion \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_new_omni_drive_adda5dd62e14f2f4d83d384fcd6de59f1}\label{class_new_omni_drive_adda5dd62e14f2f4d83d384fcd6de59f1}} 
+uint8\+\_\+t \mbox{\hyperlink{class_new_omni_drive_adda5dd62e14f2f4d83d384fcd6de59f1}{state}}
+\begin{DoxyCompactList}\small\item\em Flag that selects weather the robot is using kid or normal handcap. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_new_omni_drive_a1b01aea581c9e63e6e5ee986530e55ae}\label{class_new_omni_drive_a1b01aea581c9e63e6e5ee986530e55ae}} 
+int8\+\_\+t \mbox{\hyperlink{class_new_omni_drive_a1b01aea581c9e63e6e5ee986530e55ae}{handicap}}
+\begin{DoxyCompactList}\small\item\em motor power is divided by this variable for linear motion \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_new_omni_drive_ac11c87087afd9c322833372069e99255}\label{class_new_omni_drive_ac11c87087afd9c322833372069e99255}} 
+int8\+\_\+t \mbox{\hyperlink{class_new_omni_drive_ac11c87087afd9c322833372069e99255}{motor\+Reverse}}
+\begin{DoxyCompactList}\small\item\em motor power is negated to drive the robot backwords \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_new_omni_drive_a99ea81e5a6c1bbdaaab8d75de66a7f07}\label{class_new_omni_drive_a99ea81e5a6c1bbdaaab8d75de66a7f07}} 
+Servo \mbox{\hyperlink{class_new_omni_drive_a99ea81e5a6c1bbdaaab8d75de66a7f07}{motor1}}
+\begin{DoxyCompactList}\small\item\em Victors are modeled as servos. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_new_omni_drive_ad7de79e2ee9a6f5c08a6e9cd34a08c02}\label{class_new_omni_drive_ad7de79e2ee9a6f5c08a6e9cd34a08c02}} 
+Servo {\bfseries motor2}
+\item 
+\mbox{\Hypertarget{class_new_omni_drive_a9a9557669e6ba43ffc496e55cbc296f1}\label{class_new_omni_drive_a9a9557669e6ba43ffc496e55cbc296f1}} 
+Servo {\bfseries motor3}
+\item 
+\mbox{\Hypertarget{class_new_omni_drive_a9386d2b995b7ed02a69dbc18ac1bea42}\label{class_new_omni_drive_a9386d2b995b7ed02a69dbc18ac1bea42}} 
+Servo {\bfseries motor4}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Drive\+Train/\+New\+Omni\+Drive/New\+Omni\+Drive.\+hpp\item 
+Drive\+Train/\+New\+Omni\+Drive/New\+Omni\+Drive.\+cpp\end{DoxyCompactItemize}

@@ -1,11 +1,18 @@
+/*
+	This ino file only exists call robot.setup and robot.loop in a way the arduino ide will tolerate.
+*/
+
+
 #include "Robot.hpp"
 #include "StandardHeader.hpp"
 
+// increase the optimization level of the compiler
 #pragma GCC optimize ("-O2")
 
 Robot robot;
 
 double approxAverage (double new_value) {
+	// no idea how this works taken from the internet and seams to work
     static double oldValue = 0;
     double alpha = 0.8;
     oldValue = (alpha * new_value) + (1.0 - alpha) * oldValue;

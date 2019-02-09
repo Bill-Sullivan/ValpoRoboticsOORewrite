@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['robot',['Robot',['../class_robot.html',1,'']]]
+  ['center',['Center',['../class_center.html',1,'']]]
 ];

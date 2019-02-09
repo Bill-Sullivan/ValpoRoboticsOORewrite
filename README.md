@@ -1,5 +1,6 @@
 Robotic-Football-All-In-Many
 =====
+Use Instructions:
 
 This is the multi-file code for the robotic football team. The design philosophy behind this project is to divide the code amoung a number of classes to make it easy to maintain and share code between robots. The abilities of the robot to be programmed are then chosen from a list of define statements in config.hpp, like so:
 
@@ -109,3 +110,47 @@ This example does the same thing as the above example.
     - Kicker - currently uses basic drivetrain
     - _CROSS_ - kick
     - _TRIANGLE_ - reload
+	
+	Controls for the current MRDC Robots:
+	[Ernie's Controls](ErnieControls.md)
+	
+	MarvinControls.md
+	
+	ParkerControls.md	
+	
+__________________________________________________________________
+
+To create a new peripheral 
+
+First copy the example peripheral folder to where you want to place your peripheral usually somewhere in MRDCPeripherals or RoboticFootballPeripherals
+
+
+Second implement the fallowing methods 
+each peripheral's instance of each method will run sequentally with the robot's other peripherals if any
+            
+The Setup               method should contain code to run once when the microcontroller turns on
+
+The doThing             method should contain code to run continuously when the controller is connected
+
+The doNotConnectedThing method should contain code to run continuously when the controller is disconnected and should stop any motors or other devices that could hurt a human opperator
+
+Third rename your class in its decleration and in the /class in the comment box up top.
+
+Third include your peripherals .hpp file in either RoboticFootballLibraries.hpp or the appropreate MRDC robot RobotNameLibraries.hpp file i.e: ErnieLibraries.hpp
+
+Fourth in Robot.hpp add your Peripheral to peripheralVec
+
+To do this look for a series of statements in the setup method that look roughtly like this:
+
+In config.hpp:
+````c++
+#if defined(YOUR_PERIPHERAL) 
+  peripheralVec.push_back(new YourPeripheral);
+#endif
+````
+
+and replace YOUR_PERIPHERAL with your peripherals name in a similar format 
+
+and replace YourPeripheral  with your peripherals name in a similar format 
+
+The code you wrote in the your peripheral should now run

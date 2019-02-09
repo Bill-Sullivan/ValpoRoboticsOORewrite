@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['peripheral',['Peripheral',['../class_peripheral.html',1,'']]]
+  ['basicdrivecontroller',['BasicDriveController',['../class_basic_drive_controller.html',1,'']]]
 ];

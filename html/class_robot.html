@@ -94,14 +94,11 @@ Protected Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:a28c6c49c9a12c8767e118e0e8a4165cf"><td class="memItemLeft" align="right" valign="top">LED *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a28c6c49c9a12c8767e118e0e8a4165cf">led</a></td></tr>
-<tr class="memdesc:a28c6c49c9a12c8767e118e0e8a4165cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to an LED no code rus from it mearly because it is here.  <a href="#a28c6c49c9a12c8767e118e0e8a4165cf">More...</a><br /></td></tr>
-<tr class="separator:a28c6c49c9a12c8767e118e0e8a4165cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4b499841182a38720a26a493fa98363a"><td class="memItemLeft" align="right" valign="top">DriveTrain *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a4b499841182a38720a26a493fa98363a">driveTrain</a></td></tr>
-<tr class="memdesc:a4b499841182a38720a26a493fa98363a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to a DriveTrain its methods run because the pointer is populated.  <a href="#a4b499841182a38720a26a493fa98363a">More...</a><br /></td></tr>
+<tr class="memitem:a4b499841182a38720a26a493fa98363a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_drive_train.html">DriveTrain</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a4b499841182a38720a26a493fa98363a">driveTrain</a></td></tr>
+<tr class="memdesc:a4b499841182a38720a26a493fa98363a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to an <a class="el" href="class_l_e_d.html" title="This class controls the robots LEDs. ">LED</a>.  <a href="#a4b499841182a38720a26a493fa98363a">More...</a><br /></td></tr>
 <tr class="separator:a4b499841182a38720a26a493fa98363a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8db438771a3e7dc9d2cf5dd2e1d25f74"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_valpo_robotics_1_1array.html">ValpoRobotics::array</a>&lt; <a class="el" href="class_peripheral.html">Peripheral</a> *, MAX_TOTAL_PERIPERALS &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a8db438771a3e7dc9d2cf5dd2e1d25f74">peripheralVec</a></td></tr>
-<tr class="memdesc:a8db438771a3e7dc9d2cf5dd2e1d25f74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointers to a Peripherals their methods run because the pointers are populated.  <a href="#a8db438771a3e7dc9d2cf5dd2e1d25f74">More...</a><br /></td></tr>
+<tr class="memdesc:a8db438771a3e7dc9d2cf5dd2e1d25f74"><td class="mdescLeft">&#160;</td><td class="mdescRight">Array of pointers to Peripherals.  <a href="#a8db438771a3e7dc9d2cf5dd2e1d25f74">More...</a><br /></td></tr>
 <tr class="separator:a8db438771a3e7dc9d2cf5dd2e1d25f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a19c7a18705cf4bc4359f5ba12c3541d8"><td class="memItemLeft" align="right" valign="top"><a id="a19c7a18705cf4bc4359f5ba12c3541d8"></a>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_robot.html#a19c7a18705cf4bc4359f5ba12c3541d8">newconnect</a></td></tr>
@@ -185,7 +182,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">DriveTrain* Robot::driveTrain</td>
+          <td class="memname"><a class="el" href="class_drive_train.html">DriveTrain</a>* Robot::driveTrain</td>
         </tr>
       </table>
   </td>
@@ -195,33 +192,9 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table>
 </div><div class="memdoc">
 
-<p>Pointer to a DriveTrain its methods run because the pointer is populated. </p>
+<p>Pointer to an <a class="el" href="class_l_e_d.html" title="This class controls the robots LEDs. ">LED</a>. </p>
+<p>Pointer to an <a class="el" href="class_l_e_d.html" title="This class controls the robots LEDs. ">LED</a> Stores an pointer to an <a class="el" href="class_l_e_d.html" title="This class controls the robots LEDs. ">LED</a> class so that all peipherals that acces the <a class="el" href="class_l_e_d.html" title="This class controls the robots LEDs. ">LED</a> (ie the Tackle Sensor) access the same <a class="el" href="class_l_e_d.html" title="This class controls the robots LEDs. ">LED</a> Pointer to a <a class="el" href="class_drive_train.html" title="This class is the parent class for all other drive trains. ">DriveTrain</a></p>
 <p>eStop is run when the controller is disconnected doThing runs continously when the controller is connected setup runs once when the microcontroller is turned on </p>
-
-</div>
-</div>
-<a id="a28c6c49c9a12c8767e118e0e8a4165cf"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a28c6c49c9a12c8767e118e0e8a4165cf">&#9670;&nbsp;</a></span>led</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">LED* Robot::led</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Pointer to an LED no code rus from it mearly because it is here. </p>
-<p>Pointer to an LED no code rus from it mearly because it is here Stores an pointer to an LED class so that all peipherals that acces the LED (ie the Tackle Sensor) access the same LED </p>
 
 </div>
 </div>
@@ -245,8 +218,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 </table>
 </div><div class="memdoc">
 
-<p>Pointers to a Peripherals their methods run because the pointers are populated. </p>
-<p>eStop is run when the controller is disconnected doThing runs continously when the controller is connected setup runs once when the microcontroller is turned on </p>
+<p>Array of pointers to Peripherals. </p>
+<p>doNotConnectedThing is run when the controller is disconnected doThing runs continously when the controller is connected setup runs once when the microcontroller is turned on </p>
 
 </div>
 </div>

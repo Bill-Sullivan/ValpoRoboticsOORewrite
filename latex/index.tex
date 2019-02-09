@@ -1,0 +1,174 @@
+Use Instructions\+:
+
+This is the multi-\/file code for the robotic football team. The design philosophy behind this project is to divide the code amoung a number of classes to make it easy to maintain and share code between robots. The abilities of the robot to be programmed are then chosen from a list of define statements in \mbox{\hyperlink{_config_8hpp_source}{config.\+hpp}}, like so\+:
+
+In \mbox{\hyperlink{_config_8hpp_source}{config.\+hpp}}\+: 
+\begin{DoxyCode}
+\{c++\}
+#define QUARTERBACK
+//#define LINEMAN
+//#define RECIEVER
+//#define RUNNINGBACK
+//#define CENTER
+//#define NONQB\_OMNI
+//#define KICKER
+
+//#define BASIC\_DRIVETRAIN
+//#define OMNIWHEEL\_DRIVETRAIN
+//#define CENTER\_PERIPHERALS
+//#define QB\_PERIPHERALS
+//#define KICKER\_PERIPHERALS
+//#define RECEIVER\_PERIPHERALS
+//#define LED\_STRIP
+//#define TACKLE
+
+//#define CIM\_MOTOR
+//#define \_775\_MOTOR
+//#define BANEBOTS\_MOTOR
+
+#define BAG\_MOTOR
+\end{DoxyCode}
+ This example would create a robot that uses a bag motor omniwheel drivetrain (specifically our quarterback), with the led strip, quarterback arm, tackle sensor enabled. In \mbox{\hyperlink{_error_handeling_8hpp_source}{Error\+Handeling.\+hpp}} there are a list of error cases that the compiler goes through to make sure no incompatable options are chosen.
+
+Aternatively you can manually pick what options you want to enable. This can be useful when developing a new robot or diagnosing problems with individual parts on an existing robot.
+
+In \mbox{\hyperlink{_config_8hpp_source}{config.\+hpp}}\+: 
+\begin{DoxyCode}
+\{c++\}
+//#define QUARTERBACK
+//#define LINEMAN
+//#define RECIEVER
+//#define RUNNINGBACK
+//#define CENTER
+//#define NONQB\_OMNI
+//#define KICKER
+
+#define PERF\_BOARD\_SHIELD
+//#define PCB\_SHIELD
+
+//#define BASIC\_DRIVETRAIN    //uncomment for 2 drive wheels
+//#define DUAL\_MOTORS
+//#define LR\_TACKLE\_PERIPHERALS         //uncomment for special handicap for the tackles
+//#define OMNIWHEEL\_DRIVETRAIN  //uncomment for omniwheel robots
+#define NEW\_OMNIWHEEL\_DRIVETRAIN
+
+//#define CENTER\_PERIPHERALS  //uncomment for special features of center 
+#define QB\_PERIPHERALS      //uncomment for special QB features
+//#define IR\_MAST
+//#define QB\_TRACKING
+//#define KICKER\_PERIPHERALS  //uncomment for special Kicker features
+//#define RECEIVER\_PERIPHERALS  
+#define LED\_STRIP       //uncomment for LED functionality
+#define TACKLE          //uncomment for tackle sensor functionality
+//#define ROTATION\_LOCK
+
+//#define CIM\_MOTOR
+//#define \_775\_MOTOR
+//#define BANEBOTS\_MOTOR
+
+#define BAG\_MOTOR
+\end{DoxyCode}
+
+
+This example does the same thing as the above example.
+
+\subsection*{\#\#\#\# Useful Libraries }
+
+
+\begin{DoxyEnumerate}
+\item (P\+S3 Integration) \href{https://github.com/felis/USB_Host_Shield_2.0}{\tt U\+SB Host\+Shield 2.\+0}
+\item (Omniwheel Rotation Locking) \href{https://github.com/adafruit/Adafruit_BNO055}{\tt Adafruit B\+N\+O055}
+\end{DoxyEnumerate}
+
+\subsection*{\#\#\#\# Controls }
+
+
+\begin{DoxyItemize}
+\item {\bfseries Basic Drivetrain}
+\begin{DoxyItemize}
+\item {\itshape Up/\+Down Left Joystick} -\/ Forward and Backward movement
+\item {\itshape Left/\+Right Right Joystick} -\/ Turning
+\item {\itshape R2} -\/ activates \char`\"{}boost\char`\"{}
+\item {\itshape Start} -\/ Puts robot in \char`\"{}kids mode\char`\"{}. The speed is reduced, boost is disabled, and the leds will change
+\item {\itshape Select \+\_\+-\/ Calibration mode -\/ disables drivetrain while changes are made
+\begin{DoxyItemize}
+\item \+\_\+\+Up/\+Down D-\/\+Pad -\/ compensates for drag left or right
+\item {\itshape Select} -\/ exit Calibration Mode to regular drive mode
+\end{DoxyItemize}}
+\end{DoxyItemize}
+\item {\itshape {\bfseries \mbox{\hyperlink{class_center}{Center}}}
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_center}{Center}} currently uses basic drivetrain
+\item {\itshape T\+R\+I\+A\+N\+G\+LE} -\/ raise the center release servo
+\item {\itshape C\+R\+O\+SS} -\/ lower the center release servo
+\end{DoxyItemize}}
+\item {\itshape {\bfseries Omniwheel Drivetrain}
+\begin{DoxyItemize}
+\item {\itshape Up/\+Down/\+Left/\+Right Left Joystick} -\/ Lateral movement in any direction
+\item {\itshape Up/\+Down/\+Left/\+Right D-\/\+Pad}-\/ Lateral Movement along compass directions at full power
+\item {\itshape Left/\+Right Right Joystick} -\/ Turning -\/ as of version 1.\+0.\+3 this will disable rotation correction
+\item {\itshape R3} (Right Joystick Press) -\/ Re-\/engage rotation correction
+\item {\itshape R2} -\/ slow down speed
+\item {\itshape L1} -\/ reverse directions (make back of robot front and vise versa)
+\item Throwing
+\begin{DoxyItemize}
+\item {\itshape S\+Q\+U\+A\+RE} -\/ Handoff throw
+\item {\itshape C\+R\+O\+SS} -\/ Reciever handoff throw/weak toss
+\item {\itshape C\+I\+R\+C\+LE} -\/ mid range throw
+\item {\itshape T\+R\+I\+A\+N\+G\+LE} -\/ max power throw
+\item {\itshape R1} -\/ return thrower to down position
+\item {\itshape L2} -\/ hold to enable throw offset
+\begin{DoxyItemize}
+\item {\itshape Up/\+Down D-\/\+Pad} -\/ adjust power of all throws but triangle
+\end{DoxyItemize}
+\end{DoxyItemize}
+\end{DoxyItemize}}
+\item {\itshape {\bfseries \mbox{\hyperlink{class_kicker}{Kicker}}}
+\begin{DoxyItemize}
+\item \mbox{\hyperlink{class_kicker}{Kicker}} -\/ currently uses basic drivetrain
+\item {\itshape C\+R\+O\+SS} -\/ kick
+\item {\itshape T\+R\+I\+A\+N\+G\+LE} -\/ reload
+\end{DoxyItemize}}
+
+{\itshape  Controls for the current M\+R\+DC Robots\+: \mbox{\hyperlink{md__ernie_controls}{Ernie\textquotesingle{}s Controls}}}
+
+{\itshape  Marvin\+Controls.\+md}
+
+{\itshape  Parker\+Controls.\+md ~\newline
+ 
+
+}
+\end{DoxyItemize}
+
+{\itshape To create a new peripheral}
+
+{\itshape First copy the example peripheral folder to where you want to place your peripheral usually somewhere in M\+R\+D\+C\+Peripherals or Robotic\+Football\+Peripherals}
+
+{\itshape Second implement the fallowing methods each peripheral\textquotesingle{}s instance of each method will run sequentally with the robot\textquotesingle{}s other peripherals if any}
+
+{\itshape The Setup method should contain code to run once when the microcontroller turns on}
+
+{\itshape The do\+Thing method should contain code to run continuously when the controller is connected}
+
+{\itshape The do\+Not\+Connected\+Thing method should contain code to run continuously when the controller is disconnected and should stop any motors or other devices that could hurt a human opperator}
+
+{\itshape Third include your peripherals .hpp file in either \mbox{\hyperlink{_robotic_football_libraries_8hpp_source}{Robotic\+Football\+Libraries.\+hpp}} or the appropreate M\+R\+DC robot Robot\+Name\+Libraries.\+hpp file i.\+e\+: \mbox{\hyperlink{_ernie_libraries_8hpp_source}{Ernie\+Libraries.\+hpp}}}
+
+{\itshape Fourth in \mbox{\hyperlink{_robot_8hpp_source}{Robot.\+hpp}} add your \mbox{\hyperlink{class_peripheral}{Peripheral}} to peripheral\+Vec}
+
+{\itshape To do this look for a series of statements in the setup method that look roughtly like this\+:}
+
+{\itshape In \mbox{\hyperlink{_config_8hpp_source}{config.\+hpp}}\+: 
+\begin{DoxyCode}
+\{c++\}
+#if defined(YOUR\_PERIPHERAL) 
+  peripheralVec.push\_back(new YourPeripheral);
+#endif
+\end{DoxyCode}
+}
+
+{\itshape and replace Y\+O\+U\+R\+\_\+\+P\+E\+R\+I\+P\+H\+E\+R\+AL with your peripherals name in a similar format}
+
+{\itshape and replace Your\+Peripheral with your peripherals name in a similar format}
+
+{\itshape The code you wrote in the your peripheral should now run }

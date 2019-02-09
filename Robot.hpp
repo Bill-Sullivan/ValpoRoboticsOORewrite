@@ -55,13 +55,13 @@ protected:
   */
 	void newConnection() {
 		if (newconnect == false)                // this is the vibration that you feel when you first connect
-			{
-				newconnect = true;
-				Serial.println("Rumble is on!");
-				PS3.moveSetRumble(64);
-				PS3.setRumbleOn(100, 255, 100, 255); //VIBRATE!!!
-			
-			}
+		{
+			newconnect = true;
+			Serial.println("Rumble is on!");
+			PS3.moveSetRumble(64);
+			PS3.setRumbleOn(100, 255, 100, 255); //VIBRATE!!!
+		
+		}
 	}
   /**
   * @brief Pointer to an LED 
@@ -105,18 +105,23 @@ protected:
 		//Begin Serial Communications
 		newconnect = false;
 		Serial.begin(115200);
-		if (Usb.Init() == -1)                 // this is for an error message with USB connections
+		
+		// This is copied from example code on how to use the PS3BT library 
+		// it initilizes the dongle and makes sure no other code runs if it cannot 
+		if (Usb.Init() == -1) // this is for an error message with USB connections
 		{
 			Serial.print(F("\r\nOSC did not start"));
 			while (1);
 		}
 		Serial.print(F("\r\nPS3 Bluetooth Library Started"));
-      #if defined(LED_STRIP)
-        led = new LED();        
+    #if defined(LED_STRIP)
+      led = new LED();        
     #endif
+	
+	// begin add all peripals to peripheralVec
   
-    // Note if you have no peripherals declared the code will not compile.
-    // The simplest fix if you do not need any peripherals is to create a simple peripheral that does nothing
+    // Add peripherals to the peripheralVec 
+	// any peipheral added will have its Constructor, setup, doThing and doNotConnectedThing run at the appropreate time
     #if defined(CENTER_PERIPHERALS)
       peripheralVec.push_back(new Center);
     #endif
@@ -129,6 +134,8 @@ protected:
       #endif
       peripheralVec.push_back(new TackleSeansor(led));
     #endif
+	
+	// Dont know if this is still needed investigate this and remove if unneeded
     #if defined(NO_PERIPHERALS_DEFINED)
       peripheralVec.push_back(new EmptyPeripheral);
     #endif
@@ -180,29 +187,32 @@ protected:
   *  sets up setial port to connect back to computer use to program the microcontroller
   */
 	void loop () {
-    Usb.Task();
-		if (PS3.PS3Connected)                 // This only lets the program run if the PS3
-		// controller is connected.
-		{
-			newConnection();
-			
-			driveTrain->doThing();
-			for (Peripheral* peripheral : peripheralVec) {
-				peripheral->doThing();
-			}
+    Usb.Task(); // this updates the PS3 object 
+	if (PS3.PS3Connected)                 // This only lets the program run if the PS3
+	// controller is connected.
+	{
+	  newConnection();
+	  
+	  //when controller connected once per loop run the driveTrain's doThing method
+	  driveTrain->doThing();
+	  //when controller connected once per loop run each peripheral's doThing method
+	  for (Peripheral* peripheral : peripheralVec) {
+	  	peripheral->doThing();
+	  }
 
+	  //disconnect when the PS button (the middle button) is pressed
       if (PS3.getButtonClick(PS)) {
         PS3.disconnect();
         newconnect = 0;
-      } 
-		}
-		else 
-		{			
-			driveTrain->eStop();
-			for (Peripheral* peripheral : peripheralVec) {
-				 peripheral->doNotConnectedThing();        
-			}
-		}
+      }
+	} else {
+		//when controller disconnected once per loop run the driveTrain's eStop method
+	    driveTrain->eStop();
+		//when controller disconnected once per loop run each peripheral's doNotConnectedThing method
+	    for (Peripheral* peripheral : peripheralVec) {
+	    	 peripheral->doNotConnectedThing();
+	    }
+	}
 	}
 };
 

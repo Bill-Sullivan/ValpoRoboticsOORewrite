@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['donotconnectedthing',['doNotConnectedThing',['../class_peripheral.html#a331e23603fba1cebb2d4745d46ed2bfe',1,'Peripheral']]],
-  ['dothing',['doThing',['../class_peripheral.html#a8643ea34b0c89019aeff10b0d2667e46',1,'Peripheral']]]
+  ['begin',['begin',['../class_valpo_robotics_1_1array.html#ad1673d960bb1108221b2e5cb71dc1134',1,'ValpoRobotics::array']]]
 ];

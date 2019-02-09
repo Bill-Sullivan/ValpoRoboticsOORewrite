@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['begin',['begin',['../class_valpo_robotics_1_1array.html#ad1673d960bb1108221b2e5cb71dc1134',1,'ValpoRobotics::array']]]
+  ['arcadedrive',['arcadeDrive',['../class_basic_drive_controller.html#ae934462a6e905bd1660cdf6c307d779e',1,'BasicDriveController']]]
 ];
