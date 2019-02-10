@@ -1,6 +1,6 @@
-#define ERNIE
+//#define ERNIE
 //#define MARVIN
-//#define PARKER
+#define PARKER
 
 #if defined(ERNIE) || defined(MARVIN) || defined(PARKER)
   #define MRDC_ROBOT

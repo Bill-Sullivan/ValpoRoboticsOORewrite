@@ -84,7 +84,9 @@
 #ifndef BASIC_DRIVETRAIN
 #ifndef OMNIWHEEL_DRIVETRAIN
 #ifndef NEW_OMNIWHEEL_DRIVETRAIN
+#ifndef AUTONOMOUS_DRIVE
 #warning "You don't have a drivetrain enabled! Don't expect this robot to drive!"
+#endif
 #endif
 #endif
 #endif

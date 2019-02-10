@@ -7,7 +7,7 @@ void BasicDriveController::eStop() {
 }
 
 void BasicDriveController::handelInputs() {
-	if (state == DRIVING) {
+	if (kidsMode == false) {
 		if (PS3.getButtonPress(R2)) {
 			handicap = ALTERNATE_HANDICAP; // TURBO!!!!!!!!!!!!!!
 		}
@@ -18,7 +18,7 @@ void BasicDriveController::handelInputs() {
 				handicap = DEFAULT_HANDICAP;
 			#endif
 		}	
-	} else if (state == KID) {
+	} else if (kidsMode == true) {
         handicap = KID_HANDICAP;
     }
 	
@@ -40,16 +40,16 @@ void BasicDriveController::handelInputs() {
 	if (PS3.getButtonClick(START))
 	{ // switches between normal driving mode
 	// and kid mode
-		if (state == DRIVING)
+		if (kidsMode == false)
 		{
-			state = KID;
+			kidsMode = true;
 			PS3.setLedRaw(9);               // ON OFF OFF ON
 			PS3.setRumbleOn(5, 255, 5, 255);// vibrate both, then left, then right
 			handicap = KID_HANDICAP;
 		}
-		else if (state == KID)
+		else if (kidsMode == true)
 		{
-			state = DRIVING;
+			kidsMode = false;
 			PS3.setLedRaw(1);               // OFF OFF OFF ON
 			PS3.setRumbleOn(5, 255, 5, 255);// vibrate both, then left, then right
 			handicap = DEFAULT_HANDICAP;				
@@ -91,17 +91,14 @@ void BasicDriveController::invertInputs() {
 			leftInputY = rightInputY;
 			rightInputY = swapVar;
 		}
-	} 
-	/*
+	}
 	//commented out because driving backward won't work well on our current robots
 	else if (driveCtrl == ARCADE_DRIVE) {
 		if (inverting == 1) {
 			leftInputY = map(leftInputY,   -90, 90, 90, -90);  // Recieves PS3
 			rightInputX = map(rightInputX, -90, 90, 90, -90);  // Recieves PS3
 		}
-	}
-	*/
-	
+	}		
 }
 
 const void BasicDriveController::arcadeDrive() {
@@ -201,6 +198,7 @@ const void BasicDriveController::tankDrive() {
 }
 
 void BasicDriveController::setup() {
+  Serial.println("BasicDriveController Setup");
 	#if !defined(DUAL_MOTORS)
 	leftMotor.attach(LEFT_MOTOR, 1000, 2000);	
 	rightMotor.attach(RIGHT_MOTOR, 1000, 2000);
@@ -220,7 +218,7 @@ void BasicDriveController::setup() {
 		EEPROM.write(0, ARCADE_DRIVE);
 	}
 	
-	state = DRIVING;
+	kidsMode = DRIVING;
 	inverting = 0;
 	motorCorrect = 0;
 	handicap = DEFAULT_HANDICAP;

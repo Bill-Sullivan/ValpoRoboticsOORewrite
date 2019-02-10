@@ -75,7 +75,7 @@ protected:
 	* Enter/Exit Kids mode by pressing start
 	* Kids mode makes the robot move slowly enough that it is safe to let a two year old drive it with minimal supervision.
 	*/
-	uint8_t state;
+	bool kidsMode;
 	/**
 	* \brief variable that corrects for diffrences between each motor (Mostly irrlevent since bainbots moters were replaced)
 	*/

@@ -42,6 +42,8 @@
   #include "RoboticFootballLibraries.hpp"
 #elif defined(ERNIE)
   #include "ErnieLibraries.hpp"
+#elif defined(PARKER)
+  #include "ParkerLibraries.hpp"
 #endif
 
 
@@ -114,6 +116,7 @@ protected:
 			while (1);
 		}
 		Serial.print(F("\r\nPS3 Bluetooth Library Started"));
+   Serial.println();
     #if defined(LED_STRIP)
       led = new LED();        
     #endif
@@ -151,9 +154,8 @@ protected:
     // end add all peripals to peripheralVec
 
       // choose drive train
-    #if defined(BASIC_DRIVETRAIN) && !defined(DUAL_MOTORS)
-      driveTrain = new BasicDriveController;
-    #elif defined(DUAL_MOTORS)
+    #if defined(BASIC_DRIVETRAIN)
+      Serial.println("Basic Drive");
       driveTrain = new BasicDriveController;
     #elif defined(OMNIWHEEL_DRIVETRAIN)
       driveTrain = new OmniDriveConrtoller;
@@ -161,6 +163,9 @@ protected:
       driveTrain = new NewOmniDrive;
     #elif defined(TEST_DRIVETRAIN)
       driveTrain = new testDriveConrtoller;
+    #elif defined(AUTONOMOUS_DRIVE)
+      Serial.println("Autonomous Drive");
+      driveTrain = new AutonomousBasicDrive;
     #else
     #error No Drive Train selected
     #endif
@@ -194,7 +199,7 @@ protected:
 	  newConnection();
 	  
 	  //when controller connected once per loop run the driveTrain's doThing method
-	  driveTrain->doThing();
+	  driveTrain->doThing();    
 	  //when controller connected once per loop run each peripheral's doThing method
 	  for (Peripheral* peripheral : peripheralVec) {
 	  	peripheral->doThing();

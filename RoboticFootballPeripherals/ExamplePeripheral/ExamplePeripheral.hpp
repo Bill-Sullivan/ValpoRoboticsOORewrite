@@ -39,7 +39,7 @@ private:
     //place variables and methods that need to be accesed by multiple methods here
 public:
 	//place variables and methods that need to be accesed by things outside object here
-
+	PeripheralName();
 	/**
 	* @brief Function that runs every loop when controller is connected.
 	*
