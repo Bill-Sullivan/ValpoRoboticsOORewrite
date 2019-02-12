@@ -85,7 +85,7 @@ void BasicDriveController::handelInputs() {
 
 void BasicDriveController::invertInputs() {
 	int swapVar;
-	if (driveCtrl == TANK_DRIVE) {
+	if (driveCtrl == tank) {
 		if (inverting == 1) {
 			swapVar = leftInputY;
 			leftInputY = rightInputY;
@@ -93,7 +93,7 @@ void BasicDriveController::invertInputs() {
 		}
 	}
 	//commented out because driving backward won't work well on our current robots
-	else if (driveCtrl == ARCADE_DRIVE) {
+	else if (driveCtrl == arcade) {
 		if (inverting == 1) {
 			leftInputY = map(leftInputY,   -90, 90, 90, -90);  // Recieves PS3
 			rightInputX = map(rightInputX, -90, 90, 90, -90);  // Recieves PS3
@@ -145,56 +145,50 @@ const void BasicDriveController::arcadeDrive() {
 const void BasicDriveController::tankDrive() {
 	int throttleL, throttleR;
 	static int8_t leftDrive, rightDrive = 0;
-		
-    // forward/backward input
-    // sets it to an inverted
-    // scale of 90 to -90
-                                              
-    if (abs(leftInputY) < 8) leftInputY = 0;    // deals with the stickiness
-    if (abs(rightInputY) < 8) rightInputY = 0;  // of PS3 joysticks
- 
-    if ((leftInputY == 0) && (rightInputY == 0))
-    { // if no input this should ensure that
-      // the motors actually stop, and skip the rest
-      // of the drive function      
-      eStop();
-      return;
-    }
- 
-    // Instead of following some sort of
-    // equation to slow down acceleration
-    // We just increment the speed by one
-    // towards the desired speed.
-    // The acceleration is then slowed
-    // because of the loop cycle time
-
-    if (leftDrive < leftInputY)      { leftDrive++; }               // Accelerates
-    else if (leftDrive > leftInputY) { leftDrive--; }               // Decelerates
 	
- 
-    if (rightDrive < rightInputY)      rightDrive++;
-    else if (rightDrive > rightInputY) rightDrive--;
- 
-    throttleL = LEFT_MOTOR_REVERSE  * ((leftDrive) / handicap) + motorCorrect;
-    // This is the final variable that
-    // decides motor speed.
-    throttleR = RIGHT_MOTOR_REVERSE * ((rightDrive) / handicap ) + motorCorrect;
+  // forward/backward input
+  // sets it to an inverted
+  // scale of 90 to -90
+                                            
+  if (abs(leftInputY) < 8) leftInputY = 0;    // deals with the stickiness
+  if (abs(rightInputY) < 8) rightInputY = 0;  // of PS3 joysticks
+  
+  if ((leftInputY == 0) && (rightInputY == 0))
+  { // if no input this should ensure that
+    // the motors actually stop, and skip the rest
+    // of the drive function      
+    eStop();
+    return;
+  }
+  
+  // Instead of following some sort of
+  // equation to slow down acceleration
+  // We just increment the speed by one
+  // towards the desired speed.
+  // The acceleration is then slowed
+  // because of the loop cycle time
+  
+  if (leftDrive < leftInputY)      { leftDrive++; }               // Accelerates
+  else if (leftDrive > leftInputY) { leftDrive--; }               // Decelerates
 	
- 
-    if (throttleL > MAX_DRIVE) 		throttleL = MAX_DRIVE;
-    else if (throttleL < -MAX_DRIVE)throttleL = -MAX_DRIVE;
-    if (throttleR > MAX_DRIVE) 		throttleR = MAX_DRIVE;
-    else if (throttleR < -MAX_DRIVE)throttleR = -MAX_DRIVE;
-
+  
+  if (rightDrive < rightInputY)      rightDrive++;
+  else if (rightDrive > rightInputY) rightDrive--;
+  
+  throttleL = LEFT_MOTOR_REVERSE  * ((leftDrive) / handicap) + motorCorrect;
+  // This is the final variable that
+  // decides motor speed.
+  throttleR = RIGHT_MOTOR_REVERSE * ((rightDrive) / handicap ) + motorCorrect;
 	
-    leftMotor.write(throttleL + 90);                // Sending values to the speed controllers
-	rightMotor.write(throttleR + 90);
+  
+  if (throttleL > MAX_DRIVE) 		throttleL = MAX_DRIVE;
+  else if (throttleL < -MAX_DRIVE)throttleL = -MAX_DRIVE;
+  if (throttleR > MAX_DRIVE) 		throttleR = MAX_DRIVE;
+  else if (throttleR < -MAX_DRIVE)throttleR = -MAX_DRIVE;
+  
 	
-	if (throttleL != 0) {
-	  Serial.print("left");
-	  Serial.println(throttleL);
-	}
-	
+  leftMotor.write(throttleL + 90);                // Sending values to the speed controllers
+  rightMotor.write(throttleR + 90);	
 }
 
 void BasicDriveController::setup() {
@@ -210,11 +204,16 @@ void BasicDriveController::setup() {
 	leftMotor.writeMicroseconds(1500);            //stopped
 	rightMotor.writeMicroseconds(1500);
 	
-	if (EEPROM.read(0) == ARCADE_DRIVE || EEPROM.read(0) == TANK_DRIVE) {
-		driveCtrl = EEPROM.read(0);
-	}
+	
+  if (ARCADE_DRIVE == EEPROM.read(0)) {
+    driveCtrl = arcade;
+  }
+  if (TANK_DRIVE == EEPROM.read(0)) {
+    driveCtrl = tank;
+  }
+	
 	else {
-		driveCtrl = ARCADE_DRIVE;
+		driveCtrl = arcade;
 		EEPROM.write(0, ARCADE_DRIVE);
 	}
 	

@@ -63,13 +63,15 @@
 	#define RIGHT_MOTOR2          8
 #endif	
 
+enum ControlMode {tank, arcade};
+
 
 class BasicDriveController: public DriveTrain {
 protected:
 	/**
 	* \brief Flag that selects weather the robot is using Tank or Arcade control
 	*/
-	int driveCtrl;
+	ControlMode driveCtrl;
 	/**
 	* \brief Flag that selects weather the robot is using kid or normal handcap
 	* Enter/Exit Kids mode by pressing start

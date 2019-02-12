@@ -6,18 +6,17 @@
  * \ingroup DriveTrain
  * <!-- (Note, this needs exactly one \defgroup somewhere) -->
  *
- * \brief This is the basic drivetrain that most robots use
- * Used for most two motor robots.
+ * \brief This class allows the robots drivetrain to be controled over I2C
  *
  * \author  <!-- ((last to touch it) --> Bill Sullivan
  *
  * \version $Revision: 1.0 
  *
- * \date  2018/08/15 14:16:20
+ * \date  2019/2/10 14:16:20
   <!-- YYYY/MM/DD -->
  * 
  *
- * Created on: 2018/04/14 14:16:20
+ * Created on: 2019/2/10 14:16:20
  */
 
 

@@ -6,6 +6,8 @@
 
 #define BUFFER_SIZE 10
 
+#define TIMEOUT_TIME 10 // 10 microSeconds (µs) 
+
 typedef struct MessageStruct {
   uint8_t regAddress;
   uint8_t len;

@@ -13,6 +13,8 @@ void AutonomousBasicDrive::handelCommands() {
   BasicDriveController::rightInputX = reciever.message.msgBuffer[1];
   BasicDriveController::leftInputY  = reciever.message.msgBuffer[2];
   
+  //Serial.println(leftInputY);
+  
   return;
 }
 
