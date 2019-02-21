@@ -90,3 +90,8 @@
 #endif
 #endif
 #endif
+
+
+#if !defined(PERF_BOARD_SHIELD) && !defined(PCB_SHIELD)
+  #error "Specify a shield type"
+#endif  

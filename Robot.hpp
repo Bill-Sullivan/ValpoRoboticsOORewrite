@@ -42,6 +42,8 @@
   #include "RoboticFootballLibraries.hpp"
 #elif defined(ERNIE)
   #include "ErnieLibraries.hpp"
+#elif defined(MARVIN)
+  #include "MarvinLibraries.hpp"
 #elif defined(PARKER)
   #include "ParkerLibraries.hpp"
 #endif
@@ -147,9 +149,23 @@ protected:
       peripheralVec.push_back(new QBArm);
     #endif
 
-    #if defined(DROP_DETECTOR_1) 
-      peripheralVec.push_back(new DropDetector);
+    #if defined(DROP_DETECTOR_2) 
+      peripheralVec.push_back(new DropDetector(2,4));
     #endif
+    #if defined(DROP_DETECTOR_3)
+      peripheralVec.push_back(new DropDetector(3,5));
+    #endif
+
+    #if defined(VACUUM)
+      peripheralVec.push_back(new Vacuum(VACUUM_PIN, VACUUM_BUTTON, VACUUM_SPEED));
+    #endif
+    #if defined(VACUUM_ARM)
+      peripheralVec.push_back(new ButtonMotorMover(VACUUM_ARM_PIN, VACUUM_ARM_DOWN_BUTTON, VACUUM_ARM_UP_BUTTON, VACUUM_ARM_SPEED));
+    #endif
+    #if defined(BOWLING_BALL_ARM)
+      peripheralVec.push_back(new ButtonMotorMover(BOWLING_BALL_ARM_PIN, BOWLING_BALL_ARM_DOWN_BUTTON, BOWLING_BALL_ARM_UP_BUTTON, BOWLING_BALL_ARM_SPEED));
+    #endif
+    
 
     // end add all peripals to peripheralVec
 
@@ -220,4 +236,3 @@ protected:
 	}
 	}
 };
-

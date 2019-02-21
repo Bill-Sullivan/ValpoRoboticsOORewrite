@@ -31,8 +31,8 @@
 #include "../../StandardHeader.hpp" // This includes the standard header, which has the libraries needed in every file, and deals with the PS3 Controller stuff
 #include "../../Peripheral.hpp"    // this inculdes the parent class of all peripherals
 
-#define ECHO_PIN 2
-#define TRIG_PIN 4
+#define ECHO_PIN_2 2
+#define ECHO_PIN_3 3
 
 #define CLIFF_THRESHOLD 10
 #define TRIGGER_TIMEOUT 10000
@@ -47,7 +47,8 @@ private:
 	long unsigned int timeTriggered;
 	
 	void trigger();
-	
+	uint8_t echoPin;
+	uint8_t trigPin;
 	
 	/**
 	* @brief Function that gets distance measured by a HC-SR04 in cm
@@ -55,7 +56,7 @@ private:
 	int getDistance();
 	
 public:
-	DropDetector();
+	DropDetector(uint8_t _echoPin, uint8_t _trigPin);
 	/**
 	* @brief Function that runs every loop when controller is connected.
 	*

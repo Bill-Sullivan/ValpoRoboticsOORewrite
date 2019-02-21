@@ -1,5 +1,7 @@
 /*
 	This ino file only exists call robot.setup and robot.loop in a way the arduino ide will tolerate.
+  The rest of the code in here is to determine the amount of time between loops.
+  
 */
 
 

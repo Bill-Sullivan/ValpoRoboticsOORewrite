@@ -65,3 +65,5 @@ public:
 	void setup();
       
 };
+
+#include "ExamplePeripheral.cpp"

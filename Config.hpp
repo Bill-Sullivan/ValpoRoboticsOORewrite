@@ -1,6 +1,6 @@
-//#define ERNIE
+#define ERNIE
 //#define MARVIN
-#define PARKER
+//#define PARKER
 
 #if defined(ERNIE) || defined(MARVIN) || defined(PARKER)
   #define MRDC_ROBOT
@@ -36,7 +36,7 @@
 //#define STUDENTS
 //#define ALUMNI
 
-#define PERF_BOARD_SHIELD
+//#define PERF_BOARD_SHIELD
 //#define PCB_SHIELD
 
 //#define BASIC_DRIVETRAIN    //uncomment for 2 drive wheels

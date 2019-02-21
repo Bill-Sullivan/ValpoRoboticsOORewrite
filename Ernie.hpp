@@ -6,4 +6,4 @@
 
 #define CIM_MOTOR
 
-#define DROP_DETECTOR_1
+#define DROP_DETECTOR_2

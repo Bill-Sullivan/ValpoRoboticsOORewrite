@@ -147,6 +147,9 @@ public:
 	* \brief Victors are modeled as Motors
 	*/
 	Motor leftMotor;        // Define motor objects
+	/**
+	* \brief Victors are modeled as Motors
+	*/
 	Motor rightMotor;
 };
 

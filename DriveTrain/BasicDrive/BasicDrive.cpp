@@ -26,12 +26,12 @@ void BasicDriveController::handelInputs() {
 	{
 		if (PS3.getButtonPress(L1)) {
 			if (driveCtrl == ARCADE_DRIVE) {
-				driveCtrl = TANK_DRIVE;
+				driveCtrl = tank;
 				EEPROM.write(0, TANK_DRIVE);
 				Serial.println("TANK_DRIVE");
 			}
 			else if (driveCtrl == TANK_DRIVE) {
-				driveCtrl = ARCADE_DRIVE;
+				driveCtrl = arcade;
 				EEPROM.write(0, ARCADE_DRIVE);
 				Serial.println("ARCADE_DRIVE");
 			}
@@ -226,10 +226,10 @@ void BasicDriveController::setup() {
 void BasicDriveController::doThing() {
 		handelInputs();
 		invertInputs();
-		if (driveCtrl == ARCADE_DRIVE) {
+		if (driveCtrl == arcade) {
 			arcadeDrive();
 		}
-		else if (driveCtrl = TANK_DRIVE) {
+		else if (driveCtrl == tank) {
 			tankDrive();
 		}
 	}

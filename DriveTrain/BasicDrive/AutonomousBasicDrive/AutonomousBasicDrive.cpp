@@ -3,7 +3,7 @@
 
 void AutonomousBasicDrive::handelCommands() {  
   BasicDriveController::inverting = 0;
-  BasicDriveController::driveCtrl = ARCADE_DRIVE;
+  BasicDriveController::driveCtrl = arcade;
   BasicDriveController::handicap  = DEFAULT_HANDICAP;
   BasicDriveController::kidsMode  = false;
     
