@@ -18,6 +18,8 @@ void ButtonMotorMover::doNotConnectedThing() {
 }
 
 void ButtonMotorMover::setup() {
+	Serial.println("pin:");
+	Serial.println(pin);
 	motor.attach(pin, 1000, 2000);
 	return;
 }

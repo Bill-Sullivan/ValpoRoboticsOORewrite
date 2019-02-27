@@ -1,5 +1,5 @@
-#define ERNIE
-//#define MARVIN
+//#define ERNIE
+#define MARVIN
 //#define PARKER
 
 #if defined(ERNIE) || defined(MARVIN) || defined(PARKER)

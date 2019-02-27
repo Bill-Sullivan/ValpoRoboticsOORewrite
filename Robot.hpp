@@ -160,6 +160,7 @@ protected:
       peripheralVec.push_back(new Vacuum(VACUUM_PIN, VACUUM_BUTTON, VACUUM_SPEED));
     #endif
     #if defined(VACUUM_ARM)
+      Serial.println("VACUUM ARM");
       peripheralVec.push_back(new ButtonMotorMover(VACUUM_ARM_PIN, VACUUM_ARM_DOWN_BUTTON, VACUUM_ARM_UP_BUTTON, VACUUM_ARM_SPEED));
     #endif
     #if defined(BOWLING_BALL_ARM)
