@@ -1,3 +1,35 @@
+/*
+  __  __      _       ____   __     __            _   _     
+U|' \/ '|uU  /"\  uU |  _"\ u\ \   /"/u  ___     | \ |"|    
+\| |\/| |/ \/ _ \/  \| |_) |/ \ \ / //  |_"_|   <|  \| |>   
+ | |  | |  / ___ \   |  _ <   /\ V /_,-. | |    U| |\  |u   
+ |_|  |_| /_/   \_\  |_| \_\ U  \_/-(_/U/| |\u   |_| \_|    
+<<,-,,-.   \\    >>  //   \\_  //   .-,_|___|_,-.||   \\,-. 
+ (./  \.) (__)  (__)(__)  (__)(__)   \_)-' '-(_/ (_")  (_/  
+                           nnnmmm
+            \||\       ;;;;%%%@@@@@@       \ //,
+             V|/     %;;%%%%%@@@@@@@@@@  ===Y//
+             68=== ;;;;%%%%%%@@@@@@@@@@@@    @Y
+             ;Y   ;;%;%%%%%%@@@@@@@@@@@@@@    Y
+             ;Y  ;;;+;%%%%%%@@@@@@@@@@@@@@@    Y
+             ;Y__;;;+;%%%%%%@@@@@@@@@@@@@@i;;__Y
+            iiY"";;   "uu%@@@@@@@@@@uu"   @"";;;>
+                   Y     "UUUUUUUUU"     @@
+                   `;       ___ _       @
+                     `;.  ,====\\=.  .;'
+                       ``""""`==\\=='
+                              `;=====
+                                ===  
+
+  Parts List
+  ---------------------------------
+  Uses USBHostShield 2.0
+  Arduino Mega ADK
+  USB Bluetooth Dongle - some models not supported
+  PS3 Controller - name brand recommended
+  ---------------------------------
+*/
+
 #pragma once
 
 #define BASIC_DRIVETRAIN
@@ -9,6 +41,8 @@
 #define VACUUM
 #define VACUUM_ARM
 #define BOWLING_BALL_ARM
+
+#define BRIDGE_MODE_ENABLED
 
 #if defined(VACUUM)
   #define VACUUM_PIN       7

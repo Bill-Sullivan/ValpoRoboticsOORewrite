@@ -68,6 +68,11 @@ enum ControlMode {tank, arcade};
 
 class BasicDriveController: public DriveTrain {
 protected:
+	#if defined(BRIDGE_MODE_ENABLED)
+	bool brigeMode = false;
+	void bridgeMode();
+	#endif
+
 	/**
 	* \brief Flag that selects weather the robot is using Tank or Arcade control
 	*/

@@ -81,6 +81,14 @@ void BasicDriveController::handelInputs() {
 	if (abs(leftInputY) < 8) leftInputY = 0;                            // deals with the stickiness
     if (abs(rightInputX) < 8) rightInputX = 0;                            // of PS3 joysticks
 	if (abs(rightInputY) < 8) rightInputY = 0;
+	
+	#if defined(BRIDGE_MODE_ENABLED)
+	if (PS3.getButtonPress(L3)) {
+		brigeMode = true;
+	} else {
+		brigeMode = false;
+	}
+	#endif
 }
 
 void BasicDriveController::invertInputs() {
@@ -96,7 +104,7 @@ void BasicDriveController::invertInputs() {
 	else if (driveCtrl == arcade) {
 		if (inverting == 1) {
 			leftInputY = map(leftInputY,   -90, 90, 90, -90);  // Recieves PS3
-			rightInputX = map(rightInputX, -90, 90, 90, -90);  // Recieves PS3
+			rightInputX = map(rightInputX, -90, 90, -90, 90);  // Recieves PS3
 		}
 	}		
 }
@@ -191,6 +199,16 @@ const void BasicDriveController::tankDrive() {
   rightMotor.write(throttleR + 90);	
 }
 
+#if defined(BRIDGE_MODE_ENABLED)
+void BasicDriveController::bridgeMode() {
+	if (driveCtrl == arcade) {
+		if (brigeMode) {
+			rightInputX = 0;
+		}		
+	}
+}
+#endif
+
 void BasicDriveController::setup() {
   Serial.println("BasicDriveController Setup");
 	#if !defined(DUAL_MOTORS)
@@ -217,7 +235,7 @@ void BasicDriveController::setup() {
 		EEPROM.write(0, ARCADE_DRIVE);
 	}
 	
-	kidsMode = DRIVING;
+	kidsMode = false;
 	inverting = 0;
 	motorCorrect = 0;
 	handicap = DEFAULT_HANDICAP;
@@ -226,6 +244,9 @@ void BasicDriveController::setup() {
 void BasicDriveController::doThing() {
 		handelInputs();
 		invertInputs();
+		#if defined(BRIDGE_MODE_ENABLED)
+		bridgeMode();
+		#endif
 		if (driveCtrl == arcade) {
 			arcadeDrive();
 		}
