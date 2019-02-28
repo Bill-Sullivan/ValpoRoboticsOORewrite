@@ -43,14 +43,14 @@ void BasicDriveController::handelInputs() {
 		if (kidsMode == false)
 		{
 			kidsMode = true;
-			PS3.setLedRaw(9);               // ON OFF OFF ON
+			PS3.setLedOn(3);               // ON OFF OFF ON
 			PS3.setRumbleOn(5, 255, 5, 255);// vibrate both, then left, then right
 			handicap = KID_HANDICAP;
 		}
 		else if (kidsMode == true)
 		{
 			kidsMode = false;
-			PS3.setLedRaw(1);               // OFF OFF OFF ON
+			PS3.setLedOff(3);               // OFF OFF OFF ON
 			PS3.setRumbleOn(5, 255, 5, 255);// vibrate both, then left, then right
 			handicap = DEFAULT_HANDICAP;				
 		}

@@ -70,14 +70,21 @@ void DropDetector::doThing() {
     triggered=false;
   }
   trigger();
-  int distance = getDistance(); 
-  
+  int distance = getDistance();   
+  static bool LEDon = false;
   if (distance > CLIFF_THRESHOLD) { 
     //PS3.setRumbleOn(10, 255, 0, 0);
-	
+	if (LEDon == false) {
+		PS3.setLedOn(echoPin);
+		LEDon = true;
+	}
     Serial.println("There Is a Cliff");
   } else {
     //PS3.setRumbleOn(0,0,0,0);
+	if (LEDoff == true) {
+		PS3.setLedOff(echoPin);
+		LEDon = false;
+	}
     Serial.println("No Cliff");
   } 
   
