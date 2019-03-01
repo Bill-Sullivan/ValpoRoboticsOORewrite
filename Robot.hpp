@@ -149,7 +149,7 @@ protected:
       peripheralVec.push_back(new QBArm);
     #endif
 
-    #if defined(DROP_DETECTOR_2) 
+    #if defined(DROP_DETECTOR_2)
       peripheralVec.push_back(new DropDetector(2,4));
     #endif
     #if defined(DROP_DETECTOR_3)

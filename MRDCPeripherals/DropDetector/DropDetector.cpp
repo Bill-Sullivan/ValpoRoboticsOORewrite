@@ -17,12 +17,11 @@ void measureEchoLength_2() {
     *pEchoLength_2 = micros() - *pEchoStart_2;
     *pTriggered_2  = false;
     
-	/*
+	
 	Serial.println("echo");
 	Serial.println(*pEchoStart_2);
 	Serial.println(*pEchoLength_2);
-	*/
-	
+		
 	attachInterrupt(digitalPinToInterrupt(ECHO_PIN_2), startMeasureEchoLength_2, RISING);
 }
 void measureEchoLength_3() {	
@@ -54,13 +53,13 @@ void DropDetector::trigger() {
 
 int DropDetector::getDistance() {
   int distance = echoLength / 58;
-/*
+
   if (echoLength != 0) {
     Serial.print("echoLength: ");
     Serial.println(echoLength);
     Serial.println(distance);
   }
-*/
+
   return distance;
 	
 }
@@ -75,14 +74,14 @@ void DropDetector::doThing() {
   if (distance > CLIFF_THRESHOLD) { 
     //PS3.setRumbleOn(10, 255, 0, 0);
 	if (LEDon == false) {
-		PS3.setLedOn(echoPin);
+		PS3.setLedOn(LED2);
 		LEDon = true;
 	}
     Serial.println("There Is a Cliff");
   } else {
     //PS3.setRumbleOn(0,0,0,0);
-	if (LEDoff == true) {
-		PS3.setLedOff(echoPin);
+	if (LEDon  == true) {
+		PS3.setLedOff(LED2);
 		LEDon = false;
 	}
     Serial.println("No Cliff");

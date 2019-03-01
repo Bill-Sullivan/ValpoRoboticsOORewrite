@@ -30,12 +30,13 @@
 
 #pragma once
 
-#define BASIC_DRIVE
+//#define BASIC_DRIVE
 #define PERF_BOARD_SHIELD
-#define DUAL_MOTORS
+//#define DUAL_MOTORS
 
 #define CIM_MOTOR
 
-//#define DROP_DETECTOR_2
+#define DROP_DETECTOR_2
+
 
 #define BRIDGE_MODE_ENABLED
