@@ -40,14 +40,14 @@ void NewOmniDrive::handelInputs() {
 		if (state == DRIVING)
 		{
 			state = KID;
-			PS3.setLedRaw(9);               // ON OFF OFF ON
+			PS3.setLedOn(LED4);               // ON OFF OFF ON
 			PS3.setRumbleOn(5, 255, 5, 255);// vibrate both, then left, then right
 			handicap = KID_HANDICAP;
 		}
 		else if (state == KID)
 		{
 			state = DRIVING;
-			PS3.setLedRaw(1);               // OFF OFF OFF ON
+			PS3.setLedOff(LED4);             // OFF OFF OFF ON
 			PS3.setRumbleOn(5, 255, 5, 255);// vibrate both, then left, then right
 			handicap = DEFAULT_HANDICAP;				
 		}

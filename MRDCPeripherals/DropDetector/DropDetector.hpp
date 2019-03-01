@@ -34,7 +34,7 @@
 #define ECHO_PIN_2 2
 #define ECHO_PIN_3 3
 
-#define CLIFF_THRESHOLD 10
+#define CLIFF_THRESHOLD 30
 #define TRIGGER_TIMEOUT 10000
 
 class DropDetector : public Peripheral {
@@ -42,6 +42,8 @@ private:
     //place variables that need to be accesed by multiple methods here	
 	long unsigned int echoStart;
 	long unsigned int echoLength;
+	
+	bool LEDon;
 	
 	bool triggered;
 	long unsigned int timeTriggered;

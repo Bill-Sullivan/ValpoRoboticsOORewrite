@@ -17,11 +17,11 @@ void measureEchoLength_2() {
     *pEchoLength_2 = micros() - *pEchoStart_2;
     *pTriggered_2  = false;
     
-	
+	/*
 	Serial.println("echo");
 	Serial.println(*pEchoStart_2);
 	Serial.println(*pEchoLength_2);
-		
+	*/
 	attachInterrupt(digitalPinToInterrupt(ECHO_PIN_2), startMeasureEchoLength_2, RISING);
 }
 void measureEchoLength_3() {	
@@ -53,13 +53,13 @@ void DropDetector::trigger() {
 
 int DropDetector::getDistance() {
   int distance = echoLength / 58;
-
+  /*
   if (echoLength != 0) {
     Serial.print("echoLength: ");
     Serial.println(echoLength);
     Serial.println(distance);
   }
-
+  */
   return distance;
 	
 }
@@ -69,22 +69,32 @@ void DropDetector::doThing() {
     triggered=false;
   }
   trigger();
-  int distance = getDistance();   
-  static bool LEDon = false;
+  int distance = getDistance();     
   if (distance > CLIFF_THRESHOLD) { 
     //PS3.setRumbleOn(10, 255, 0, 0);
 	if (LEDon == false) {
-		PS3.setLedOn(LED2);
+		if (echoPin == 2) {
+		  PS3.setLedOn(LED2);
+		} else if (echoPin == 3) {
+		  PS3.setLedOn(LED3);
+		}	
 		LEDon = true;
 	}
-    Serial.println("There Is a Cliff");
+	Serial.print(echoPin);
+    Serial.println(" There Is a Cliff");
   } else {
     //PS3.setRumbleOn(0,0,0,0);
 	if (LEDon  == true) {
-		PS3.setLedOff(LED2);
+		if (echoPin == 2) {
+		  PS3.setLedOff(LED2);
+		} else if (echoPin == 3) {
+		  PS3.setLedOff(LED3);
+		}
+		
 		LEDon = false;
 	}
-    Serial.println("No Cliff");
+	Serial.print(echoPin);
+    Serial.println(" No Cliff");
   } 
   
   return;
@@ -94,7 +104,7 @@ void DropDetector::doNotConnectedThing() {
 	return;
 }
 
-void DropDetector::setup() {	
+void DropDetector::setup() {		
   if (echoPin == 2) {
 	  pEchoStart_2  = &(this->echoStart);
 	  pEchoLength_2 = &(this->echoLength);
@@ -110,6 +120,7 @@ void DropDetector::setup() {
   
   // put your setup code here, to run once:
   pinMode(echoPin, INPUT);
+  LEDon = false;
     
   if (echoPin == 2) {
 	  attachInterrupt(digitalPinToInterrupt(echoPin), startMeasureEchoLength_2, RISING);

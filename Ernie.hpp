@@ -37,6 +37,7 @@
 #define CIM_MOTOR
 
 #define DROP_DETECTOR_2
+#define DROP_DETECTOR_3
 
 
 #define BRIDGE_MODE_ENABLED
