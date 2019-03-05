@@ -38,6 +38,9 @@ U|' \/ '|uU  /"\  uU |  _"\ u\ \   /"/u  ___     | \ |"|
 
 #define CIM_MOTOR
 
+#define DROP_DETECTOR_2
+#define DROP_DETECTOR_3
+
 #define VACUUM
 #define VACUUM_ARM
 #define BOWLING_BALL_ARM
@@ -49,6 +52,14 @@ U|' \/ '|uU  /"\  uU |  _"\ u\ \   /"/u  ___     | \ |"|
   #define VACUUM_BUTTON    UP
   #define VACUUM_SPEED     2000
 #endif
+
+#if defined(BALL_DROPPER)
+  #define BALL_DROPPER_PIN    4
+  #define BALL_DROPPER_BUTTON_OPEN  LEFT
+  #define BALL_DROPPER_BUTTON_CLOSE RIGHT
+  #define BALL_DROPPER_SPEED  50
+#endif
+
 
 #if defined(VACUUM_ARM)
   #define VACUUM_ARM_PIN            5

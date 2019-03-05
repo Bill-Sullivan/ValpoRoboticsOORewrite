@@ -105,6 +105,7 @@ void DropDetector::doNotConnectedThing() {
 }
 
 void DropDetector::setup() {		
+	Serial.println("drop detector");
   if (echoPin == 2) {
 	  pEchoStart_2  = &(this->echoStart);
 	  pEchoLength_2 = &(this->echoLength);

@@ -149,11 +149,11 @@ protected:
       peripheralVec.push_back(new QBArm);
     #endif
 
-    #if defined(DROP_DETECTOR_2)
-      peripheralVec.push_back(new DropDetector(2,4));
+    #if defined(DROP_DETECTOR_2) 
+      peripheralVec.push_back(new DropDetector(2,12));
     #endif
     #if defined(DROP_DETECTOR_3)
-      peripheralVec.push_back(new DropDetector(3,5));
+      peripheralVec.push_back(new DropDetector(3,13));
     #endif
 
     #if defined(VACUUM)
@@ -163,8 +163,24 @@ protected:
       Serial.println("VACUUM ARM");
       peripheralVec.push_back(new ButtonMotorMover(VACUUM_ARM_PIN, VACUUM_ARM_DOWN_BUTTON, VACUUM_ARM_UP_BUTTON, VACUUM_ARM_SPEED));
     #endif
-    #if defined(BOWLING_BALL_ARM)
-      peripheralVec.push_back(new ButtonMotorMover(BOWLING_BALL_ARM_PIN, BOWLING_BALL_ARM_DOWN_BUTTON, BOWLING_BALL_ARM_UP_BUTTON, BOWLING_BALL_ARM_SPEED));
+    #if defined(VACUUM_ARM)
+      peripheralVec.push_back(new ButtonMotorMover(VACUUM_ARM_PIN, VACUUM_ARM_DOWN_BUTTON, VACUUM_ARM_UP_BUTTON, VACUUM_ARM_SPEED));
+    #endif
+    #if defined(BALL_DROPPER)
+      peripheralVec.push_back(new ButtonMotorMover(BALL_DROPPER_PIN, BALL_DROPPER_BUTTON_OPEN, BALL_DROPPER_BUTTON_CLOSE, BALL_DROPPER_SPEED));
+    #endif
+
+    #if defined(BALL_SHOOTER)
+      peripheralVec.push_back(new ButtonMotorMover(BALL_SHOOTER_PIN, SHOOT_BALL_FORWARD, SHOOT_BALL_BACKWORD, BALL_SHOOTER_POWER));
+    #endif
+    #if defined(BOX_LIFTER)
+      peripheralVec.push_back(new ButtonMotorMover(BOX_ACTUATOR_PIN, RAISE_BOX_BUTTON, LOWER_BOX_BUTTON, BOX_LIFT_SPEED));
+    #endif
+    #if defined(BALL_PICKUP)
+      peripheralVec.push_back(new ButtonMotorMover(BALL_PICKUP_PIN_1, BALL_PICKUP_MOTOR_UP, BALL_PICKUP_MOTOR_DOWN, BALL_PICKUP_MOTOR_POWER));
+    #endif
+    #if defined(BALL_PICKUP)
+      peripheralVec.push_back(new ButtonMotorMover(BALL_PICKUP_PIN_2, BALL_PICKUP_MOTOR_DOWN, BALL_PICKUP_MOTOR_UP, BALL_PICKUP_MOTOR_POWER));
     #endif
     
 

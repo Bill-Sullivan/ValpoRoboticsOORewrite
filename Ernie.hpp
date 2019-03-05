@@ -36,8 +36,37 @@
 
 #define CIM_MOTOR
 
-#define DROP_DETECTOR_2
-#define DROP_DETECTOR_3
+//#define DROP_DETECTOR_2
+//#define DROP_DETECTOR_3
 
 
 #define BRIDGE_MODE_ENABLED
+
+#define BALL_SHOOTER // the flywheel thing
+#define BOX_LIFTER   // the linear actuator that lifts the box.
+#define BALL_PICKUP  // the motors that
+
+#if defined(BALL_SHOOTER)
+  #define BALL_SHOOTER_PIN 4
+  #define SHOOT_BALL_FORWARD  TRIANGLE
+  #define SHOOT_BALL_BACKWORD CROSS
+  #define BALL_SHOOTER_POWER  50
+#endif
+
+#if defined(BOX_LIFTER) 
+  #define BOX_ACTUATOR_PIN 5
+  #define RAISE_BOX_BUTTON UP
+  #define LOWER_BOX_BUTTON DOWN
+  #define BOX_LIFT_SPEED 50
+#endif 
+
+#if defined(BALL_PICKUP) 
+  #define BALL_PICKUP_PIN_1 6
+  #define BALL_PICKUP_PIN_2 7
+  #define BALL_PICKUP_MOTOR_UP   SQUARE
+  #define BALL_PICKUP_MOTOR_DOWN CIRCLE
+  #define BALL_PICKUP_MOTOR_POWER 50 // speed which the motors move
+#endif 
+
+#define SERVO_BALL_COLLECTOR // dont know if this will be a thing
+
