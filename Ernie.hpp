@@ -30,9 +30,9 @@
 
 #pragma once
 
-//#define BASIC_DRIVE
+#define BASIC_DRIVETRAIN
 #define PERF_BOARD_SHIELD
-//#define DUAL_MOTORS
+#define DUAL_MOTORS
 
 #define CIM_MOTOR
 
@@ -45,28 +45,32 @@
 #define BALL_SHOOTER // the flywheel thing
 #define BOX_LIFTER   // the linear actuator that lifts the box.
 #define BALL_PICKUP  // the motors that
+#define SERVO_BALL_COLLECTOR // dont know if this will be a thing
 
 #if defined(BALL_SHOOTER)
   #define BALL_SHOOTER_PIN 4
   #define SHOOT_BALL_FORWARD  TRIANGLE
   #define SHOOT_BALL_BACKWORD CROSS
-  #define BALL_SHOOTER_POWER  50
+  #define BALL_SHOOTER_POWER  500
 #endif
 
 #if defined(BOX_LIFTER) 
   #define BOX_ACTUATOR_PIN 5
   #define RAISE_BOX_BUTTON UP
   #define LOWER_BOX_BUTTON DOWN
-  #define BOX_LIFT_SPEED 50
+  #define BOX_LIFT_SPEED 250
 #endif 
 
 #if defined(BALL_PICKUP) 
-  #define BALL_PICKUP_PIN_1 6
-  #define BALL_PICKUP_PIN_2 7
+  #define BALL_PICKUP_PIN 6
   #define BALL_PICKUP_MOTOR_UP   SQUARE
   #define BALL_PICKUP_MOTOR_DOWN CIRCLE
-  #define BALL_PICKUP_MOTOR_POWER 50 // speed which the motors move
+  #define BALL_PICKUP_MOTOR_POWER 500 // speed which the motors move
 #endif 
 
-#define SERVO_BALL_COLLECTOR // dont know if this will be a thing
 
+#if defined(SERVO_BALL_COLLECTOR) 
+  #define SERVO_BALL_COLLECTOR_PIN                  12
+  #define SERVO_BALL_COLLECTOR_CLOCKWISE_BUTTON     LEFT
+  #define SERVO_BALL_COLLECTOR_ANTICLOCKWISE_BUTTON RIGHT
+#endif

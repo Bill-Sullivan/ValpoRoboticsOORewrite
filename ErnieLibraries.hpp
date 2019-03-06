@@ -3,3 +3,5 @@
 
 #include "MRDCPeripherals/DropDetector/DropDetector.hpp"
 
+#include "SharedPeripherals/ButtonMotorMover/ButtonMotorMover.hpp"
+#include "MRDCPeripherals/BallCollector/BallCollector.hpp"

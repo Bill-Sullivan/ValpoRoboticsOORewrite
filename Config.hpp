@@ -1,5 +1,5 @@
-//#define ERNIE
-#define MARVIN
+#define ERNIE
+//#define MARVIN
 //#define PARKER
 
 #if defined(ERNIE) || defined(MARVIN) || defined(PARKER)
@@ -72,14 +72,6 @@
   #define BASIC_DRIVETRAIN
   #undef  LED_STRIP 
   #define LED_STRIP 
-#endif
-
-
-#if defined(ERNIE)
-  #undef  BASIC_DRIVETRAIN
-  #define BASIC_DRIVETRAIN
-  #undef  DUAL_MOTORS 
-  #define DUAL_MOTORS 
 #endif
 
 #if defined(RECIEVER)

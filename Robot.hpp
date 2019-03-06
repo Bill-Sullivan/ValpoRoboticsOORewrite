@@ -177,10 +177,10 @@ protected:
       peripheralVec.push_back(new ButtonMotorMover(BOX_ACTUATOR_PIN, RAISE_BOX_BUTTON, LOWER_BOX_BUTTON, BOX_LIFT_SPEED));
     #endif
     #if defined(BALL_PICKUP)
-      peripheralVec.push_back(new ButtonMotorMover(BALL_PICKUP_PIN_1, BALL_PICKUP_MOTOR_UP, BALL_PICKUP_MOTOR_DOWN, BALL_PICKUP_MOTOR_POWER));
+      peripheralVec.push_back(new ButtonMotorMover(BALL_PICKUP_PIN, BALL_PICKUP_MOTOR_UP, BALL_PICKUP_MOTOR_DOWN, BALL_PICKUP_MOTOR_POWER));
     #endif
-    #if defined(BALL_PICKUP)
-      peripheralVec.push_back(new ButtonMotorMover(BALL_PICKUP_PIN_2, BALL_PICKUP_MOTOR_DOWN, BALL_PICKUP_MOTOR_UP, BALL_PICKUP_MOTOR_POWER));
+    #if defined(SERVO_BALL_COLLECTOR)
+      peripheralVec.push_back(new ServoBallCollector(SERVO_BALL_COLLECTOR_PIN, SERVO_BALL_COLLECTOR_CLOCKWISE_BUTTON, SERVO_BALL_COLLECTOR_ANTICLOCKWISE_BUTTON));
     #endif
     
 
